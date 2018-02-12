@@ -1,0 +1,142 @@
+<html>
+<head>
+<script language="javascript" src="/js/jquery.min.js"></script>
+<style>
+         table {
+            padding: 5px;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height:50px;
+            margin-top:20px;
+            margin-bottom:auto;
+            font-size: 10px;
+             text-align: center;
+            
+         }
+         body{
+            font-family: verdana;
+            font-size: 20px;
+         }
+         p{
+           margin-top:-80px;
+         }
+         td{
+    		padding: 12px;
+    		width: 200px;
+    		border:1px solid #DDDDDD;
+   		border-radius: 3px;
+        
+         }
+        
+         img{
+               margin-left: 260px;
+         }
+          
+           input{
+        		width: 200px;
+        		height:50px;
+        		padding: 12px 20px;
+        		margin: 8px 0;
+      	  }
+  input[type="text"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="time"],
+  input[type="url"],
+  input[type="password"],
+  textarea,
+  select 
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    padding: 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+td > label{
+    display: block;
+    float: left;
+    margin-top: -19px;
+    background: #FFFFFF;
+    height: 14px;
+    padding: 2px 5px 2px 5px;
+    color: #B9B9B9;
+    font-size: 14px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+          td > span{
+    background: #F3F3F3;
+    display: block;
+    padding: 3px;
+    margin: 0 -9px -9px -9px;
+    text-align: center;
+    color: #C0C0C0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+input[type="submit"]{
+          	 background: #2471FF;
+   		 	border: none;
+ 		  	 padding: 10px 20px 10px 20px;
+   			 border-bottom: 3px solid #5994FF;
+   			 border-radius: 3px;
+    			color: #D2E2FF;
+          }
+         input[type="submit"]:hover{
+           background: #6B9FFF;
+    		color:#fff;
+          }
+        
+      </style> 
+
+</head>
+    <body>
+        
+        <img class="centerImage" src="logo.jpg" alt="Logo" width="120" height="120"></img>
+        <form action="#" th:action="@{/registration}" th:object="${registration}" method="post">
+            
+            <center><p>Welcome to NihaoPay,we are looking forword your participating</p></center><hr/>
+            <table>
+            
+                <tr>
+                    <td> <label for= "fullname">Full Name</label>
+                    <input type="text" th:field="*{fullname}" /> 	
+                    </td>
+                  
+                </tr>
+                <tr>
+                    <td> <label for= "email">E-mail</label><input type="text" th:field="*{email}" /></td>
+                   
+                      </tr>
+                
+                <tr>
+                   
+                    <td> <label for= "Password">Password</label><input type="password" th:field="*{password}" /></td>
+                                   </tr>
+                <tr>
+                    <td> <label for= "Confirm Password">Confirm Password</label><input type="password" th:field="*{confirmpassword}" />  </td>
+                   
+                               </tr>
+                <tr>
+            
+                </tr>
+            </table>
+             <center><input type="submit" value="Submit Registration" /></center>
+             <br/>
+             <center> <a href="login.html">Cancel</a></center>
+        </form>
+    </body>
+</html>

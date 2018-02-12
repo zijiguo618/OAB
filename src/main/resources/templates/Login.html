@@ -1,0 +1,71 @@
+
+<html>
+<head>
+<script language="javascript" src="/js/jquery.min.js"></script>
+<link rel="stylesheet" href="base.css"></link>
+<style>
+input {
+	width: 200px;
+	height: 50px;
+	padding: 12px 20px;
+	margin: 8px 0;
+}
+
+table, th, td {
+	padding: 5px;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 50px;
+	margin-top: 50px;
+	margin-bottom: auto;
+}
+
+table td {
+	text-align: center;
+}
+
+hr {
+	margin-top: 60px;
+}
+a{
+	margin-left: 40px;
+}
+</style>
+</head>
+<body>
+
+	<form action="#" th:action="@{/login}" th:object="${login}"
+		method="post">
+
+		<center>
+			<img class="centerImage" src="logo.jpg" alt="Logo" width="200"
+				height="200" />
+		</center>
+
+
+		<table align="center">
+
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" th:field="*{email}" /></td>
+				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+					style="color: red;">Email Error</td>
+			</tr>
+			<hr />
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" th:field="*{password}" /></td>
+				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+					style="color: red;">Password Error</td>
+			</tr>
+
+			
+
+		</table>
+			<center><button type="submit" name="loginsubmit"
+						value="loginsubmit">Submit</button>
+			<a href="/registration" align="center"> Register</a></center>
+	</form>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Products</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script src="jquery-1.11.1.min.js"></script>
+<style type="text/css">
+table{
+margin-top:60px;
+
+}
+td{
+width:100px;
+}
+input{
+float:left;
+}
+</style>
+
+</head>
+<body>
+
+<!-- banner-body -->
+	<div class="banner-body">
+		<div class="container">
+			<div class="banner-body-content">
+			<div class="col-xs-3 banner-body-left">
+				<div class="logo">
+					<h1><a href="http://nihaopay.com/">NihaoPay</a></h1>
+				</div>
+				<div class="top-nav">
+					<nav class="navbar navbar-default">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						  </button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="stroke">
+								<ul class="nav navbar-nav">
+									<li><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
+									<li class="active"><a href="/products" class="hvr-underline-from-left"><i class="prod"></i>GateWays</a></li>
+									<li><a href="/settlement" class="hvr-underline-from-left"><i class="text-size1"></i>Settlement</a></li>
+									<li><a href="/uploadMulti" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
+									<li><a href="/submission" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
+									<li><a href="/logout" class="hvr-underline-from-left"><i class="envelope1"></i>Log Out</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
+<form action="#" th:action="@{/products}" th:object="${products}"
+		method="post">
+<table>
+
+<tr>
+<td>Settlement Currency:</td>
+					<td><input id="USD" type="checkbox"
+					th:field="*{currencys}" value="USD"
+					name="USD" onchange='securepayunionpaylisetner()'/> USD</td>
+				<td><input id="JPY" type="checkbox"
+					th:field="*{currencys}" value="JPY"
+					name="JPY" onchange='securepayunionpaylisetner()'/> JPY</td>
+				<td><input id="HKD" type="checkbox"
+					th:field="*{currencys}" value="HKD"
+					name="HKD" onchange='securepayunionpaylisetner()'/> HKD</td>
+				<td><input id="EUR" type="checkbox"
+					th:field="*{currencys}" value="EUR"
+					name="EUR" onchange='securepayunionpaylisetner()'/> EUR</td>
+				<td><input id="GBP" type="checkbox"
+					th:field="*{currencys}" value="GBP"
+					name="GBP" onchange='securepayunionpaylisetner()'/> GBP</td>
+				<td><input id="CAD" type="checkbox"
+					th:field="*{currencys}" value="CAD"
+					name="CAD" onchange='securepayunionpaylisetner()'/> CAD</td>
+
+</tr>
+
+<tr>
+<td>GateWays: </td><td><input id="UnionPay" type="checkbox"
+					th:field="*{cardOrgs}" value="UNIONPAY"
+					name="UnionPay" onchange='securepayunionpaylisetner()'/> UnionPay</td>
+				<td><input id="AliPay" type="checkbox"
+					th:field="*{cardOrgs}" value="ALIPAY"
+					name="AliPay" onchange='securepayunionpaylisetner()'/> AliPay</td>
+				<td><input id="WeChatPay" type="checkbox"
+					th:field="*{cardOrgs}" value="WECHAT"
+					name="WeChatPay" onchange='securepayunionpaylisetner()'/> WeChatPay</td>
+</tr>
+
+<tr>
+<td>Online:</td>
+</tr>
+<tr><td><input id="PCcheck" type="checkbox"
+					name="PC" onclick='gatewayPCmonitor()'/> PC</td><td>Website<input id="websiteinp" type="txt" th:field="*{website}"/></td>
+</tr>
+<tr><td>In-APP:</td> <td><input id="IOS" type="checkbox"
+					th:field="*{productName}" value="UP_EBANK_PAY"
+					name="IOS" onclick='gatewayinappmonitor()'/> IOS</td>
+				<td><input id="Android" type="checkbox"
+					th:field="*{cardOrgs}" value="UP_EBANK_PAY"
+					name="Android" onclick='gatewayinappmonitor()'/> Android</td> 					
+</tr>
+<tr>
+<td>WeChat Platform:</td> </tr>
+<tr>		<td><input id="Wetchat_Store" type="checkbox"
+					th:field="*{productName}" value="UP_EBANK_PAY"
+					name="Wetchat_Store" onclick='gatewayplatformmonitor()'/> Wetchat Store</td>
+				<td><input id="Wetchat_subscription" type="checkbox"
+					th:field="*{productName}" value="UP_EBANK_PAY"
+					name="Wetchat_subscription" onclick='gatewayplatformmonitor()'/> Wetchat Subscription Account</td> 
+				<td><input id="Wetchat_mini" type="checkbox"
+					th:field="*{productName}" value="UP_EBANK_PAY"
+					name="Wetchat_mini" onclick='gatewayplatformmonitor()'/> Wetchat Mini Program</td> 				
+
+
+
+</tr>
+<tr><td><input id="EasyPay" type="checkbox"th:field="*{easyPay}" value="ACTIVE" name="easyPay" />EasyPay</td><td><a href="https://vimeo.com/175835758">Demo</a></td>
+</tr>
+
+<tr><td>Offline:</td></tr><tr><td><input id="QRCode" type="checkbox"
+					th:field="*{productName}" value="OFFLINE_QRCODE"
+					name="QRCode" onclick='gatewaymonitor()'/>Static QR Code</td>
+				<td><input id="Wallet" type="checkbox"
+					th:field="*{productName}" value="OFFLINE_QRCODE"
+					name="Wallet" onclick='gatewaymonitor()'/>IOS/Android Wallet</td> 
+				<td><input id="POS" type="checkbox"
+					th:field="*{productName}" value="OFFLINE_POS"
+					name="POS" onclick='gatewaymonitor()'/>POS</td>					
+					
+</tr>
+</table>
+	<center><input type="submit" /></center>
+<script>
+document.getElementById("UnionPay").disabled = true;
+document.getElementById("AliPay").disabled = true;
+document.getElementById("WeChatPay").disabled = true;
+document.getElementById("IOS").disabled = true;
+document.getElementById("Android").disabled = true;
+document.getElementById("Wetchat_Store").disabled = true;
+document.getElementById("Wetchat_subscription").disabled = true;
+document.getElementById("Wetchat_mini").disabled = true;
+document.getElementById("QRCode").disabled = true;
+document.getElementById("Wallet").disabled = true;
+document.getElementById("POS").disabled = true;
+document.getElementById("PCcheck").disabled = true;
+document.getElementById("websiteinp").readOnly = true;
+		function securepayunionpaylisetner(){
+			
+			if((document.getElementById("UnionPay").checked ||document.getElementById("AliPay").checked||document.getElementById("WeChatPay").checked)==true){
+				
+				document.getElementById("IOS").disabled = false;
+				document.getElementById("Android").disabled = false;
+				document.getElementById("Wetchat_Store").disabled = false;
+				document.getElementById("Wetchat_subscription").disabled = false;
+				document.getElementById("Wetchat_mini").disabled = false;
+				document.getElementById("QRCode").disabled = false;
+				document.getElementById("Wallet").disabled = false;
+				document.getElementById("POS").disabled = false;
+				document.getElementById("PCcheck").disabled = false;
+				document.getElementById("websiteinp").readOnly = false;
+			}else{
+				document.getElementById("IOS").disabled = true;
+				document.getElementById("Android").disabled = true;
+				document.getElementById("Wetchat_Store").disabled = true;
+				document.getElementById("Wetchat_subscription").disabled = true;
+				document.getElementById("Wetchat_mini").disabled = true;
+				document.getElementById("QRCode").disabled = true;
+				document.getElementById("Wallet").disabled = true;
+				document.getElementById("POS").disabled = true;
+				document.getElementById("PCcheck").disabled = true;
+				document.getElementById("websiteinp").readOnly = true;
+			}
+			
+			
+			if((document.getElementById("USD").checked ||document.getElementById("JPY").checked||document.getElementById("EUR").checked||document.getElementById("HKD").checked ||document.getElementById("CAD").checked||document.getElementById("GBP").checked)==true)
+				    {
+				
+				    document.getElementById("UnionPay").disabled = false;
+					document.getElementById("AliPay").disabled = false;
+					document.getElementById("WeChatPay").disabled = false;
+				    }else{
+				    	  	document.getElementById("UnionPay").disabled = true;
+						document.getElementById("AliPay").disabled = true;
+						document.getElementById("WeChatPay").disabled = true;
+						document.getElementById("IOS").disabled = true;
+						document.getElementById("Android").disabled = true;
+						document.getElementById("Wetchat_Store").disabled = true;
+						document.getElementById("Wetchat_subscription").disabled = true;
+						document.getElementById("Wetchat_mini").disabled = true;
+						document.getElementById("QRCode").disabled = true;
+						document.getElementById("Wallet").disabled = true;
+						document.getElementById("POS").disabled = true;
+				    }
+				}
+function gatewayPCmonitor(){
+
+	if((document.getElementById("WeChatPay").checked&&document.getElementById("CAD").checked&&document.getElementById("PCcheck").checked)==true){
+		alert("Wetchat does not support CAD in PC");
+	}
+}
+function gatewayinappmonitor(){
+	if((document.getElementById("WeChatPay").checked&&(document.getElementById("IOS").checked||document.getElementById("Android").checked))==true){
+		alert("Wetchat does not support in-APP");
+	}
+}
+function gatewayplatformmonitor(){
+	if((document.getElementById("WeChatPay").checked&&(document.getElementById("Wetchat_Store").checked||document.getElementById("Wetchat_subscription").checked||document.getElementById("Wetchat_mini").checked)&&(document.getElementById("GBP").checked||document.getElementById("HKD").checked||document.getElementById("JPY").checked||document.getElementById("CAD").checked))==true){
+		alert("Wetchat only support USD and EUR in Wetchat Platform");
+	}
+	if((document.getElementById("AliPay").checked&&(document.getElementById("Wetchat_Store").checked||document.getElementById("Wetchat_subscription").checked||document.getElementById("Wetchat_mini").checked))==true){
+		alert("Alipay does not support Wetchat Platform");
+	}
+				}		
+		
+		
+		
+				</script>
+
+	</form>
+			</div>
+
+
+			
+			<div class="footer">
+				<div class="footer-left">
+					<p>Copyright &copy; 2016.Company name All rights reserved.<a href="http://nihaopay.com/" target="_blank" title="aurfy">NihaoPay</a> </p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+<!-- //banner-body -->
+<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"></script>
+	
+<!-- //for bootstrap working -->
+</body>
+</html>
