@@ -1,117 +1,99 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-<title>Submission</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Submission</title>
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
 	
-					
-<!-- //for-mobile-apps -->
-<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'/>
-<style>
-td span.feemark {display:none;}
-td:hover span.feemark {position:relative;top:30px;left:20px;display:inline;border:2px solid green;}
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="animate.css">
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="ssqaddress123.js"></script>
 
+	<!-- Modernizr JS -->
+	<script src="modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
-</style>
+	</head>
+	<body>
 
-</head>
-<body>
-
-<!-- banner-body -->
-	<div class="banner-body">
 		<div class="container">
-			<div class="banner-body-content">
-			<div class="col-xs-3 banner-body-left">
-				<div class="logo">
-					<h1><a href="http://nihaopay.com/">NihaoPay</a></h1>
-				</div>
-				<div class="top-nav">
-					<nav class="navbar navbar-default">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						  </button>
-						</div>
 
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-							<nav class="stroke">
-								<ul class="nav navbar-nav">
-									<li><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
-									<li ><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>GateWays</a></li>
-									<li><a href="/settlement" class="hvr-underline-from-left"><i class="text-size1"></i>Settlement</a></li>
-									<li><a href="/uploadMulti" class="hvr-underline-from-left"><i class="picture"></i>Documents</a></li>
-									<li  class="active"><a href="/submission" class="hvr-underline-from-left"><i class="submission"></i>Submission</a></li>
-									<li><a href="/logout" class="hvr-underline-from-left"><i class="logout1"></i>Log Out</a></li>
-								</ul>
-							</nav>
-						</div>
-						<!-- /.navbar-collapse -->
-					</nav>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<ul class="menu">
+						<li ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
+									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
+									<li><a href="/settlement" ><i class="text-size"></i>Settlement</a></li>
+									<li><a href="/uploadMulti" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
+									<li  class="active"><a href="/submission" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
+									<li><a href="/logout" class="hvr-underline-from-left"><i class="envelope1"></i>Log Out</a></li>
+					</ul>
 				</div>
 			</div>
-			<div class="col-xs-9 banner-body-right">
-			<object data="NihaoPay_Terms.pdf" type="application/pdf" width="100%" height="1100px"></object>
-			<form action="#" th:action="@{/submission}" th:object="${submission}" method="post">
-		
-
-		<table>
-			<tr>
-							<td>
-				<input type="checkbox" name="readandagree" value="readandagree"/>Has read term carefully and agree to accept terms
-				</td>
-				
-			</tr>
-			<tr>
-				<td>Signature:</td>
-				<td><input id="signatureinp" type="text" th:field="*{signature}"/></td>
-				
-			</tr>
-			<tr>
-				<td><input type="date" id="currentdate" th:field="*{currentdate}"/>
-				
-			</tr>
-			<tr>
-             <td><button type="submit">Submit</button></td>
-  
-            </tr>
-		</table>
-	</form>
-			</div>
-
-
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					
+<h2>Submission</h2>
+					<!-- Start Sign In Form -->
+					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn"  th:action="@{/submission}" th:object="${submission}" method="post">
+						
+						<div class="form-group">
+						<label for="agreement" >Agreement</label>
+						<object data="NihaoPay_Terms.pdf" type="application/pdf" width="100%" height="1100px"></object>
+						<label for="read" >Has read term carefully and agree to accept terms</label>
+						<input type="checkbox" name="readandagree" value="readandagree" />
+						<label for="Signature" >Signature</label>
+						<input id="signatureinp" type="text" th:field="*{signature}" class="form-control"/>
+						<label for="today" >Todat is:</label>
+						<input type="date" id="currentdate" th:field="*{currentdate}" class="form-control"/>
+						
+						</div>
+						
+						<div class="form-group">
+							<center><input type="submit" value="Submit" class="btn btn-primary"></center>
+						</div>
+						<script src="js/bootstrap.js"></script>
+	<script>
+			var message = "[[${online}]]";
 			
-			<div class="footer">
-				<div class="footer-left">
-					<p>Copyright &copy; 2016.Company name All rights reserved.<a href="http://nihaopay.com/" target="_blank" title="模板之家">NihaoPay</a> </p>
-				</div>
-				
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		</div>
-	</div>
+			if(message=="0"){
+				document.getElementById("logo").style.display="none";
+				document.getElementById("store").style.display="none";
+			}
+			
+			</script>
+					</form>
+					<!-- END Sign In Form -->
 
-<!-- //banner-body -->
-<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-</body>
+				</div>
+			</div>
+
+		</div>
+	
+	<!-- jQuery -->
+	<script src="jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="bootstrap.min.js"></script>
+	<!-- Placeholder -->
+	<script src="jquery.placeholder.min.js"></script>
+	<!-- Waypoints -->
+	<script src="jquery.waypoints.min.js"></script>
+	<!-- Main JS -->
+	<script src="main.js"></script>
+
+
+	</body>
 </html>
+

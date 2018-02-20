@@ -1,96 +1,64 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-<title>Settlement</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-		
-		<script type="text/javascript" src="ssqaddress123.js"></script>
-					
-<!-- //for-mobile-apps -->
-<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'/>
-<style>
-td span.feemark {display:none;}
-td:hover span.feemark {position:relative;top:30px;left:20px;display:inline;border:2px solid green;}
-select{
-width:200px;
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Settlement</title>
 
-}
-td>input{
-margin-left:0px;
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
 
-}
+	
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="animate.css">
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="ssqaddress123.js"></script>
 
-</style>
+	<!-- Modernizr JS -->
+	<script src="modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
-</head>
-<body>
+	</head>
+	<body>
 
-<!-- banner-body -->
-	<div class="banner-body">
 		<div class="container">
-			<div class="banner-body-content">
-			<div class="col-xs-3 banner-body-left">
-				<div class="logo">
-					<h1><a href="http://nihaopay.com/">NihaoPay</a></h1>
-				</div>
-				<div class="top-nav">
-					<nav class="navbar navbar-default">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						  </button>
-						</div>
 
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-							<nav class="stroke">
-								<ul class="nav navbar-nav">
-									<li><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<ul class="menu">
+						<li  ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
 									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
 									<li class="active"><a href="/settlement" ><i class="text-size"></i>Settlement</a></li>
 									<li><a href="/uploadMulti" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
 									<li><a href="/submission" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
 									<li><a href="/logout" class="hvr-underline-from-left"><i class="envelope1"></i>Log Out</a></li>
-								</ul>
-							</nav>
-						</div>
-						<!-- /.navbar-collapse -->
-					</nav>
+					</ul>
 				</div>
 			</div>
-			<div class="col-xs-9 banner-body-right">
-				<form action="#" th:action="@{/settlement}" th:object="${settlement}"
-		method="post">
-		<table>
-		<tr>
-		<td>Withdrawl Option:</td>
-		<td><select id="withdoaloptions" name="withdoaloptions"
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					
+<h2>Settlement</h2>
+					<!-- Start Sign In Form -->
+					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn" th:action="@{/settlement}" th:object="${settlement}" method="post">
+						
+						<div class="form-group">
+						<label for="withdoaloption" >Withdrawl option:</label><br/>
+						<select id="withdoaloptions" name="withdoaloptions" class="form-control" 
 					th:field="*{withdrawalWay}">
 						<option value=""></option>
 						<option value="MANUAL">MANUAL</option>
 						<option value="AMOUNT">AMOUNT</option>
 						<option value="EXPRESSION">Period</option>
 				</select>
-		</td>
-		<td>
-		<select id="withdrawalamount" name="withdrawalamount"
+						<select id="withdrawalamount" name="withdrawalamount" class="form-control" 
 					th:field="*{minAmount}">
 						<option value=""></option>
 						<option value="1000">$1000.00</option>
@@ -98,7 +66,7 @@ margin-left:0px;
 						<option value="10000">$10000.00</option>
 						<option value="Other"> Other</option>
 				</select>
-		<select id="withdralperiod" name="withdralperiod"
+						<select id="withdralperiod" name="withdralperiod" class="form-control" 
 					th:field="*{cycleDesc}">
 						<option value=""></option>
 						<option value="1">Daily</option>
@@ -106,13 +74,10 @@ margin-left:0px;
 						<option value="W2T1D">Twice a Week</option>
 						<option value="M1T15D">Monthly</option>
 				</select>
-		
-		
-		</td>
-			<td><input id="otheramount" type="text" th:field="*{otheramount}"/></td>
-		
-		</tr>
-		<script>
+						<input id="otheramount" type="text" th:field="*{otheramount}" class="form-control"  placeholder="Other Amount"/>
+					
+						</div>
+						<script>
 		document.getElementById("withdralperiod").style.display="none";
 		document.getElementById("otheramount").style.display="none";
 		document.getElementById("withdrawalamount").style.display="none";
@@ -149,269 +114,85 @@ margin-left:0px;
 			}
 			
 		});
-		
-		
-		
-		
-		
-		
 		</script>
-		
-		
-		
-		
-		<!-- <tr><td><input id="Manually_inp" type="radio"
-					th:field="*{withdrawalWay}" value="MANUAL"
-					name="Withdrawl" onchange='withdrawoptionmonitor()'/>Manually</td>
-			<td><input id="Amount_inp" type="radio"
-					th:field="*{withdrawalWay}" value="AMOUNT"
-					name="Withdrawl"  onchange='withdrawoptionmonitor()'/>Amount</td>
-			<td><input id="Period_inp" type="radio"
-					th:field="*{withdrawalWay}" value="EXPRESSION"
-					name="Withdrawl"  onchange='withdrawoptionmonitor()'/>Period</td>
-		</tr> -->
-	<!-- <tr id="withdrawalamount">
-		<td><input id="amount1" type="radio"
-					th:field="*{minAmount}" value="1000"
-					name="amountoptions" />$1000.00</td>
-		<td><input id="amount2" type="radio"
-					th:field="*{minAmount}" value="5000"
-					name="amountoptions" />$5000.00</td>
-		<td><input id="amount3" type="radio"
-					th:field="*{minAmount}" value="10000"
-					name="amountoptions" />$10000.00</td>
-					<td><input id="amount4" type="radio"
-					
-					name="amountoptions" />Other:<input id="otheramount" type="text" th:filed="*{minAmount}" name="amountotheroptions"/></td> -->
-		
-	<!-- </tr>
-	<tr id="withdralperiod">
-	<td><input id="period1" type="radio"
-					th:field="*{minAmount}" value="1"
-					name="Period" />Daily</td>
-		<td><input id="period2" type="radio"
-					th:field="*{cycleDesc}" value="W1T3D"
-					name="Period" />Weekly</td>
-		<td><input id="period3" type="radio"
-					th:field="*{cycleDesc}" value="W2T1D"
-					name="Period" />Twice a Week</td>
-		<td><input id="period4" type="radio"
-					th:field="*{cycleDesc}" value="M1T15D"
-					name="Period" />Monthly</td>
-	</tr> -->
-	</table>
-
-	<hr/>
-	<table>
-	
-	<tr>
-				<td>Bank Account:</td>
-				
-			</tr>
-			
-			<tr>
-			<select id="currencylist" name="currencylist" th:field="*{accountCurrency}">
+						<div class="form-group">
+							<label for="bankaccount" > Bank Account </label><br/>
+							<select id="currencylist" name="currencylist" th:field="*{accountCurrency}" class="form-control" >
 						<option th:each="currency : ${currencylist}" th:text="${currency}"
 							th:value="${currency}" />
 					</select>
-			
-			</tr>
-			<tr>
-				<td>Account Holder:<input type="text" th:field="*{accountHolder}"/></td>
-				
-			
-			</tr>
-			<tr>
-				<td>Bank Name:<input type="text" th:field="*{bankName}" /></td>
-				
-			
-			</tr>
-			
-	<tr>
-				<td>Bank Address:</td></tr>
-			<tr>	<td>
-				<select id="bankaddress_country" name="bankaddress_country"
-					th:field="*{countryName}">
-				</select></td>
-			</tr>
-					<tr>	<td> <select id="bankaddress_state" name="bankaddress_state"
-					th:field="*{stateName}"></select> </td></tr>
-					<tr>	<td><select	id="bankaddress_city" name="bankaddress_city"
-					th:field="*{cityName}"></select> </td></tr>
-					
-				
-					
-				
-			<tr>
-				<td><input type="text" th:field="*{bankstreetName1}" placeholder="Detailed Address*"/></td>
-			
-			</tr>
-			
-			
-			<tr>
-			<td>Acount Number:<input type="text" th:field="*{accountNumber}"/></td>
-			
-			
-			</tr>
-			
-			
-			<tr id="swiftcoderow">
-				<td>Swift Code:<input id="swiftinput" type="text" th:field="*{swiftCode}"/></td>
-		
-				<td> Settlement Fee?<span class="feemark">Settlement Fee: $25</span></td>
-			</tr>
-			<tr id="sortcoderow">
-				<td>Sort Code:<input id="sortcodeinput" type="text" th:field="*{sortcode}"/></td>
-				<!-- <td> Settlement Fee?<span class="feemark">Settlement Fee: $25</span></td> -->
-			</tr>
-			
-			<tr id="routingnumberrow">
-				<td>Routing Number:<input id="routinginput" type="text" th:field="*{routingNumber}"/></td>
-				
-				<td > Settlement Fee?<span class="feemark">Settlement Fee: $0.3</span></td>
-			</tr>
-			
-			<script>
-			 document.getElementById("swiftcoderow").style.display="none";
-			 </script>
+						<input type="text" th:field="*{accountNumber}" placeholder="Account Number" class="form-control" />
+						<input type="text" th:field="*{accountHolder}" placeholder="Account Holder" class="form-control" />
+						<input type="text" th:field="*{bankName}" class="form-control" placeholder="Bank Name" />
 
-		
-		</table>
-			<tr>  <button type="submit">Submit</button></tr>
-                 			 <!-- <script>	
-                 		document.getElementById("amount1").disabled=true;
-    						document.getElementById("amount2").disabled=true;
-    						document.getElementById("amount3").disabled=true;
-    						document.getElementById("amount4").disabled=true;
-    						document.getElementById("period1").disabled=true;
-    						document.getElementById("period2").disabled=true;
-    						document.getElementById("period3").disabled=true;
-    						document.getElementById("period4").disabled=true;
-    						document.getElementById("otheramount").readOnly=true;
-                 		
-                 			 
-                 			 
-                 			 
-                 	var Manually_inpselect=document.getElementById("Manually_inp");
-                 	Manually_inpselect.addEventListener("change", function() {
-					if(document.getElementById("Manually_inp").checked==true){
-						document.getElementById("amount1").checked=false;
-						document.getElementById("amount2").checked=false;
-						document.getElementById("amount3").checked=false;
-						document.getElementById("amount4").checked=false;
-						document.getElementById("amount1").disabled=true;
-						document.getElementById("amount2").disabled=true;
-						document.getElementById("amount3").disabled=true;
-						document.getElementById("amount4").disabled=true;
-						document.getElementById("otheramount").value="";
-						document.getElementById("otheramount").readOnly=true;
-						document.getElementById("period1").checked=false;
-						document.getElementById("period2").checked=false;
-						document.getElementById("period3").checked=false;
-						document.getElementById("period4").checked=false;
-						document.getElementById("period1").disabled=true;
-						document.getElementById("period2").disabled=true;
-						document.getElementById("period3").disabled=true;
-						document.getElementById("period4").disabled=true;
-					
-					}
-					
-				});
-                 	var Amount_inpselect=document.getElementById("Amount_inp");
-                 	Amount_inpselect.addEventListener("change", function() {
-					if(document.getElementById("Amount_inp").checked==true){
-						document.getElementById("amount1").disabled=false;
-						document.getElementById("amount2").disabled=false;
-						document.getElementById("amount3").disabled=false;
-						document.getElementById("amount4").disabled=false;
-						document.getElementById("period1").checked=false;
-						document.getElementById("period2").checked=false;
-						document.getElementById("period3").checked=false;
-						document.getElementById("period4").checked=false;
-						document.getElementById("period1").disabled=true;
-						document.getElementById("period2").disabled=true;
-						document.getElementById("period3").disabled=true;
-						document.getElementById("period4").disabled=true;
-					}});
-                 	
-                 	var otheracount=document.getElementById("amount4");
-                 	otheracount.addEventListener("change", function() {
-                 		if(otheracount.checked==true){
-    						document.getElementById("otheramount").readOnly=false;
-                 		}
-                 	});
-                 	var Period_inpselect=document.getElementById("Period_inp");
-                 	Period_inpselect.addEventListener("change", function() {
-					if(document.getElementById("Period_inp").checked==true){
-						document.getElementById("amount1").checked=false;
-						document.getElementById("amount2").checked=false;
-						document.getElementById("amount3").checked=false;
-						document.getElementById("amount4").checked=false;
-						document.getElementById("otheramount").value="";
-						document.getElementById("otheramount").readOnly=true;
-						document.getElementById("amount1").disabled=true;
-						document.getElementById("amount2").disabled=true;
-						document.getElementById("amount3").disabled=true;
-						document.getElementById("amount4").disabled=true;
-						document.getElementById("period1").disabled=false;
-						document.getElementById("period2").disabled=false;
-						document.getElementById("period3").disabled=false;
-						document.getElementById("period4").disabled=false;
-					}
-			});</script>	 -->
-	</form>
-				
-			</div>
-			<div class="clearfix"> </div>
-			
-			<div class="footer">
-				<div class="footer-left">
-					<ul>
-						<li><a href="#">Privacy Policy</a>|</li>
-						<li><a href="#">Terms of Use</a>|</li>
-						<li><a href="mail.html">Contact Us</a></li>
-					</ul>
-					<p>Copyright &copy; 2016.Company name All rights reserved.<a href="http://nihaopay.com/" target="_blank" title="模板之家">NihaoPay</a> </p>
-				</div>
-				
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		</div>
-	</div>
-<!-- //banner-body -->
-<!-- for bootstrap working -->
-	<script type="text/javascript" src="ssqaddress.js"></script>
+
+						<label for="bankaddress" > Bank Address </label><br/>
+						<select id="bankaddress_country" name="bankaddress_country"th:field="*{countryName}" class="form-control">
+						</select>
+						<select id="bankaddress_state" name="bankaddress_state" th:field="*{stateName}" class="form-control"></select> 
+						<select	id="bankaddress_city" name="bankaddress_city" th:field="*{cityName}" class="form-control"></select> 
+						<input id="swiftinput" type="text" th:field="*{swiftCode}" class="form-control" placeholder="Swift Numbe"/>
+						<input id="sortcodeinput" type="text" th:field="*{sortcode}" class="form-control" placeholder="Soort Code"/>
+						<input id="routinginput" type="text" th:field="*{routingNumber}" class="form-control" placeholder="Routing Numbe"/>
+						</div>
+						
+						<div class="form-group">
+							<center><input type="submit" value="Submit" class="btn btn-primary"></center>
+						</div>
+						<script src="js/bootstrap.js"></script>
+	
+			<script type="text/javascript" src="ssqaddress.js"></script>
 					<script	type="text/javascript">	addressInit('bankaddress_country', 'bankaddress_state',
 								'bankaddress_city');
 					
 					</script>
-	<script src="js/bootstrap.js"></script>
+	<script src="bootstrap.js"></script>
 	<script>
-			document.getElementById("swiftcoderow").style.display="none";
-		 	document.getElementById("routingnumberrow").style.display="block";
-			document.getElementById("sortcoderow").style.display="none";
+			document.getElementById("swiftinput").style.display="none";
+		 	document.getElementById("routinginput").style.display="block";
+			document.getElementById("sortcodeinput").style.display="none";
 		</script>
 		<script>
 					var countryselected=document.getElementById("bankaddress_country");
 					countryselected.addEventListener("change", function() {
 						if(this.value=="United States,001"){
+							alert("Settlement Fee in USA is  $0.3");
 							 document.getElementById('sortcodeinput').value='';
-		    			 		document.getElementById("sortcoderow").style.display="none";
+		    			 		document.getElementById("sortcodeinput").style.display="none";
 							 document.getElementById('swiftinput').value='';
-	    			    			 document.getElementById("swiftcoderow").style.display="none";
-	    			    	 		 document.getElementById("routingnumberrow").style.display="block";
+	    			    			 document.getElementById("swiftinput").style.display="none";
+	    			    	 		 document.getElementById("routingnumberinput").style.display="block";
 						}else{
+							alert("Settlement Fee out of USA is $25");
 							 document.getElementById('sortcodeinput').value='';
-			    			 	document.getElementById("sortcoderow").style.display="block";
+			    			 	document.getElementById("sortcodeinput").style.display="block";
 							 document.getElementById('routinginput').value='';
-			    			 	document.getElementById("swiftcoderow").style.display="block";
-			    	 		 	document.getElementById("routingnumberrow").style.display="none";
+			    			 	document.getElementById("routinginput").style.display="block";
+			    	 		 	document.getElementById("routingnumberinput").style.display="none";
 						}
 					});
 				</script>
 				
-				
-<!-- //for bootstrap working -->
-</body>
+					</form>
+					<!-- END Sign In Form -->
+
+				</div>
+			</div>
+
+		</div>
+	
+	<!-- jQuery -->
+	<script src="jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="bootstrap.min.js"></script>
+	<!-- Placeholder -->
+	<script src="jquery.placeholder.min.js"></script>
+	<!-- Waypoints -->
+	<script src="jquery.waypoints.min.js"></script>
+	<!-- Main JS -->
+	<script src="main.js"></script>
+
+
+	</body>
 </html>
+

@@ -1,237 +1,107 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-<title>Home</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script type="text/javascript" src="ssqaddress123.js"></script>
-<!-- //for-mobile-apps -->
-<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'/>
-<link href='https://fonts.googleapis.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'/>
-<style type="text/css">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Business Infomation</title>
 
-input[type="text"], input[type="date"], input[type="datetime"], input[type="number"],
-	input[type="url"], select {
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
 
-	width: 100%;
-	display: block;
-	border: none;
-	height: 25px;
-
-	font-size: 16px;
-	background: #ECEFF1;
-	font-family: Georgia, "Times New Roman", Times, serif;
-}
-td>label {
-	margin-left:-5px;
-	display: block;
-	float: left;
-	background: #FFFFFF;
-	height: 70%;
-	color: #000000;
-	font-size: 14px;
-	overflow: hidden;
-	font-family: Arial, Helvetica, sans-serif;
-	margin-bottom:-0px;
-}td>input{
 	
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="animate.css">
+	<link rel="stylesheet" href="style.css">
+	<script type="text/javascript" src="ssqaddress123.js"></script>
 
-}
-</style>
+	<!-- Modernizr JS -->
+	<script src="modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
-</head>
-<body>
+	</head>
+	<body>
 
-<form action="#" th:action="@{/basicinfo}" th:object="${basicinfo}"
-		method="post">
-	<div class="banner-body">
 		<div class="container">
-			<div class="banner-body-content">
-			<div class="col-xs-3 banner-body-left">
-				<div class="logo">
-					<h1><a href="http://nihaopay.com/">NihaoPay</a></h1>
-				</div>
-				<div class="top-nav">
-					<nav class="navbar navbar-default">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-						  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						  </button>
-						</div>
 
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-							<nav class="stroke">
-								<ul class="nav navbar-nav">
-									<li class="active"><a href="/basicinfo"><i class="home"></i>Business Info</a></li>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<ul class="menu">
+						<li  class="active"><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
 									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
-									<li><a href="/settlement" class="hvr-underline-from-left"><i class="text-size1"></i>Settlements</a></li>
+									<li><a href="/settlement" ><i class="text-size"></i>Settlement</a></li>
 									<li><a href="/uploadMulti" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
 									<li><a href="/submission" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
 									<li><a href="/logout" class="hvr-underline-from-left"><i class="envelope1"></i>Log Out</a></li>
-								</ul>
-							</nav>
-						</div>
-						<!-- /.navbar-collapse -->
-					</nav>
+					</ul>
 				</div>
 			</div>
-			<div class="col-xs-9 banner-body-right">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
 
-		<table align="center">
-			<tr>
-				<td>Application ID: <p th:text="${applicationID}" /></td>
-			</tr>
-			<tr>
-
-				<td><label for="abbreviation">Company Legal Name</label><input
-					type="text" th:field="*{abbreviation}" /></td>
-				<td th:if="${#fields.hasErrors('abbreviation')}"
-					th:errors="*{abbreviation}" style="color: red;">LegalName
-					Error</td>
-			</tr>
-			<tr>
-				<td><label for="merchantname">Company DBA</label><input
-					type="text" th:field="*{name}" /></td>
-				<td th:if="${#fields.hasErrors('name')}"
-					th:errors="*{name}" style="color: red;">MerchantName
-					Error</td>
-			</tr>
-		
-			
-			<tr>
-				<td>	<label>Country </label><select id="mailaddress_country"
-				name="mailaddress_country" th:field="*{countryName}"
-				></select></td>
-				</tr>
-			
-			<tr>	 
-			<td><label>State </label><select id="mailaddress_state"
-				name="mailaddress_state" th:field="*{stateName}"
-				></select></td>
-				
-				</tr>
-
-			<tr>
-				<td><label>City </label><select id="mailaddress_city"
-				name="mailaddress_city" th:field="*{cityName}"
-				></select></td>
-				</tr>
-
-			<tr>
-				<td> <label for="streetName1">Street Address:</label> <input type="text"
-				th:field="*{streetName1}"/></td>
-				</tr>
-
-			
-	<tr>
-				<td><label for="streetName2">Street Address(optional):</label><input
-					type="text" th:field="*{streetName2}" /></td>
-				<td th:if="${#fields.hasErrors('streetName2')}"
-					th:errors="*{streetName2}" style="color: red;">streetName1
-					Error</td>
-			</tr>
-
-	
-	<tr>
-				<td><label for="contactEmail">Primary Contact Email</label><input
-					type="text" th:field="*{contactEmail}" /></td>
-				<td th:if="${#fields.hasErrors('contactEmail')}"
-					th:errors="*{contactEmail}" style="color: red;">contactEmail
-					Error</td>
-			</tr>
-			<tr>
-				<td><label for="industry">Business Category</label><select
-					id="industryselect" name="industryselect" th:field="*{industry}">
+					<!-- Start Sign In Form -->
+					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn" th:action="@{/basicinfo}" th:object="${basicinfo}"
+		method="post">
+											
+<h2>Business Info</h2>
+						<div class="form-group">
+						<label for="abbreviation" >Company</label>
+						<input	type="text" class="form-control"  th:field="*{abbreviation}" placeholder="Company Legal Name" autocomplete="off"/>
+						<input type="text" class="form-control" th:field="*{name}" placeholder="Company DBA Name"  />
+						<input	type="text" th:field="*{federalID}" class="form-control" placeholder="federalID"/>
+						<select id="industryselect" class="form-control"  name="industryselect" th:field="*{industry}">
 						<option th:each="ind : ${industry}" th:text="${ind.value}"
 							th:value="${ind.key}" />
-				</select></td>
-				<td th:if="${#fields.hasErrors('industry')}" th:errors="*{industry}"
-					style="color: red;">Industry Error</td>
-
-			</tr>
-				
-			<tr>
-				<td><label for="comments">Complete description of business and goods or service provide</label><input
-					type="text" th:field="*{comments}" /></td>
-				<td th:if="${#fields.hasErrors('comments')}"
-					th:errors="*{comments}" style="color: red;">comments
-					Error</td>
-			</tr>
-			<tr>
-
-				<td><label for="federaltaxid">Federal tax ID</label><input
-					type="text" th:field="*{federalID}" /></td>
-				<td th:if="${#fields.hasErrors('federalID')}"
-					th:errors="*{federalID}" style="color: red;">federaltaxid
-					Error</td>
-
-			</tr>
-		
-			<tr><td>Contact Info</td></tr>
-			<tr>
-				<td><label for="Contactname">C-Level Contact Name</label><input
-					type="text" th:field="*{contactPerson}" /></td>
-				<td th:if="${#fields.hasErrors('contactPerson')}"
-					th:errors="*{contactPerson}" style="color: red;">contactPerson
-					Error</td>
-			</tr>
-			<tr>
-				<td><label for="Tittle">Tittle</label><input
-					type="text" th:field="*{contacttittle}" /></td>
-				<td th:if="${#fields.hasErrors('contacttittle')}"
-					th:errors="*{contacttittle}" style="color: red;">tittle
-					Error</td>
-			</tr>
-				<tr>
-				<td><label for="contactPhone">Contact Number</label><input
-					type="text" th:field="*{contactPhone}" style="width:100%;"/></td>
-				<td th:if="${#fields.hasErrors('contactPhone')}"
-					th:errors="*{contactPhone}" style="color: red;">contactPhone
-					Error</td>
-			</tr>
-
-		</table>
-
-
-		
-		<center><input type="submit" /></center>
-			</div>
-			<div class="footer">
-				<div class="footer-left">
-					<p>Copyright &copy; 2018.NihaoPay All rights reserved.<a href="http://nihaopay.com/" target="_blank">NihaoPay</a> </p>
-				</div>
-				
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-		</div>
-	</div>
-
-<!-- //banner-body -->
-<!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+						</select>
+						<select id="mailaddress_country" class="form-control" name="mailaddress_country" th:field="*{countryName}"></select>
+						<select id="mailaddress_state" class="form-control" name="mailaddress_state" th:field="*{stateName}"></select>
+						<select id="mailaddress_city" class="form-control" name="mailaddress_city" th:field="*{cityName}"	></select>
+						<input type="text" th:field="*{streetName1}" class="form-control" placeholder="Street Address"/>
+						<input type="text" th:field="*{streetName2}" class="form-control" placeholder="Street Address(Optional) "/>
+						</div>
+						<div class="form-group">
+							<label for="country" > Contact </label>
+							<input type="text" class="form-control" th:field="*{contactEmail}" placeholder="Primary Contact Email"  />
+							<input	type="text" th:field="*{contactPerson}" class="form-control" placeholder="C-Level Contact Name" />
+							<input type="text" th:field="*{contacttittle}" class="form-control" placeholder="Tittle"/>
+							<input type="text" th:field="*{contactPhone}" class="form-control" placeholder="Contact Numbe"/>
+						</div>
+						
+						<div class="form-group">
+							<center><input type="submit" value="Submit" class="btn btn-primary"></center>
+						</div>
+						<script src="js/bootstrap.js"></script>
 	
 			<script type="text/javascript">
 							addressInit('mailaddress_country',
 									'mailaddress_state', 'mailaddress_city');
 						</script>
-<!-- //for bootstrap working -->
-</form>
-</body>
+					</form>
+					<!-- END Sign In Form -->
+
+				</div>
+			</div>
+
+		</div>
+	
+	<!-- jQuery -->
+	<script src="jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="bootstrap.min.js"></script>
+	<!-- Placeholder -->
+	<script src="jquery.placeholder.min.js"></script>
+	<!-- Waypoints -->
+	<script src="jquery.waypoints.min.js"></script>
+	<!-- Main JS -->
+	<script src="main.js"></script>
+
+
+	</body>
 </html>
+

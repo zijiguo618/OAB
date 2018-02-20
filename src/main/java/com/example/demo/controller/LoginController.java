@@ -23,7 +23,7 @@ import com.example.demo.service.MD5;
 import com.example.demo.utilities.Login;
 
 @Controller
-public class LoginController implements ErrorController{
+public class LoginController {
 	DB db;
 	 private static final String PATH = "/error";
 	@GetMapping("/login")
@@ -87,15 +87,15 @@ public class LoginController implements ErrorController{
 //		
 		
 	}
-	
-	 @RequestMapping(value = PATH)
-	    public ModelAndView error() {
-		 return new ModelAndView("redirect:/login");
-	    }
-	
-	@Override
-	public String getErrorPath() {
-		// TODO Auto-generated method stub
-		return PATH;
-	}
+//	
+//	 @RequestMapping(value = PATH)
+//	    public ModelAndView error() {
+//		 return new ModelAndView("redirect:/login");
+//	    }
+//	
+//	@Override
+//	public String getErrorPath() {
+//		// TODO Auto-generated method stub
+//		return PATH;
+//	}
 }

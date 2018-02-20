@@ -95,9 +95,24 @@ public class BasicinfoController {
 		System.out.println("session:"+(int)session.getAttribute("applicationID"));
 		String merCode="1";
 //		(idBasicinfo,name,abbreviation,contactEmail,merCode,countryName,stateName,cityName,countryCode,stateCode,cityCode,industry,contacttittle,comments,FederalID,streetName1,streetName2,contactPerson,contactPhone)
+		 ObjectMapper mapperObj = new ObjectMapper();
 		
 		db.update2application_basic((int)session.getAttribute("applicationID"), basicinfo.getName(), basicinfo.getAbbreviation(), basicinfo.getContactEmail(), basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getIndustry(), basicinfo.getContacttittle(), basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(), basicinfo.getContactPhone(),merCode);
 		try {
+			String jsonStr = mapperObj.writeValueAsString(basicinfo);
+			System.out.println(jsonStr);
+//			RestTemplate rt = new RestTemplate();
+//		    HttpHeaders httpHeaders = new HttpHeaders();
+//			httpHeaders.add("Content-Type", "application/json; charset=UTF-8");
+//			HashMap<String,String> resultmaps = new ObjectMapper().readValue(jsonStr, HashMap.class);
+//			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<Map<String, String>>(resultmaps, httpHeaders);
+//			ResponseEntity<String> resp = rt.exchange("http://serviceweb.nihaopay.work/merBaseInfo/save",HttpMethod.POST,requestEntity, String.class);
+//		//获取返回的header
+//		List<String> val = resp.getHeaders().get("Set-Cookie");
+//		System.out.println(val);
+//		//获得返回值
+//		String body = resp.getBody();
+//		System.out.println(body.toString());	
 		db.insert2basic(String.valueOf(session.getAttribute("applicationID")), basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
 		}catch(Exception e) {
 			db.update2basic(String.valueOf(session.getAttribute("applicationID")), basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());

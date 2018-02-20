@@ -44,7 +44,7 @@ public class UploadController {
     		Documents doc=new Documents();
 //    		Products prod =(Products)request.getSession().getAttribute("products");
     		DB db =new DB();
-    		
+    		System.out.println("applicationid:"+applicationid);
 //    		System.out.println(prod.toString());
     		System.out.println(busfile.getOriginalFilename());
         StringJoiner sj = new StringJoiner(" , ");

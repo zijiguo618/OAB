@@ -1,77 +1,74 @@
 
-<html>
-<head>
-<script language="javascript" src="/js/jquery.min.js"></script>
-<link rel="stylesheet" href="base.css"></link>
-<style>
-input {
-	width: 200px;
-	height: 50px;
-	padding: 12px 20px;
-	margin: 8px 0;
-}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Log In</title>
 
-table, th, td {
-	padding: 5px;
-	width: 200px;
-	margin-left: auto;
-	margin-right: auto;
-	height: 50px;
-	margin-top: 50px;
-	margin-bottom: auto;
-}
+	
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="animate.css">
+	<link rel="stylesheet" href="style.css">
 
-table td {
-	text-align: center;
-}
 
-hr {
-	margin-top: 60px;
-}
-a{
-	margin-left: 40px;
-}
-</style>
-</head>
-<body>
+	<!-- Modernizr JS -->
+	<script src="modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
-	<form action="#" th:action="@{/login}" th:object="${login}"
+	</head>
+	<body>
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					
+
+					<!-- Start Sign In Form -->
+					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn"  th:action="@{/login}" th:object="${login}"
 		method="post">
-<script>
-var bpmnJsonString = $('#errormessage');
-alert(bpmnJsonString);
-</script>
-		<center>
-			<img class="centerImage" src="logo.jpg" alt="Logo" width="200"
-				height="200" />
-		</center>
+						<h2>Sign In <img class="centerImage" src="logo.jpg" alt="Logo" width="70"height="70" /></h2>
+						<div class="form-group">
+							<label for="username" class="sr-only">Email</label>
+							<input type="text" th:field="*{email}" class="form-control"  placeholder="Email" autocomplete="off"/>
+						</div>
+						<div class="form-group">
+							<label for="password" class="sr-only">Password</label>
+							<input type="password" th:field="*{password}" class="form-control" placeholder="Password" autocomplete="off">
+						</div>
+						
+						<div class="form-group">
+							<p>Not registered? <a href="sign-up.html">Sign Up</a></p>
+						</div>
+						<div class="form-group">
+							<center><input type="submit" value="Sign In" class="btn btn-primary"/></center>
+						</div>
+					</form>
+					<!-- END Sign In Form -->
 
-
-		<table align="center">
-			<tr>
-				<td colspan="2"><p th:text="${errormessage}" /></td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td><input type="text" th:field="*{email}" /></td>
-				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-					style="color: red;">Email Error</td>
-			</tr>
-			<hr />
-			<tr>
-				<td>Password:</td>
-				<td><input type="password" th:field="*{password}" /></td>
-				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-					style="color: red;">Password Error</td>
-			</tr>
+				</div>
+			</div>
 			
+	
+	<!-- jQuery -->
+	<script src="jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="bootstrap.min.js"></script>
+	<!-- Placeholder -->
+	<script src="jquery.placeholder.min.js"></script>
+	<!-- Waypoints -->
+	<script src="jquery.waypoints.min.js"></script>
+	<!-- Main JS -->
+	<script src="main.js"></script>
 
-			
 
-		</table>
-			<center><button type="submit" name="loginsubmit"
-						value="loginsubmit">Submit</button>
-			<a href="/registration" align="center"> Register</a></center>
-	</form>
-</body>
+	</body>
 </html>
+
