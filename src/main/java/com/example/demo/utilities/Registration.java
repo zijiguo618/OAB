@@ -1,11 +1,17 @@
 package com.example.demo.utilities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
+@Entity
 public class Registration {
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@NotEmpty(message = "Please enter your first name.")
 	@Size(min = 1, max = 30, message = "Your firstname should between 1 and 30 characters.")
 	private String fullname;
@@ -20,6 +26,16 @@ public class Registration {
 	@Size(min = 1, max = 15)
 	private String confirmpassword;
 
+	
+	public Registration(){
+		
+	}
+	public Registration(String fullname,String email,String password) {
+		this.fullname=fullname;
+		this.email=email;
+		this.password=password;
+		
+	}
 	public String getFullname() {
 		return fullname;
 	}

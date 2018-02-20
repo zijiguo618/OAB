@@ -41,11 +41,34 @@ public class DB {
 		return null;
 	}
 	
+	//get password from user table
+	public String getpass(String email) throws SQLException{
+		Statement st = conn.createStatement();
+		st.executeQuery("SELECT Password FROM application where Email= \'"+email+"\'"); 
+		ResultSet rs = st.getResultSet();
+		while (rs.next()) {
+		   return  rs.getString(1);
+		}
+		return null;
+	}
+	
 	
 	public int getitemsid( String col) throws SQLException{
 		Statement st = conn.createStatement();
 		System.out.println("DB--------");
 		st.executeQuery("SELECT applicationid FROM application where email= '"+col+"'"); 
+		ResultSet rs = st.getResultSet();
+		while (rs.next()) {
+		   return  rs.getInt(1);
+		}
+		return -1;
+	}
+	
+//	
+	public int getitemsidfromuser( String col) throws SQLException{
+		Statement st = conn.createStatement();
+		System.out.println("DB--------");
+		st.executeQuery("SELECT user_id FROM User where email= '"+col+"'"); 
 		ResultSet rs = st.getResultSet();
 		while (rs.next()) {
 		   return  rs.getInt(1);
@@ -71,6 +94,26 @@ public class DB {
 		st.closeOnCompletion();
 		return updateEXP_done;
 	}
+//	update user stage
+public int updateuserstage(int id, String value) throws SQLException{
+		String sql = " update User set stage = '"+value + "' where user_id ="+id;
+		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+		int updateEXP_done = st.executeUpdate();
+		st.closeOnCompletion();
+		return updateEXP_done;
+	}
+	
+	//get user stage
+public String geteuserstage(int id) throws SQLException{
+	Statement st = conn.createStatement();
+	st.executeQuery("SELECT stage FROM User where user_id= "+id); 
+	ResultSet rs = st.getResultSet();
+	while (rs.next()) {
+		  return  rs.getString(1);
+	}
+	return null;
+}
+	
 	public int insert2application(String target, String str) {
 
 		String sql = "insert into application ("+ target+") value ('"+str+"');";
@@ -97,6 +140,87 @@ public class DB {
 		}
 		return -1;
 	}
+	
+	
+	//insert to table user
+	public int insert2user(String email, String password,String fullname) {
+
+		String sql = "insert into User (Email,Password,Fullname) value ('"+email+"','"+password+"','"+fullname+"');";
+		PreparedStatement st;
+		try {
+			st = (PreparedStatement) conn.prepareStatement(sql);
+			return st.executeUpdate(); 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	
+	//insert to table basic
+	public int insert2basic(String idBasicinfo,String name,String abbreviation,String contactEmail,String merCode,String countryName,String stateName,String cityName,String countryCode,String stateCode,String cityCode,String industry,String contacttittle,String comments,String FederalID,String streetName1,String streetName2,String contactPerson,String contactPhone) throws SQLException{
+		String sql = " insert into Basicinfo (idBasicinfo,name,abbreviation,contactEmail,merCode,countryName,stateName,cityName,countryCode,stateCode,cityCode,industry,contacttittle,comments,FederalID,streetName1,streetName2,contactPerson,contactPhone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		System.out.println("update basicinfo");
+		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+		st.setString(1,idBasicinfo);
+		st.setString(2,name);
+		st.setString(3,abbreviation);
+		st.setString(4,contactEmail);
+		st.setString(5,merCode);
+		st.setString(6,countryName);
+		st.setString(7,stateName);
+		st.setString(8,cityName);
+		st.setString(9,countryCode);
+		st.setString(10,stateCode);
+		st.setString(11,cityCode);
+		st.setString(12, industry);
+		st.setString(13, contacttittle);
+		st.setString(14, comments);
+		st.setString(15, FederalID);
+		st.setString(16, streetName1);
+		st.setString(17, streetName2);
+		st.setString(18, contactPerson);
+		st.setString(19, contactPhone);
+		System.out.println(st.toString());
+		int updateEXP_done = st.executeUpdate();
+	
+		st.closeOnCompletion();
+	
+		return updateEXP_done;
+	}
+	
+	public int update2basic(String idBasicinfo,String name,String abbreviation,String contactEmail,String merCode,String countryName,String stateName,String cityName,String countryCode,String stateCode,String cityCode,String industry,String contacttittle,String comments,String FederalID,String streetName1,String streetName2,String contactPerson,String contactPhone) throws SQLException{
+		String sql = " update  Basicinfo set name=?,abbreviation=?,contactEmail=?,merCode=?,countryName=?,stateName=?,cityName=?,countryCode=?,stateCode=?,cityCode=?,industry=?,contacttittle=?,comments=?,FederalID=?,streetName1=?,streetName2=?,contactPerson=?,contactPhone=? where idBasicinfo="+idBasicinfo;
+		System.out.println("update basicinfo");
+		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+		st.setString(1,name);
+		st.setString(2,abbreviation);
+		st.setString(3,contactEmail);
+		st.setString(4,merCode);
+		st.setString(5,countryName);
+		st.setString(6,stateName);
+		st.setString(7,cityName);
+		st.setString(8,countryCode);
+		st.setString(9,stateCode);
+		st.setString(10,cityCode);
+		st.setString(11, industry);
+		st.setString(12, contacttittle);
+		st.setString(13, comments);
+		st.setString(14, FederalID);
+		st.setString(15, streetName1);
+		st.setString(16, streetName2);
+		st.setString(17, contactPerson);
+		st.setString(18, contactPhone);
+		System.out.println(st.toString());
+		int updateEXP_done = st.executeUpdate();
+	
+		st.closeOnCompletion();
+	
+		return updateEXP_done;
+	}
+	
+	
 	public int update2application(int id, String value, String col) throws SQLException{
 		String sql = " update application set "+ col+" = '"+value + "' where applicationid ="+id;
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
@@ -174,6 +298,77 @@ public class DB {
 		st.closeOnCompletion();
 		return updateEXP_done;
 	}
+	
+	//insert to table settlement
+	public int insert2settlement(String idSettlement,String withdrawalWay,String minAmount,String cycleDesc,String withdrawalFee,String countryName,String countryCode,String stateName,String stateCode,String cityName,String cityCode,String zipCode,String bankstreetName1,String otheramount,String bankName,String accountHolder,String accountNumber,String swiftCode,String routingNumber,String accountCurrency,String sortcode) throws SQLException{
+//		INSERT INTO `onlineapplicationbeta`.`Settlement` (`idSettlement`, `withdrawalWay`, `minAmount`, `cycleDesc`, `withdrawalFee`, `countryName`, `countryCode`, `stateName`, `stateCode`, `cityName`, `cityCode`, `zipCode`, `bankstreetName1`, `otheramount`, `bankName`, `accountHolder`, `accountNumber`, `swiftCode`, `routingNumber`, `accountCurrency`) VALUES ('0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+
+		String sql = " INSERT INTO Settlement  (idSettlement, withdrawalWay, minAmount, cycleDesc, withdrawalFee, countryName, countryCode, stateName, stateCode, cityName, cityCode, zipCode, bankstreetName1, otheramount, bankName, accountHolder, accountNumber, swiftCode, routingNumber, accountCurrency,sortcode) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?);";
+		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+		st.setString(1,idSettlement);
+		st.setString(2,withdrawalWay);
+		st.setString(3,minAmount);
+		st.setString(4,cycleDesc);
+		st.setString(5,withdrawalFee);
+		st.setString(6,countryName);
+		st.setString(7,countryCode);
+		st.setString(8,stateName);
+		st.setString(9,stateCode);
+		st.setString(10,cityName);
+		st.setString(11,cityCode);
+		st.setString(12,zipCode);
+		st.setString(13,bankstreetName1);
+		st.setString(14,otheramount);
+		st.setString(15,bankName);
+		st.setString(16,accountHolder);
+		st.setString(17,accountNumber);
+		st.setString(18,swiftCode);
+		st.setString(19,routingNumber);
+		st.setString(20,accountCurrency);
+		st.setString(21,sortcode);
+		
+		
+		int updateEXP_done = st.executeUpdate();
+		st.closeOnCompletion();
+		return updateEXP_done;
+	}
+	
+	//update to table settlement
+	public int update2settlement(String idSettlement,String withdrawalWay,String minAmount,String cycleDesc,String withdrawalFee,String countryName,String countryCode,String stateName,String stateCode,String cityName,String cityCode,String zipCode,String bankstreetName1,String otheramount,String bankName,String accountHolder,String accountNumber,String swiftCode,String routingNumber,String accountCurrency,String sortcode) throws SQLException{
+//		INSERT INTO `onlineapplicationbeta`.`Settlement` (`idSettlement`, `withdrawalWay`, `minAmount`, `cycleDesc`, `withdrawalFee`, `countryName`, `countryCode`, `stateName`, `stateCode`, `cityName`, `cityCode`, `zipCode`, `bankstreetName1`, `otheramount`, `bankName`, `accountHolder`, `accountNumber`, `swiftCode`, `routingNumber`, `accountCurrency`) VALUES ('0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+
+		String sql = " Update Settlement set withdrawalWay=?, minAmount=?, cycleDesc=?, withdrawalFee=?, countryName=?, countryCode=?, stateName=?, stateCode=?, cityName=?, cityCode=?, zipCode=?, bankstreetName1=?, otheramount=?, bankName=?, accountHolder=?, accountNumber=?, swiftCode=?, routingNumber=?, accountCurrency=?,sortcode=? where idSettlement="+idSettlement;
+		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+		st.setString(1,withdrawalWay);
+		st.setString(2,minAmount);
+		st.setString(3,cycleDesc);
+		st.setString(4,withdrawalFee);
+		st.setString(5,countryName);
+		st.setString(6,countryCode);
+		st.setString(7,stateName);
+		st.setString(8,stateCode);
+		st.setString(9,cityName);
+		st.setString(10,cityCode);
+		st.setString(11,zipCode);
+		st.setString(12,bankstreetName1);
+		st.setString(13,otheramount);
+		st.setString(14,bankName);
+		st.setString(15,accountHolder);
+		st.setString(16,accountNumber);
+		st.setString(17,swiftCode);
+		st.setString(18,routingNumber);
+		st.setString(19,accountCurrency);
+		st.setString(20,sortcode);
+		
+		
+		int updateEXP_done = st.executeUpdate();
+		st.closeOnCompletion();
+		return updateEXP_done;
+	}
+	
+	
+	
+	
 	public int update2application_bankacoount(int id, String bankcurrency, String bankaddress,String bankname,String bankaccountname,String bankaccountnumber,String swiftcode,String routingnumber,String accounttype) throws SQLException{
 		String sql = " update application set bankcurrency=?, bankaddress=?,bankname=?,bankaccountname=?,bankaccountnumber=?,swiftcode=?,routingnumber=?,accounttype=? where applicationid ="+id;
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
@@ -192,7 +387,7 @@ public class DB {
 	
 	
 	public int update2application_fileload(int id, String businessfile, String issuedid,String voidedcheck,String bankstatement,String storepic) throws SQLException{
-		String sql = " update application set businessfile=?, issuedid=?,voidedcheck=?,bankstatement=?,storepic=? where applicationid ="+id;
+		String sql = " update application set businesslicense=?, issuedid=?,businesscheck=?,transactionhistory=?,storepicture=? where applicationid ="+id;
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,businessfile);
 		st.setString(2,issuedid);
@@ -234,6 +429,49 @@ public class DB {
 		st.closeOnCompletion();
 		return updateEXP_done;
 	}
+	
+	
+	
+
+	public int insert2product(String id, String productName, String cardOrgs,String currencys,String easyPay,String products) throws SQLException{
+		String sql = "";
+		
+		sql = " insert into Products (idProducts,productName, cardOrgs,currencys,easyPay,products) VALUES (?,?,?,?,?,?);";
+
+		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+		st.setString(1,id);		
+		st.setString(2,productName);		
+		st.setString(3,cardOrgs);		
+		st.setString(4,currencys);		
+		st.setString(5,easyPay);		
+		st.setString(6,products);		
+		
+		int updateEXP_done = st.executeUpdate();
+		st.closeOnCompletion();
+		return updateEXP_done;
+	}
+	
+	
+	
+
+	public int update2product(String id, String productName, String cardOrgs,String currencys,String easyPay,String products) throws SQLException{
+		String sql = "";
+		
+		sql = " update Products set productName=?, cardOrgs=?,currencys=?,easyPay=?,products=? where idProducts ="+id;
+
+		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+		st.setString(1,productName);		
+		st.setString(2,cardOrgs);		
+		st.setString(3,currencys);		
+		st.setString(4,easyPay);		
+		st.setString(5,products);		
+		
+		int updateEXP_done = st.executeUpdate();
+		st.closeOnCompletion();
+		return updateEXP_done;
+	}
+	
+	
 	
 	public void close() {
 		try {

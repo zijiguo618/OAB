@@ -9,11 +9,7 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<script>
-			document.getElementById("swiftcoderow").style.display="none";
-		 	document.getElementById("routingnumberrow").style.display="none";
-			document.getElementById("sortcodeinput").style.display="none";
-		</script>
+		
 		<script type="text/javascript" src="ssqaddress123.js"></script>
 					
 <!-- //for-mobile-apps -->
@@ -120,6 +116,7 @@ margin-left:0px;
 		document.getElementById("withdralperiod").style.display="none";
 		document.getElementById("otheramount").style.display="none";
 		document.getElementById("withdrawalamount").style.display="none";
+		
 		document.getElementById("withdralperiod").value="";
 		document.getElementById("otheramount").value="";
 		document.getElementById("withdrawalamount").value="";
@@ -390,18 +387,23 @@ margin-left:0px;
 					
 					</script>
 	<script src="js/bootstrap.js"></script>
+	<script>
+			document.getElementById("swiftcoderow").style.display="none";
+		 	document.getElementById("routingnumberrow").style.display="block";
+			document.getElementById("sortcoderow").style.display="none";
+		</script>
 		<script>
 					var countryselected=document.getElementById("bankaddress_country");
 					countryselected.addEventListener("change", function() {
 						if(this.value=="United States,001"){
 							 document.getElementById('sortcodeinput').value='';
-		    			 		document.getElementById("sortcodeinput").style.display="none";
+		    			 		document.getElementById("sortcoderow").style.display="none";
 							 document.getElementById('swiftinput').value='';
 	    			    			 document.getElementById("swiftcoderow").style.display="none";
 	    			    	 		 document.getElementById("routingnumberrow").style.display="block";
 						}else{
 							 document.getElementById('sortcodeinput').value='';
-			    			 	document.getElementById("sortcodeinput").style.display="block";
+			    			 	document.getElementById("sortcoderow").style.display="block";
 							 document.getElementById('routinginput').value='';
 			    			 	document.getElementById("swiftcoderow").style.display="block";
 			    	 		 	document.getElementById("routingnumberrow").style.display="none";

@@ -37,7 +37,10 @@ a{
 
 	<form action="#" th:action="@{/login}" th:object="${login}"
 		method="post">
-
+<script>
+var bpmnJsonString = $('#errormessage');
+alert(bpmnJsonString);
+</script>
 		<center>
 			<img class="centerImage" src="logo.jpg" alt="Logo" width="200"
 				height="200" />
@@ -45,7 +48,9 @@ a{
 
 
 		<table align="center">
-
+			<tr>
+				<td colspan="2"><p th:text="${errormessage}" /></td>
+			</tr>
 			<tr>
 				<td>Email:</td>
 				<td><input type="text" th:field="*{email}" /></td>
@@ -59,6 +64,7 @@ a{
 				<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
 					style="color: red;">Password Error</td>
 			</tr>
+			
 
 			
 

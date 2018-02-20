@@ -92,9 +92,16 @@ public class BasicinfoController {
 		session.setAttribute("basicinfo", basicinfo);
 		modelAndView.setViewName("redirect:/products");
 		System.out.println(basicinfo.toString());
-		
+		System.out.println("session:"+(int)session.getAttribute("applicationID"));
 		String merCode="1";
+//		(idBasicinfo,name,abbreviation,contactEmail,merCode,countryName,stateName,cityName,countryCode,stateCode,cityCode,industry,contacttittle,comments,FederalID,streetName1,streetName2,contactPerson,contactPhone)
+		
 		db.update2application_basic((int)session.getAttribute("applicationID"), basicinfo.getName(), basicinfo.getAbbreviation(), basicinfo.getContactEmail(), basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getIndustry(), basicinfo.getContacttittle(), basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(), basicinfo.getContactPhone(),merCode);
+		try {
+		db.insert2basic(String.valueOf(session.getAttribute("applicationID")), basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
+		}catch(Exception e) {
+			db.update2basic(String.valueOf(session.getAttribute("applicationID")), basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
+		}
 		db.updatestage((int)session.getAttribute("applicationID"), 1, "stage");
 		return modelAndView;
 	}

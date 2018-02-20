@@ -49,7 +49,7 @@ public class ProductsController {
 			System.out.println("New User");
 		}
 		
-		modelAndView.addObject("products", prod);
+		modelAndView.addObject("products", new Products());
 		modelAndView.addObject("applicationID", applicationid);
 		modelAndView.setViewName("products");
 //		System.out.println(prod.toString());
@@ -85,25 +85,32 @@ public class ProductsController {
 //			db.update((int)session.getAttribute("applicationID"), Products.getShowqrcode_wechatpay(), "showqrcode_wechatpay");
 //			db.update((int)session.getAttribute("applicationID"), Products.getShowqrcode_alipay(), "showqrcode_alipay");
 		
-		List<String> xiangmu= new ArrayList<String>();
-		xiangmu=Arrays.asList(Products.getProductName().split(","));
-		ArrayList<String> up=new ArrayList<String>();
+//		List<String> xiangmu= new ArrayList<String>();
+//		xiangmu=Arrays.asList(Products.getProductName().split(","));
+			
+			try {
+				db.insert2product(String.valueOf((int)session.getAttribute("applicationID")), Products.getProductName(), Products.getCardOrgs(), Products.getCurrencys(), Products.getEasyPay(), Products.getProducts());
+
+						}catch(Exception e) {
+			db.update2product(String.valueOf((int)session.getAttribute("applicationID")), Products.getProductName(), Products.getCardOrgs(), Products.getCurrencys(), Products.getEasyPay(), Products.getProducts());
+			}
 		Products prod = Products;
-		
-ObjectMapper mapper = new ObjectMapper();
-try {
-	for(String obj :xiangmu) {
-		prod.setProductName(obj);
-		String jsonString = mapper.writeValueAsString(prod);
-		up.add(jsonString);
-		
-	}
-	System.out.println("jsonString = " + up.toString());
-//	String jsonexpresspay=mapper.writeValueAsString(Products.getexpresspay());
-	
-} catch (JsonProcessingException e) {
-	// TODO Auto-generated catch block
-	e.printStackTrace();}
+		System.out.println(prod.getProducts());
+//		ArrayList<String> up=new ArrayList<String>();
+//ObjectMapper mapper = new ObjectMapper();
+//try {
+//	for(String obj :xiangmu) {
+//		prod.setProductName(obj);
+//		String jsonString = mapper.writeValueAsString(prod);
+//		up.add(jsonString);
+//		
+//	}
+//	System.out.println("jsonString = " + up.toString());
+////	String jsonexpresspay=mapper.writeValueAsString(Products.getexpresspay());
+//	
+//} catch (JsonProcessingException e) {
+//	// TODO Auto-generated catch block
+//	e.printStackTrace();}
 //		System.out.println(Products.toString());
 //		db.updatestage((int)session.getAttribute("applicationID"), 3, "stage");
 //		JSONObject jsonObj = new JSONObject(Products.toString());

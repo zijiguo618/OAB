@@ -16,8 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LogoutController {
 	@GetMapping("/logout")
-	public  String LogoutForm(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public  ModelAndView LogoutForm(Model model,HttpServletRequest request, HttpServletResponse response) throws Exception {
 //		request.authorizeRequests().logout();
+//		response.flushBuffer();
+		request.getSession().invalidate();
 		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		    if (auth != null){ 
 		    	System.out.println("loging out");
@@ -26,8 +28,8 @@ public class LogoutController {
 		     	System.out.println("cannot loging out in /logout");
 		    }
 //		    request.gets
-	
-		return "redirect:/login";
+		    
+		return new ModelAndView("redirect:/login");
 	}
 
 

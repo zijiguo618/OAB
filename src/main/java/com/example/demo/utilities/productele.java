@@ -2,9 +2,20 @@ package com.example.demo.utilities;
 
 public class productele {
 private String productName;
-private String settleCycle;
+private String settleCycle="2";
 private String cardOrgs;
 private String currencys;
+
+public productele() {
+	
+}
+public productele( String productName,String cardOrgs,String currencys) {
+	
+	this.productName=productName;
+	this.cardOrgs=cardOrgs;
+	this.currencys=currencys;
+	
+}
 
 public String getProductName() {
 	return productName;

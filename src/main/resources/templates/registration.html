@@ -119,12 +119,16 @@ input[type="submit"]{
                 </tr>
                 <tr>
                     <td> <label for= "email">E-mail</label><input type="text" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;">email Error</td>
+                    
                    
                       </tr>
                 
                 <tr>
                    
                     <td> <label for= "Password">Password</label><input type="password" th:field="*{password}" /></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red;">Password Error</td>
+                    
                                    </tr>
                 <tr>
                     <td> <label for= "Confirm Password">Confirm Password</label><input type="password" th:field="*{confirmpassword}" />  </td>
@@ -136,7 +140,7 @@ input[type="submit"]{
             </table>
              <center><input type="submit" value="Submit Registration" /></center>
              <br/>
-             <center> <a href="login.html">Cancel</a></center>
+             <center> <a href="/login">Cancel</a></center>
         </form>
     </body>
 </html>

@@ -21,6 +21,7 @@ public class Basicinfo {
 	private String countryCode;
 	private String stateCode;
 	private String cityCode;
+	private String website="https://nihaopay.com";
 	private String industry;
 	private String contacttittle;
 	private String comments; // 商户备注信息

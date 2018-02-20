@@ -88,6 +88,9 @@ public class Settlement {
 		return otheramount;
 	}
 	public void setOtheramount(String otheramount) {
+		if(otheramount!=null) {
+			this.minAmount=otheramount;
+		}
 		this.otheramount = otheramount;
 	}
 	public Bankaccount getBank() {
@@ -278,19 +281,23 @@ public class Settlement {
 		this.bank.setAccountCurrency(accountCurrency);
 		this.accountCurrency = accountCurrency;
 	}
+
+
+
 	@Override
 	public String toString() {
 		return "Settlement [merCode=" + merCode + ", withdrawalWay=" + withdrawalWay + ", minAmount=" + minAmount
 				+ ", reserveAmount=" + reserveAmount + ", cycleDesc=" + cycleDesc + ", withdrawalFee=" + withdrawalFee
 				+ ", feePayer=" + feePayer + ", countryName=" + countryName + ", countryCode=" + countryCode
 				+ ", stateName=" + stateName + ", stateCode=" + stateCode + ", cityName=" + cityName + ", cityCode="
-				+ cityCode + ", zipCode=" + zipCode + ", bankstreetName1=" + bankstreetName1 + ", bankphoneNumber=" + bankphoneNumber + ", bankCode=" + bankCode + ", bankName=" + bankName + ", bankBranch="
-				+ bankBranch + ", accountType=" + accountType + ", accountHolder=" + accountHolder + ", accountNumber="
-				+ accountNumber + ", swiftCode=" + swiftCode + ", routingNumber=" + routingNumber + ", accountCurrency="
-				+ accountCurrency + ", sortcode=" + sortcode + "]";
+				+ cityCode + ", zipCode=" + zipCode + ", bankstreetName1=" + bankstreetName1 + ", otheramount="
+				+ otheramount + ", bankphoneNumber=" + bankphoneNumber + ", bankCode=" + bankCode + ", bankName="
+				+ bankName + ", bankBranch=" + bankBranch + ", accountType=" + accountType + ", accountHolder="
+				+ accountHolder + ", accountNumber=" + accountNumber + ", swiftCode=" + swiftCode + ", routingNumber="
+				+ routingNumber + ", accountCurrency=" + accountCurrency + ", sortcode=" + sortcode + ", bank=" + bank
+				+ "]";
 	}
-	
-	
+
 	
 
 }

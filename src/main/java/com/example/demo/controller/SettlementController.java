@@ -40,7 +40,8 @@ public class SettlementController {
 		HttpSession session = request.getSession();  
 		int applicationid=(int)session.getAttribute("applicationID");
 		modelAndView.addObject("applicationID", applicationid);
-		modelAndView.addObject("settlement", new Settlement().getsettlement(applicationid));
+//		modelAndView.addObject("settlement", new Settlement().getsettlement(applicationid));
+		modelAndView.addObject("settlement", new Settlement());
 		Products obj=(Products)request.getSession().getAttribute("Products");
 		modelAndView.addObject("currencylist", getcurrencies(obj));
 		System.out.println(obj.toString());
@@ -91,6 +92,11 @@ public class SettlementController {
 //			withdrawalWay,minAmount,cycleDesc,withdrawalFee,countryName,countryCode,stateName,stateCode,cityName,cityCode,bankstreetName1,otheramount,bankName,accountHolder,accountNumber,swiftCode,routingNumber,accountCurrency,sortcode
 			db.update2application_settlement((int)session.getAttribute("applicationID"), Settlement.getWithdrawalWay(), Settlement.getMinAmount(), Settlement.getCycleDesc(), Settlement.getWithdrawalFee(), Settlement.getCountryName(), Settlement.getCityCode(), Settlement.getStateName(), Settlement.getStateCode(), Settlement.getCityName(), Settlement.getCityCode(), Settlement.getBankstreetName1(), Settlement.getOtheramount(), Settlement.getBankName(), Settlement.getAccountHolder(), Settlement.getAccountNumber(), Settlement.getSwiftCode(), Settlement.getRoutingNumber(), Settlement.getAccountCurrency(), Settlement.getSortcode());
 			//			db.updatestage((int)session.getAttribute("applicationID"), 4, "stage");
+			try{
+				db.insert2settlement(String.valueOf((int)session.getAttribute("applicationID")), Settlement.getWithdrawalWay(), Settlement.getMinAmount(), Settlement.getCycleDesc(), Settlement.getWithdrawalFee(), Settlement.getCountryName(), Settlement.getCityCode(), Settlement.getStateName(), Settlement.getStateCode(), Settlement.getCityName(), Settlement.getCityCode(), Settlement.getZipCode(), Settlement.getBankstreetName1(), Settlement.getOtheramount(), Settlement.getBankName(), Settlement.getAccountHolder(), Settlement.getAccountNumber(), Settlement.getSwiftCode(),  Settlement.getRoutingNumber(), Settlement.getAccountCurrency(), Settlement.getSortcode());
+			}catch(Exception e) {
+				db.update2settlement(String.valueOf((int)session.getAttribute("applicationID")), Settlement.getWithdrawalWay(), Settlement.getMinAmount(), Settlement.getCycleDesc(), Settlement.getWithdrawalFee(), Settlement.getCountryName(), Settlement.getCityCode(), Settlement.getStateName(), Settlement.getStateCode(), Settlement.getCityName(), Settlement.getCityCode(), Settlement.getZipCode(), Settlement.getBankstreetName1(), Settlement.getOtheramount(), Settlement.getBankName(), Settlement.getAccountHolder(), Settlement.getAccountNumber(), Settlement.getSwiftCode(),  Settlement.getRoutingNumber(), Settlement.getAccountCurrency(), Settlement.getSortcode());
+	}
 		System.out.println(Settlement.toString());
 		System.out.println(Settlement.getBank().toString());
 		return new ModelAndView("redirect:/uploadMulti");

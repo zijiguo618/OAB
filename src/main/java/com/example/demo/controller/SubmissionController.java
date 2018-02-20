@@ -37,11 +37,14 @@ public class SubmissionController {
 		System.out.println(submission.toString());
 		HttpSession session = request.getSession();  
 		session.setAttribute("Submission",submission); 
+		DB db= new DB();
+		
 		if(result.hasErrors()) {
 			return "submission";
 		}
+		db.updateuserstage((int)session.getAttribute("applicationID"), "done");
 //		DB db =new DB();
 //		db.update2application_submission((int)session.getAttribute("applicationID"), Submission.getSignature(), Submission.getCurrentdate());
-		return "success";
+		return "redirect:/logout";
 	}
 }
