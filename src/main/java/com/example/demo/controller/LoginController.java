@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -19,17 +21,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.service.DB;
+import com.example.demo.service.EmailService;
 import com.example.demo.service.MD5;
 import com.example.demo.utilities.Login;
+import com.example.demo.utilities.Mail;
 
 @Controller
-public class LoginController {
+public class LoginController implements ErrorController{
 	DB db;
 	 private static final String PATH = "/error";
+	 	
 	@GetMapping("/login")
 	public ModelAndView greetingForm(Model model,HttpServletRequest request) {
 		String errormessage =request.getParameter("errormessage");
-	
+		
 		Login login = new Login();
 //		System.out.println("login");
 		ModelAndView modelAndView = new ModelAndView();
@@ -83,19 +88,23 @@ public class LoginController {
 			System.out.println("has error");
 			
 		}
+		
 		return modelAndView;
 //		
 		
 	}
-//	
-//	 @RequestMapping(value = PATH)
-//	    public ModelAndView error() {
-//		 return new ModelAndView("redirect:/login");
-//	    }
-//	
-//	@Override
-//	public String getErrorPath() {
-//		// TODO Auto-generated method stub
-//		return PATH;
-//	}
+	
+	
+	
+	
+	
+	 @RequestMapping(value = PATH)
+	    public ModelAndView error() {
+		 return new ModelAndView("redirect:/login");
+	    }
+	@Override
+	public String getErrorPath() {
+		// TODO Auto-generated method stub
+		return PATH;
+	}
 }

@@ -45,11 +45,22 @@
 						</div>
 						
 						<div class="form-group">
-							<p>Not registered? <a href="sign-up.html">Sign Up</a></p>
+							<p>Not registered? <a href="/registration">Sign Up</a></p><input id="notrobot" type="checkbox" autocomplete="off"  onchange='securelisetner()'>I'm not Robot</input>
 						</div>
 						<div class="form-group">
-							<center><input type="submit" value="Sign In" class="btn btn-primary"/></center>
+							<center><input id="loginbtn" type="submit" value="Sign In" class="btn btn-primary"/></center>
 						</div>
+						<script>
+						document.getElementById("loginbtn").disabled=true;
+						function securelisetner(){
+							if(document.getElementById("notrobot").checked==true){
+								document.getElementById("loginbtn").disabled=false;
+							} else{
+								document.getElementById("loginbtn").disabled=true;
+							}
+						}
+						
+						</script>
 					</form>
 					<!-- END Sign In Form -->
 
