@@ -41,7 +41,13 @@ public class RegistrationController {
 	public ModelAndView processRegistration(@Valid Registration registration,
 			BindingResult result, HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		DB db=new DB();
+
+	    HttpSession session = request.getSession();  
+		session.setAttribute("registration",registration);  
+		System.out.println(registration.getEmail()+","+registration.getPassword()+","+registration.getFullname());
+		session.setAttribute("message", "0");  
 		if (!(registration.getPassword()).equals(registration.getConfirmpassword())) {
+			session.setAttribute("message", "2");  
 			result.rejectValue("password",
 		          "matchingPassword.registration.password",
 		          "Password and Confirm Password Not match.");
@@ -49,13 +55,11 @@ public class RegistrationController {
 		if (result.hasErrors()) {
 			return new ModelAndView("registration");
 		}
-		String hash;
+		
 
-	    HttpSession session = request.getSession();  
-		session.setAttribute("registration",registration);  
-		System.out.println(registration.getEmail()+","+registration.getPassword()+","+registration.getFullname());
 //		userRepository.save(registration);
 		MD5 md5 = new MD5();
+		
 	int status=	db.insert2registration(registration.getEmail(),registration.getPassword(),registration.getFullname());
 	
 	status=db.insert2user(registration.getEmail(),md5.getMD5(registration.getPassword()),registration.getFullname());

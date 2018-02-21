@@ -7,6 +7,9 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<META HTTP-EQUIV="expires" CONTENT="0">
 	<title>Gateways</title>
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -35,9 +38,9 @@
 					<ul class="menu">
 						<li  ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
 									<li class="active"><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
-									<li><a href="/settlement" ><i class="text-size"></i>Settlement</a></li>
-									<li><a href="/uploadMulti" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
-									<li><a href="/submission" class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
+									<li><a  ><i class="text-size"></i>Settlement</a></li>
+									<li><a  class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
+									<li><a  class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
 									<li><a href="/logout" class="hvr-underline-from-left"><i class="envelope1"></i>Log Out</a></li>
 					</ul>
 				</div>
@@ -122,19 +125,29 @@
 									'mailaddress_state', 'mailaddress_city');
 						</script>
 						<script>
-document.getElementById("UnionPay").disabled = true;
-document.getElementById("AliPay").disabled = true;
-document.getElementById("WeChatPay").disabled = true;
-document.getElementById("IOS").disabled = true;
-document.getElementById("Android").disabled = true;
-document.getElementById("Wetchat_Store").disabled = true;
-document.getElementById("Wetchat_subscription").disabled = true;
-document.getElementById("Wetchat_mini").disabled = true;
-document.getElementById("QRCode").disabled = true;
-document.getElementById("Wallet").disabled = true;
-document.getElementById("POS").disabled = true;
-document.getElementById("PCcheck").disabled = true;
-document.getElementById("websiteinp").readOnly = true;
+						document.getElementById("UnionPay").disabled = true;
+						document.getElementById("AliPay").disabled = true;
+						document.getElementById("WeChatPay").disabled = true;
+						document.getElementById("IOS").disabled = true;
+						document.getElementById("Android").disabled = true;
+						document.getElementById("Wetchat_Store").disabled = true;
+						document.getElementById("Wetchat_subscription").disabled = true;
+						document.getElementById("Wetchat_mini").disabled = true;
+						document.getElementById("QRCode").disabled = true;
+						document.getElementById("Wallet").disabled = true;
+						document.getElementById("POS").disabled = true;
+						document.getElementById("PCcheck").disabled = true;
+						document.getElementById("websiteinp").readOnly = true;
+						window.onload = (e) => {
+						    alert('page onload');
+						}
+						window.onpageshow = (e) => {
+						    if (e.persisted) {
+						      alert('page read from cache');
+						      window.location.reload();
+						}
+
+
 		function securepayunionpaylisetner(){
 			
 			if((document.getElementById("UnionPay").checked ||document.getElementById("AliPay").checked||document.getElementById("WeChatPay").checked)==true){

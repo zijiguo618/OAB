@@ -33,13 +33,14 @@ public class LoginController implements ErrorController{
 	 	
 	@GetMapping("/login")
 	public ModelAndView greetingForm(Model model,HttpServletRequest request) {
-		String errormessage =request.getParameter("errormessage");
 		
+		HttpSession session = request.getSession();  
+		String errormessage =(String) session.getAttribute("errormessage");
 		Login login = new Login();
 //		System.out.println("login");
 		ModelAndView modelAndView = new ModelAndView();
 		if(errormessage==null) {
-			modelAndView.addObject("errormessage", "Welcome to NihaoPay");
+			modelAndView.addObject("errormessage", "0");
 		}
 		else {
 			modelAndView.addObject("errormessage", errormessage);
@@ -59,17 +60,20 @@ public class LoginController implements ErrorController{
 		db=new DB();
 		modelAndView.setViewName("redirect:/basicinfo");
 		HttpSession session = request.getSession();  
+		session.setAttribute("errormessage", "0");
 		session.setAttribute("Login",Login);  
 		MD5 md5 = new MD5();
 		int applicationid= db.getitemsidfromuser(Login.getEmail());
 		String pass=db.getpass(Login.getEmail());
 //		System.out.println("pas:"+pass);
 		String stage =db.geteuserstage(applicationid);
-		if(!stage.isEmpty()) {
+		if(stage==null) {
+			session.setAttribute("errormessage", "3");
 			
-		}
-		if(stage!=null&&stage.equals("done")) {
-			modelAndView.addObject("errormessage", "You've finished Registration");
+			modelAndView.setViewName("redirect:/login");
+		}else if(stage.equals("done")) {
+			session.setAttribute("errormessage", "1");
+			
 			modelAndView.setViewName("redirect:/login");
 		}else if(pass.equals(Login.getPassword())){
 //			if(pass.equals(md5.getMD5(Login.getPassword()))){
@@ -77,8 +81,7 @@ public class LoginController implements ErrorController{
 			return modelAndView;
 		}else {
 			System.out.println("incorrect");
-		
-			modelAndView.addObject("errormessage", "Password or Email not correct");
+			session.setAttribute("errormessage", "2");
 			modelAndView.setViewName("redirect:/login");
 			result.rejectValue("password",
 			          "matchingPassword.registration.password",

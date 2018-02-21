@@ -122,7 +122,7 @@ public class BasicinfoController {
 	}
 	public Map<String, String> getlist() {
 		Map<String, String> result = new LinkedHashMap<String, String>();
-		result.put("", "");
+		result.put("", "Select Industry");
 		result.put("Internet", "Internet / eCommerce");
 		result.put("Electronic", "Electronic");
 		result.put("Automotive", "Automotive");

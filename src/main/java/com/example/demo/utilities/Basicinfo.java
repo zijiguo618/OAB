@@ -9,6 +9,27 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.demo.service.DB;
 public class Basicinfo {
+//	M001100424
+//	{"abbreviation":"legal name",
+//		"name":"DBA name",
+//		"contactEmail":"onlineapplication@g.com",
+//		"merCode":null,
+//		"countryName":"United States",
+//		"stateName":"Alabama",
+//		"cityName":"Alabaster",
+//		"countryCode":"001",
+//		"stateCode":"AL",
+//		"cityCode":"Alabaster",
+//		"industry":"Internet",
+//		"contacttittle":"Tittle",
+//		"comments":"Description",
+//		"streetName1":"1377 sandia Avenue","streetName2":"",
+//		"contactPerson":"Contact Name",
+//		"contactPhone":"Contact number",
+//		"federalID":"California","contactittle":"Tittle", 
+//		"branchId" :"a2532b43-cd01-46bf-bbdb-57c3bd16dcb2",
+//		"merchantProperty": "CORPORATION","website":"https://nihaopay.com",
+//		"merchantType":"COMPANYACCOUNT","mcc":"0000"}
 	DB db;
 	private String abbreviation;
 	private String name;
@@ -22,6 +43,10 @@ public class Basicinfo {
 	private String stateCode;
 	private String cityCode;
 	private String website="https://nihaopay.com";
+	private String branchId ="a2532b43-cd01-46bf-bbdb-57c3bd16dcb2";
+	private String merchantProperty= "CORPORATION";
+	private String merchantType="COMPANYACCOUNT";
+	private String mcc= "0000";
 	private String industry;
 	private String contacttittle;
 	private String comments; // 商户备注信息
@@ -65,6 +90,11 @@ public class Basicinfo {
 		db.close();
 		System.out.println(this.toString());
 		return this;
+	}
+	
+	public boolean getclassstatus() {
+		return this.name==null||this.abbreviation==null||this.contactEmail==null;
+		
 	}
 	
 	public String getContacttittle() {

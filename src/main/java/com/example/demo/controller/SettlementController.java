@@ -41,7 +41,6 @@ public class SettlementController {
 		int applicationid=(int)session.getAttribute("applicationID");
 		modelAndView.addObject("applicationID", applicationid);
 //		modelAndView.addObject("settlement", new Settlement().getsettlement(applicationid));
-		modelAndView.addObject("settlement", new Settlement());
 		Products obj=(Products)request.getSession().getAttribute("Products");
 		modelAndView.addObject("currencylist", getcurrencies(obj));
 		System.out.println(obj.toString());
