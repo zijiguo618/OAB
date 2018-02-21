@@ -7,9 +7,9 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
-<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
-<META HTTP-EQUIV="expires" CONTENT="0">
+	<meta http-equiv="pragma" CONTENT="no-cache"> 
+<meta http-equiv="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+<meta http-equiv="expires" CONTENT="0">
 	<title>Gateways</title>
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -29,12 +29,12 @@
 	<![endif]-->
 
 	</head>
-	<body>
+	<body onpageshow="myFunction()">
 
 		<div class="container">
-
+<div class="col-xs-3 banner-body-left" style="margin-top:200px;">
 			<div class="row">
-				<div class="col-md-12 text-center">
+				<div class=" col-md-offset-7">
 					<ul class="menu">
 						<li  ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
 									<li class="active"><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
@@ -45,15 +45,17 @@
 					</ul>
 				</div>
 			</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<h2>Gateways</h2>
+				<div class="col-md-10">
+			
 
 					<!-- Start Sign In Form -->
 					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn"  th:action="@{/products}" th:object="${products}"
-		method="post">
-						
-						<div class="form-group">
+		method="post" >
+								<h2>Gateways</h2>
+						<div class="form-group" >
 						<label for="abbreviation" > Settlement Currencies</label>
 						<br/>
 						<input id="USD" type="checkbox" th:field="*{currencys}" value="USD" name="USD" onchange='securepayunionpaylisetner()'>USD</input>
@@ -125,26 +127,42 @@
 									'mailaddress_state', 'mailaddress_city');
 						</script>
 						<script>
-						document.getElementById("UnionPay").disabled = true;
-						document.getElementById("AliPay").disabled = true;
-						document.getElementById("WeChatPay").disabled = true;
-						document.getElementById("IOS").disabled = true;
-						document.getElementById("Android").disabled = true;
-						document.getElementById("Wetchat_Store").disabled = true;
-						document.getElementById("Wetchat_subscription").disabled = true;
-						document.getElementById("Wetchat_mini").disabled = true;
-						document.getElementById("QRCode").disabled = true;
-						document.getElementById("Wallet").disabled = true;
-						document.getElementById("POS").disabled = true;
-						document.getElementById("PCcheck").disabled = true;
-						document.getElementById("websiteinp").readOnly = true;
-						window.onload = (e) => {
-						    alert('page onload');
-						}
-						window.onpageshow = (e) => {
-						    if (e.persisted) {
-						      alert('page read from cache');
-						      window.location.reload();
+						
+						function myFunction() {
+							document.getElementById("UnionPay").disabled = true;
+							document.getElementById("AliPay").disabled = true;
+							document.getElementById("WeChatPay").disabled = true;
+							document.getElementById("IOS").disabled = true;
+							document.getElementById("Android").disabled = true;
+							document.getElementById("Wetchat_Store").disabled = true;
+							document.getElementById("Wetchat_subscription").disabled = true;
+							document.getElementById("Wetchat_mini").disabled = true;
+							document.getElementById("QRCode").disabled = true;
+							document.getElementById("Wallet").disabled = true;
+							document.getElementById("POS").disabled = true;
+							document.getElementById("PCcheck").disabled = true;
+							document.getElementById("websiteinp").readOnly = true; 
+							document.getElementById("EasyPay").disabled = true;
+							
+							document.getElementById("USD").checked=false;
+							document.getElementById("JPY").checked=false;
+							document.getElementById("EUR").checked=false;
+							document.getElementById("HKD").checked=false;
+							document.getElementById("GBP").checked=false;
+							document.getElementById("CAD").checked=false;
+							document.getElementById("EasyPay").checked=false;
+							document.getElementById("UnionPay").checked=false;
+							document.getElementById("AliPay").checked=false;
+							document.getElementById("WeChatPay").checked=false;
+							document.getElementById("IOS").checked=false;
+							document.getElementById("Android").checked=false;
+							document.getElementById("Wetchat_Store").checked=false;
+							document.getElementById("Wetchat_subscription").checked=false;
+							document.getElementById("Wetchat_mini").checked=false;
+							document.getElementById("QRCode").checked=false;
+							document.getElementById("Wallet").checked=false;
+							document.getElementById("POS").checked=false;
+							document.getElementById("PCcheck").checked=false;
 						}
 
 
@@ -162,7 +180,14 @@
 				document.getElementById("POS").disabled = false;
 				document.getElementById("PCcheck").disabled = false;
 				document.getElementById("websiteinp").readOnly = false;
+				document.getElementById("EasyPay").disabled = false;
+				
+				if((document.getElementById("AliPay").checked||document.getElementById("UnionPay").checked)==false){
+					document.getElementById("IOS").disabled = true;
+					document.getElementById("Android").disabled = true;
+				}
 			}else{
+				document.getElementById("EasyPay").disabled = true;
 				document.getElementById("IOS").disabled = true;
 				document.getElementById("Android").disabled = true;
 				document.getElementById("Wetchat_Store").disabled = true;
@@ -183,6 +208,7 @@
 					document.getElementById("AliPay").disabled = false;
 					document.getElementById("WeChatPay").disabled = false;
 				    }else{
+				    	document.getElementById("EasyPay").disabled = true;
 				    	  	document.getElementById("UnionPay").disabled = true;
 						document.getElementById("AliPay").disabled = true;
 						document.getElementById("WeChatPay").disabled = true;
@@ -200,11 +226,18 @@ function gatewayPCmonitor(){
 
 	if((document.getElementById("WeChatPay").checked&&document.getElementById("CAD").checked&&document.getElementById("PCcheck").checked)==true){
 		alert("Wetchat does not support CAD in PC");
+	}else if((document.getElementById("WeChatPay").checked&&document.getElementById("GBP").checked&&document.getElementById("PCcheck").checked)==true){
+		alert("Wetchat does not support GBP in PC");
 	}
 }
 function gatewayinappmonitor(){
 	if((document.getElementById("WeChatPay").checked&&(document.getElementById("IOS").checked||document.getElementById("Android").checked))==true){
 		alert("Wetchat does not support in-APP");
+	}
+}
+function gatewaymonitor(){
+	if(document.getElementById("Wallet").checked==true){
+		alert("Download Android/IOS Wallet in Google/Apple Store");
 	}
 }
 function gatewayplatformmonitor(){
@@ -225,7 +258,7 @@ function gatewayplatformmonitor(){
 
 				</div>
 			</div>
-
+</div>
 		</div>
 	
 	<!-- jQuery -->

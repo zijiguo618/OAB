@@ -29,9 +29,9 @@
 	<body>
 
 		<div class="container">
-
+<div class="col-xs-3 banner-body-left" style="margin-top:200px;">
 			<div class="row">
-				<div class="col-md-12 text-center">
+				<div class=" col-md-offset-7">
 					<ul class="menu">
 						<li ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
 									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
@@ -42,22 +42,25 @@
 					</ul>
 				</div>
 			</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-10">
 					
-<h2>Submission</h2>
+
 					<!-- Start Sign In Form -->
 					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn"  th:action="@{/submission}" th:object="${submission}" method="post">
-						
+						<h2>Submission</h2>
 						<div class="form-group">
 						<label for="agreement" >Agreement</label>
 						<object data="NihaoPay_Terms.pdf" type="application/pdf" width="100%" height="1100px"></object>
-						<label for="read" >Has read term carefully and agree to accept terms</label>
 						<input type="checkbox" name="readandagree" value="readandagree" />
+						<label for="read" >Has read term carefully and agree to accept terms</label>
+						<br/>
 						<label for="Signature" >Signature</label>
-						<input id="signatureinp" type="text" th:field="*{signature}" class="form-control"/>
-						<label for="today" >Todat is:</label>
-						<input type="date" id="currentdate" th:field="*{currentdate}" class="form-control"/>
+						<input id="signatureinp" type="text" th:field="*{signature}"/>
+						<label for="today" >Today is:</label>
+						<input type="date" id="currentdate" th:field="*{currentdate}" />
 						
 						</div>
 						
@@ -79,7 +82,7 @@
 
 				</div>
 			</div>
-
+</div>
 		</div>
 	
 	<!-- jQuery -->

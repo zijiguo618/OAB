@@ -29,9 +29,9 @@
 	<body>
 
 		<div class="container">
-
+<div class="col-xs-3 banner-body-left" style="margin-top:200px;">
 			<div class="row">
-				<div class="col-md-12 text-center">
+				<div class=" col-md-offset-7">
 					<ul class="menu">
 						<li  ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
 									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
@@ -42,13 +42,15 @@
 					</ul>
 				</div>
 			</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-10">
 					
-<h2>Settlement</h2>
+
 					<!-- Start Sign In Form -->
 					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn" th:action="@{/settlement}" th:object="${settlement}" method="post">
-						
+						<h2>Settlement</h2>
 						<div class="form-group">
 						<label for="withdoaloption" >Withdrawl option:</label><br/>
 						<select id="withdoaloptions" name="withdoaloptions" class="form-control" 
@@ -116,14 +118,15 @@
 		});
 		</script>
 						<div class="form-group">
-							<label for="bankaccount" > Bank Account </label><br/>
+							<label for="bankaccount" >Primary Bank Account </label><br/>
 							<select id="currencylist" name="currencylist" th:field="*{accountCurrency}" class="form-control" >
 						<option th:each="currency : ${currencylist}" th:text="${currency}"
 							th:value="${currency}" />
 					</select>
-						<input type="text" th:field="*{accountNumber}" placeholder="Account Number" class="form-control" />
-						<input type="text" th:field="*{accountHolder}" placeholder="Account Holder" class="form-control" />
 						<input type="text" th:field="*{bankName}" class="form-control" placeholder="Bank Name" />
+						<input type="text" th:field="*{accountNumber}" placeholder="Account Number" class="form-control" />
+						<input type="text" th:field="*{accountHolder}" placeholder="Name on the Account" class="form-control" />
+					
 
 
 						<label for="bankaddress" > Bank Address </label><br/>
@@ -132,7 +135,7 @@
 						<select id="bankaddress_state" name="bankaddress_state" th:field="*{stateName}" class="form-control"></select> 
 						<select	id="bankaddress_city" name="bankaddress_city" th:field="*{cityName}" class="form-control"></select> 
 						<input id="swiftinput" type="text" th:field="*{swiftCode}" class="form-control" placeholder="Swift Numbe"/>
-						<input id="sortcodeinput" type="text" th:field="*{sortcode}" class="form-control" placeholder="Soort Code"/>
+						<input id="sortcodeinput" type="text" th:field="*{sortcode}" class="form-control" placeholder="Soort Code/IBAN/ABA/BSB"/>
 						<input id="routinginput" type="text" th:field="*{routingNumber}" class="form-control" placeholder="Routing Numbe"/>
 						</div>
 						
@@ -173,13 +176,18 @@
 						}
 					});
 				</script>
-				
+				<script>
+			var message = "[[${currencysize}]]";
+			if(message=="1"){
+		 	alert("Please select a Primary account, You're welcome to add more bank accounts in TMS"); }
+			
+			</script>
 					</form>
 					<!-- END Sign In Form -->
 
 				</div>
 			</div>
-
+</div>
 		</div>
 	
 	<!-- jQuery -->

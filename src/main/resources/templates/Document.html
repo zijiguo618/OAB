@@ -29,9 +29,9 @@
 	<body>
 
 		<div class="container">
-
+<div class="col-xs-3 banner-body-left" style="margin-top:200px;">
 			<div class="row">
-				<div class="col-md-12 text-center">
+				<div class=" col-md-offset-7">
 					<ul class="menu">
 						<li ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
 									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
@@ -42,13 +42,15 @@
 					</ul>
 				</div>
 			</div>
+			</div>
+			<div class="col-xs-9 banner-body-right">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-10">
 					
-<h2>Business Info</h2>
+
 					<!-- Start Sign In Form -->
 					<form class="fh5co-form animate-box" data-animate-effect="fadeIn" enctype="multipart/form-data" action="/uploadMulti"  method="POST">
-						
+						<h2>Documents</h2>
 						<div class="form-group">
 						<label for="businesslicense" >Business License</label>
 						<input type="file" name="businessfile"  autocomplete="off"/>
@@ -59,7 +61,7 @@
 						<label for="bankstatementpic" >Business Transaction History</label>
 						<input type="file" name="bankstatement"  autocomplete="off"/>
 						
-						<label for="files" > Store Picture</label>
+						<label id="storepictureid" for="files" > Store Picture</label>
 						<input id="instore" type="file" name="files" >In-Store Picture</input>
 						<input id="logo" type="file" name="files" >Logo</input>
 						<input id="store" type="file" name="files" >Store Picture</input>
@@ -72,7 +74,9 @@
 	<script>
 			var message = "[[${online}]]";
 		 	alert(message); 
-			if(message=="0"){
+			if(message=="1"){
+				document.getElementById("storepictureid").style.display="none";
+				document.getElementById("instore").style.display="none";
 				document.getElementById("logo").style.display="none";
 				document.getElementById("store").style.display="none";
 			}
@@ -83,7 +87,7 @@
 
 				</div>
 			</div>
-
+</div>
 		</div>
 	
 	<!-- jQuery -->
