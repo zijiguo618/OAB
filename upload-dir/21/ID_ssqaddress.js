@@ -1,11 +1,13 @@
 
+alert("access");
 var addressInit = function(_mailaddress_country, _mailaddress_state,
 		_mailaddress_city, defaultcountry, defaultstate, defaultcity) {
 	var mailaddresscountry = document.getElementById(_mailaddress_country);
 	var mailaddressstate = document.getElementById(_mailaddress_state);
 	var mailaddresscity = document.getElementById(_mailaddress_city);
-	//      alert(cmbProvince);
+	
 	function mailaddressSelect(mailaddress, str) {
+		
 		for (var i = 0; i < mailaddress.options.length; i++) {
 			if (mailaddress.options[i].value == str) {
 				mailaddress.selectedIndex = i;
@@ -13,32 +15,35 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 			}
 		}
 	}
-	function mailaddressAddOption(mailaddress, obj, obj1) {
+	function mailaddressAddOption(mailaddress, str, obj) {
+
 		var option = document.createElement("OPTION");
 		mailaddress.options.add(option);
-		option.innerText = obj.Name;
-		option.value = obj.Name+","+obj.Code;
-		option.obj = obj1;
+		option.innerText = str;
+		option.value = str;
+		option.obj = obj;
 	}
 
 	function changestate() {
+
 		mailaddresscity.options.length = 0;
 		if (mailaddressstate.selectedIndex == -1)
 			return;
 		var item = mailaddressstate.options[mailaddressstate.selectedIndex].obj;
 		for (var i = 0; i < item.City.length; i++) {
-			mailaddressAddOption(mailaddresscity, item.City[i], null);
+			mailaddressAddOption(mailaddresscity, item.City[i].Name, null);
 		}
 		mailaddressSelect(mailaddresscity, defaultcity);
 	}
 	function changecountry() {
+
 		mailaddressstate.options.length = 0;
-//		mailaddressstate.onchange = null;
+		mailaddressstate.onchange = null;
 		if (mailaddresscountry.selectedIndex == -1)
 			return;
 		var item = mailaddresscountry.options[mailaddresscountry.selectedIndex].obj;
 		for (var i = 0; i < item.State.length; i++) {
-			mailaddressAddOption(mailaddressstate, item.State[i],
+			mailaddressAddOption(mailaddressstate, item.State[i].Name,
 					item.State[i]);
 		}
 		mailaddressSelect(mailaddressstate, defaultstate);
@@ -47,14 +52,15 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 	}
 
 	for (var i = 0; i < countryList.length; i++) {
-		mailaddressAddOption(mailaddresscountry, countryList[i],
+		mailaddressAddOption(mailaddresscountry, countryList[i].Name,
 				countryList[i]);
 	}
 	mailaddressSelect(mailaddresscountry, defaultcountry);
 	changecountry();
 	mailaddresscountry.onchange = changecountry;
 }
-var countryList = [ {
+
+var countryList = [{
 	"Name" : "United States",
 	"Code" : "001",
 	"State" : [ {

@@ -32,10 +32,11 @@
 	<body onpageshow="myFunction()" >
 
 		<div class="container">
+
 <div class="col-xs-3 banner-body-left" style="margin-top:200px;">
 			<div class="row">
-				<div class=" col-md-offset-6">
-				<a href="http://nihaopay.com"><img class="centerImage" src="logo3.png" alt="Logo"  width="100%" height="100%" style="float:left; margin-top:-100px;" /></a>
+				<div class=" col-md-offset-5">
+					 <a href="http://nihaopay.com"><img class="centerImage" src="logo3.png" alt="Logo"  width="100%" height="100%" style="float:left; margin-top:-100px;" /></a><br/>
 					<ul class="menu">
 					
 						<li  ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business</a></li>
@@ -88,7 +89,7 @@
 							<label for="Onlinel" > Online </label>
 							<br/>
 							<div class="stickinline" style="float:left;" >
-								<input id="PCcheck" type="checkbox" name="PC" onchange='gatewayPCmonitor()' style="height:23px;"> PC  </input>
+								<input id="PCcheck" type="checkbox" name="PC" onchange='gatewayPCmonitor()'> PC  </input>
 							</div>
 							<input id="websiteinp" type="txt" th:field="*{website}" placeholder="Website URL" style="float:left; margin-left:10px;" /><br/>
 							
@@ -198,8 +199,6 @@
 							document.getElementById("wechattext1").style.display="none";
 							document.getElementById("wechattext2").style.display="none";
 							document.getElementById("wechattext3").style.display="none";
-							document.getElementById("wechatcheck").disabled = true;
-							document.getElementById("inappcheck").disabled = true;
 							// document.getElementById("Wetchat_mini").style.display="none";
 							// document.getElementById("Wetchat_subscription").style.display="none";
 							// document.getElementById("Wetchat_Store").style.display="none";
@@ -230,15 +229,12 @@
 				document.getElementById("PCcheck").disabled = false;
 				document.getElementById("websiteinp").readOnly = false;
 				document.getElementById("EasyPay").disabled = false;
-				document.getElementById("inappcheck").disabled = false;
-				document.getElementById("wechatcheck").disabled = false;
+				
 				if((document.getElementById("AliPay").checked||document.getElementById("UnionPay").checked)==false){
 					document.getElementById("IOS").disabled = true;
 					document.getElementById("Android").disabled = true;
 				}
 			}else{
-				document.getElementById("inappcheck").disabled = true;
-				document.getElementById("wechatcheck").disabled = true;
 				document.getElementById("EasyPay").disabled = true;
 				document.getElementById("IOS").disabled = true;
 				document.getElementById("Android").disabled = true;
@@ -260,7 +256,7 @@
 					document.getElementById("AliPay").disabled = false;
 					document.getElementById("WeChatPay").disabled = false;
 				    }else{
-				    		document.getElementById("EasyPay").disabled = true;
+				    	document.getElementById("EasyPay").disabled = true;
 				    	  	document.getElementById("UnionPay").disabled = true;
 						document.getElementById("AliPay").disabled = true;
 						document.getElementById("WeChatPay").disabled = true;
@@ -272,8 +268,6 @@
 						document.getElementById("QRCode").disabled = true;
 						document.getElementById("Wallet").disabled = true;
 						document.getElementById("POS").disabled = true;
-						document.getElementById("wechatcheck").disabled = true;
-						document.getElementById("inappcheck").disabled = true;
 				    }
 				}
 function gatewayPCmonitor(){
@@ -296,9 +290,11 @@ function gatewayinappmonitor(){
 	var inappcheckid=document.getElementById("inappcheck");
 	if(inappcheckid.checked==true){
 		document.getElementById("IOS").disabled = false;
+		document.getElementById("IOS").checked=false;
 		document.getElementById("IOS").style.display="block";
 		document.getElementById("IOStext").style.display="block";
 		document.getElementById("Android").disabled = false;
+		document.getElementById("Android").checked=false;
 		document.getElementById("Android").style.display="block";
 		document.getElementById("androidtext").style.display="block";
 		
@@ -327,13 +323,13 @@ function gatewayplatformmonitor(){
 	if(wechatcheckid.checked==true){
 		
 		document.getElementById("Wetchat_mini").disabled = false;
-		
+		document.getElementById("Wetchat_mini").checked=false;
 		document.getElementById("Wetchat_mini").style.display="block";
 		document.getElementById("Wetchat_subscription").disabled = false;
-		
+		document.getElementById("Wetchat_subscription").checked=false;
 		document.getElementById("Wetchat_subscription").style.display="block";
 		document.getElementById("Wetchat_Store").disabled = false;
-		
+		document.getElementById("Wetchat_Store").checked=false;
 		document.getElementById("Wetchat_Store").style.display="block";
 		document.getElementById("wechattext1").style.display="block";
 		document.getElementById("wechattext2").style.display="block";

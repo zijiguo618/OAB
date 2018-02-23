@@ -44,7 +44,8 @@ public class SettlementController {
 //		modelAndView.addObject("settlement", new Settlement());
 		Products obj=(Products)request.getSession().getAttribute("Products");
 		if(getcurrencies(obj).size()>1) {
-			session.setAttribute("currencysize", "1");
+			
+			modelAndView.addObject("currencysize", "1");
 		}
 		modelAndView.addObject("currencylist", getcurrencies(obj));
 		System.out.println(obj.toString());

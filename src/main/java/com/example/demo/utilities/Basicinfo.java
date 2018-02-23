@@ -206,16 +206,58 @@ public class Basicinfo {
 	public void setContactPhone(String contactPhone) {
 		this.contactPhone = contactPhone;
 	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getBranchId() {
+		return branchId;
+	}
+
+	public void setBranchId(String branchId) {
+		this.branchId = branchId;
+	}
+
+	public String getMerchantProperty() {
+		return merchantProperty;
+	}
+
+	public void setMerchantProperty(String merchantProperty) {
+		this.merchantProperty = merchantProperty;
+	}
+
+	public String getMerchantType() {
+		return merchantType;
+	}
+
+	public void setMerchantType(String merchantType) {
+		this.merchantType = merchantType;
+	}
+
+	public String getMcc() {
+		return mcc;
+	}
+
+	public void setMcc(String mcc) {
+		this.mcc = mcc;
+	}
+
 	@Override
 	public String toString() {
-		return "Basicinfo [db=" + db + ", abbreviation=" + abbreviation + ", name=" + name + ", contactEmail="
-				+ contactEmail + ", countryName=" + countryName + ", stateName=" + stateName + ", cityName=" + cityName
-				+ ", countryCode=" + countryCode + ", stateCode=" + stateCode + ", cityCode=" + cityCode + ", industry="
-				+ industry + ", contacttittle=" + contacttittle + ", comments=" + comments + ", FederalID=" + FederalID
-				+ ", streetName1=" + streetName1 + ", streetName2=" + streetName2 + ", contactPerson=" + contactPerson
-				+ ", contactPhone=" + contactPhone + "]";
+		return "Basicinfo [abbreviation=" + abbreviation + ", name=" + name + ", contactEmail=" + contactEmail
+				+ ", merCode=" + merCode + ", countryName=" + countryName + ", stateName=" + stateName + ", cityName="
+				+ cityName + ", countryCode=" + countryCode + ", stateCode=" + stateCode + ", cityCode=" + cityCode
+				+ ", website=" + website + ", branchId=" + branchId + ", merchantProperty=" + merchantProperty
+				+ ", merchantType=" + merchantType + ", mcc=" + mcc + ", industry=" + industry + ", contacttittle="
+				+ contacttittle + ", comments=" + comments + ", FederalID=" + FederalID + ", streetName1=" + streetName1
+				+ ", streetName2=" + streetName2 + ", contactPerson=" + contactPerson + ", contactPhone=" + contactPhone
+				+ "]";
 	}
-	
 
 	
 

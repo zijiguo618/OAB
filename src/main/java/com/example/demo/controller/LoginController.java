@@ -97,10 +97,6 @@ public class LoginController implements ErrorController{
 		
 	}
 	
-	
-	
-	
-	
 	 @RequestMapping(value = PATH)
 	    public ModelAndView error() {
 		 return new ModelAndView("redirect:/login");

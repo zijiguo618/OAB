@@ -15,7 +15,7 @@
 	
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="animate.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style1.css">
 	<script type="text/javascript" src="ssqaddress123.js"></script>
 
 	<!-- Modernizr JS -->
@@ -31,14 +31,16 @@
 		<div class="container">
 <div class="col-xs-3 banner-body-left" style="margin-top:200px;">
 			<div class="row">
-				<div class=" col-md-offset-7">
+				<div class=" col-md-offset-6">
+				<a href="http://nihaopay.com"><img class="centerImage" src="logo3.png" alt="Logo"  width="100%" height="100%" style="float:left; margin-top:-100px;" /></a>
+				
 					<ul class="menu">
-						<li  ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
-									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
-									<li class="active"><a href="/settlement" ><i class="text-size"></i>Settlement</a></li>
-									<li><a  class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
-									<li><a  class="hvr-underline-from-left"><i class="submission1"></i>Submission</a></li>
-									<li><a href="/logout" class="hvr-underline-from-left"><i class="envelope1"></i>Log Out</a></li>
+											<li  ><a href="/basicinfo" >Business</a></li>
+									<li><a href="/products" class="hvr-underline-from-left">Gateways</a></li>
+									<li class="active"><a href="/settlement" >Settlement</a></li>
+									<li><a>Documents</a></li>
+									<li><a >Submission</a></li>
+									<li><a href="/logout" >Log Out</a></li>
 					</ul>
 				</div>
 			</div>
@@ -50,14 +52,14 @@
 
 					<!-- Start Sign In Form -->
 					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn" th:action="@{/settlement}" th:object="${settlement}" method="post">
-						<h2>Settlement</h2>
+						<h2>Settlement  <a href="http://nihaopay.com"><img class="centerImage" src="logo.jpg" alt="Logo" width="60"height="60" style="float: right;" /></a></h2>
 						<div class="form-group">
-						<label for="withdoaloption" >Withdrawl option:</label><br/>
+						<label for="withdoaloption" >Withdrawl Option:</label><br/>
 						<select id="withdoaloptions" name="withdoaloptions" class="form-control" 
 					th:field="*{withdrawalWay}">
 						<option value=""></option>
-						<option value="MANUAL">MANUAL</option>
-						<option value="AMOUNT">AMOUNT</option>
+						<option value="MANUAL">Manual</option>
+						<option value="AMOUNT">Amount</option>
 						<option value="EXPRESSION">Period</option>
 				</select>
 						<select id="withdrawalamount" name="withdrawalamount" class="form-control" 
@@ -113,6 +115,7 @@
 				document.getElementById("withdralperiod").value="";
 				document.getElementById("otheramount").value="";
 				document.getElementById("withdrawalamount").value="";
+				alert("You can change the withdrawal option in TMS");
 			}
 			
 		});
@@ -124,23 +127,25 @@
 							th:value="${currency}" />
 					</select>
 						<input type="text" th:field="*{bankName}" class="form-control" placeholder="Bank Name" />
-						<input type="text" th:field="*{accountNumber}" placeholder="Account Number" class="form-control" />
-						<input type="text" th:field="*{accountHolder}" placeholder="Name on the Account" class="form-control" />
-					
-
-
 						<label for="bankaddress" > Bank Address </label><br/>
 						<select id="bankaddress_country" name="bankaddress_country"th:field="*{countryName}" class="form-control">
 						</select>
 						<select id="bankaddress_state" name="bankaddress_state" th:field="*{stateName}" class="form-control"></select> 
 						<select	id="bankaddress_city" name="bankaddress_city" th:field="*{cityName}" class="form-control"></select> 
+						<input type="text" th:field="*{accountNumber}" placeholder="Account Number" class="form-control" />
+						<input type="text" th:field="*{accountHolder}" placeholder="Name on the Account" class="form-control" />
 						<input id="swiftinput" type="text" th:field="*{swiftCode}" class="form-control" placeholder="Swift Numbe"/>
 						<input id="sortcodeinput" type="text" th:field="*{sortcode}" class="form-control" placeholder="Soort Code/IBAN/ABA/BSB"/>
 						<input id="routinginput" type="text" th:field="*{routingNumber}" class="form-control" placeholder="Routing Numbe"/>
+						
+					
+
+
+						
 						</div>
 						
 						<div class="form-group">
-							<center><input type="submit" value="Submit" class="btn btn-primary"></center>
+							<center><input type="submit" value="Save" class="btn btn-primary"></center>
 						</div>
 						<script src="js/bootstrap.js"></script>
 	
@@ -179,7 +184,10 @@
 				<script>
 			var message = "[[${currencysize}]]";
 			if(message=="1"){
-		 	alert("Please select a Primary account, You're welcome to add more bank accounts in TMS"); }
+		 	alert("Please select a Primary account, You're welcome to add more bank accounts in TMS"); 
+		 	}else{
+		 		alert(message);
+		 	}
 			
 			</script>
 					</form>

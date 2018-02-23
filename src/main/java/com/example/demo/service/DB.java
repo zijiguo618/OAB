@@ -21,6 +21,9 @@ public class DB {
 		 conn = DriverManager.getConnection(myUrl, "root", "password");
 		
 	}
+	
+	
+	
 
 	public int getstage( String col, int ID) throws SQLException{
 		Statement st = conn.createStatement();

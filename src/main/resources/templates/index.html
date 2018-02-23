@@ -15,7 +15,7 @@
 	
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="animate.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style1.css">
 	<script type="text/javascript" src="ssqaddress123.js"></script>
 
 	<!-- Modernizr JS -->
@@ -24,16 +24,24 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+	<style>
+	select.form-control{
+	padding-left:-5px;
+	color:gray;
+	}
+	</style>
 	</head>
 	<body>
 
 		<div class="container">
 	<div class="col-xs-3 banner-body-left" style="margin-top:200px;">
+	
 			<div class="row">
-				<div class=" col-md-offset-7">
+				<div class=" col-md-offset-6">
+				<a href="http://nihaopay.com"><img class="centerImage" src="logo3.png" alt="Logo"  width="100%" height="100%" style="float:left; margin-top:-100px;" /></a>
+				
 					<ul class="menu">
-						<li  class="active"><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
+									<li  class="active"><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business</a></li>
 									<li><a  class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
 									<li><a class="hvr-underline-from-left" ><i class="text-size"></i>Settlement</a></li>
 									<li><a  class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
@@ -51,11 +59,11 @@
 					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn" th:action="@{/basicinfo}" th:object="${basicinfo}"
 		method="post">
 											
-<h2>Business Info</h2>
+<h2 style="margin-top:10px;"> Business Info </h2> 
 						<div class="form-group">
 						<label for="abbreviation" >Company</label>
 						<input	type="text" class="form-control"  th:field="*{abbreviation}" placeholder="Company Legal Name" autocomplete="off"/>
-						<input type="text" class="form-control" th:field="*{name}" placeholder="Company DBA Name"  />
+						<input type="text" class="form-control" th:field="*{name}" placeholder="Company DBA (Doing Business As)"  />
 						
 						<select id="industryselect" class="form-control"  name="industryselect" th:field="*{industry}">
 						<option th:each="ind : ${industry}" th:text="${ind.value}"
@@ -72,13 +80,14 @@
 						<div class="form-group">
 							<label for="country" > Contact </label>
 							<input type="text" class="form-control" th:field="*{contactEmail}" placeholder="Primary Contact Email"  />
+							<input id="contactPhonenumber" type="text" th:field="*{contactPhone}" class="form-control" placeholder="Primary Contact Number"/>
 							<input	type="text" th:field="*{contactPerson}" class="form-control" placeholder="C-Level Contact Name" />
 							<input type="text" th:field="*{contacttittle}" class="form-control" placeholder="Title"/>
-							<input id="contactPhonenumber" type="text" th:field="*{contactPhone}" class="form-control" placeholder="Contact Numbe"/>
+							
 						</div>
 						
 						<div class="form-group">
-							<center><input type="submit" value="Submit" class="btn btn-primary"></center>
+							<center><input type="submit" value="Save" class="btn btn-primary"></center>
 						</div>
 						<script src="js/bootstrap.js"></script>
 	
@@ -88,12 +97,12 @@
 						</script>
 								<script>
 					var contactPhonenumber=document.getElementById("contactPhonenumber");
-					contactPhonenumber.placeholder="Contact Phone number: + 01";
+					contactPhonenumber.placeholder="Primary Contact Number: + 01";
 					var countryselected=document.getElementById("mailaddress_country");
 					countryselected.addEventListener("change", function() {
 						var countrycode = this.value.split(",")[1];
 					/* 	alert(countrycode); */
-						contactPhonenumber.placeholder="Contact Phone number: + "+countrycode;
+						contactPhonenumber.placeholder="Primary Contact Number: + "+countrycode;
 						
 					});
 				</script>

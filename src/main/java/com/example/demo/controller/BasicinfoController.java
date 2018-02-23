@@ -85,7 +85,7 @@ public class BasicinfoController {
 			MCClist mcclist= new MCClist();
 			modelAndView.addObject("mcclist", mcclist.getlist());
 			modelAndView.addObject("industry", getlist());
-			modelAndView.setViewName("index");
+			modelAndView.setViewName("redirect:/basicinfo");
 			return modelAndView;
 		}
 		HttpSession session = request.getSession();
@@ -98,26 +98,46 @@ public class BasicinfoController {
 		 ObjectMapper mapperObj = new ObjectMapper();
 		
 		db.update2application_basic((int)session.getAttribute("applicationID"), basicinfo.getName(), basicinfo.getAbbreviation(), basicinfo.getContactEmail(), basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getIndustry(), basicinfo.getContacttittle(), basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(), basicinfo.getContactPhone(),merCode);
-		try {
-			String jsonStr = mapperObj.writeValueAsString(basicinfo);
+		
+			String jsonStr = null;
+			RestTemplate rt = new RestTemplate();
+			HashMap<String,String> resultmaps=null;
+		    HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.add("Content-Type", "application/json; charset=UTF-8");
+			try {
+				jsonStr = mapperObj.writeValueAsString(basicinfo);
+				 resultmaps = new ObjectMapper().readValue(jsonStr, HashMap.class);
+			} catch (JsonProcessingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println(jsonStr);
-//			RestTemplate rt = new RestTemplate();
-//		    HttpHeaders httpHeaders = new HttpHeaders();
-//			httpHeaders.add("Content-Type", "application/json; charset=UTF-8");
-//			HashMap<String,String> resultmaps = new ObjectMapper().readValue(jsonStr, HashMap.class);
-//			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<Map<String, String>>(resultmaps, httpHeaders);
-//			ResponseEntity<String> resp = rt.exchange("http://serviceweb.nihaopay.work/merBaseInfo/save",HttpMethod.POST,requestEntity, String.class);
-//		//获取返回的header
-//		List<String> val = resp.getHeaders().get("Set-Cookie");
-//		System.out.println(val);
-//		//获得返回值
-//		String body = resp.getBody();
-//		System.out.println(body.toString());	
+			HttpEntity<Map<String, String>> requestEntity = new HttpEntity<Map<String, String>>(resultmaps, httpHeaders);
+
+		try {
 		db.insert2basic(String.valueOf(session.getAttribute("applicationID")), basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
+//		ResponseEntity<String> resp = rt.exchange("http://serviceweb.nihaopay.work/merchant/info/save",HttpMethod.POST,requestEntity, String.class);
+
 		}catch(Exception e) {
 			db.update2basic(String.valueOf(session.getAttribute("applicationID")), basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
+//			ResponseEntity<String> resp = rt.exchange("http://serviceweb.nihaopay.work/merchant/info/update/M001100426",HttpMethod.POST,requestEntity, String.class);
+
 		}
 		db.updatestage((int)session.getAttribute("applicationID"), 1, "stage");
+		//获取返回的header
+//		List<String> val = resp.getHeaders().get("Set-Cookie");
+//		System.out.println("val:"+val);
+		//获得返回值
+//		String body = resp.getBody();
+//		System.out.println("Body:"+body.toString());	
+//		JSONObject jsonObj = new JSONObject(body);
+//		jsonObj = new JSONObject(jsonObj.get("data").toString());
+//		System.out.println(jsonObj.get("merchantCode"));
+		
+	
 		return modelAndView;
 	}
 	public Map<String, String> getlist() {

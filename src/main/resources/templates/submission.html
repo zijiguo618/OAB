@@ -15,7 +15,7 @@
 	
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="animate.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style1.css">
 	<script type="text/javascript" src="ssqaddress123.js"></script>
 
 	<!-- Modernizr JS -->
@@ -31,9 +31,11 @@
 		<div class="container">
 <div class="col-xs-3 banner-body-left" style="margin-top:200px;">
 			<div class="row">
-				<div class=" col-md-offset-7">
+				<div class=" col-md-offset-6">
+				<a href="http://nihaopay.com"><img class="centerImage" src="logo3.png" alt="Logo"  width="100%" height="100%" style="float:left; margin-top:-100px;" /></a>
+				
 					<ul class="menu">
-						<li ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business Info</a></li>
+						<li ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business</a></li>
 									<li><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
 									<li><a href="/settlement" ><i class="text-size"></i>Settlement</a></li>
 									<li><a href="/uploadMulti" class="hvr-underline-from-left"><i class="picture1"></i>Documents</a></li>
@@ -50,16 +52,16 @@
 
 					<!-- Start Sign In Form -->
 					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn"  th:action="@{/submission}" th:object="${submission}" method="post">
-						<h2>Submission</h2>
+						<h2>Submission  <a href="http://nihaopay.com"><img class="centerImage" src="logo.jpg" alt="Logo" width="60"height="60" style="float: right;" /></a></h2>
 						<div class="form-group">
-						<label for="agreement" >Agreement</label>
+						<label for="agreement" >Terms and Services</label>
 						<object data="NihaoPay_Terms.pdf" type="application/pdf" width="100%" height="1100px"></object>
 						<input type="checkbox" name="readandagree" value="readandagree" />
 						<label for="read" >Has read term carefully and agree to accept terms</label>
-						<br/>
+						<br/><br />
 						<label for="Signature" >Signature</label>
 						<input id="signatureinp" type="text" th:field="*{signature}"/>
-						<label for="today" >Today is:</label>
+						<label for="today" >Date:</label>
 						<input type="date" id="currentdate" th:field="*{currentdate}" />
 						
 						</div>
