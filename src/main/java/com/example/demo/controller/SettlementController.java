@@ -170,12 +170,6 @@ public class SettlementController {
 		System.out.println("bodbank:"+bodbank);
 		System.out.println("bodwithdrawl:"+bodwithdrawl);
 		try {
-//			JSONObject jsonObj = new JSONObject(body);
-//			if(String.valueOf((jsonObj.get("isSuccess"))).equals("false")) {
-//				System.out.println("false");
-//				session.setAttribute("errormessage", jsonObj.get("msg"));
-//				return new ModelAndView("redirect:/basicinfo");
-//			}
 			JSONObject jsonObj = new JSONObject(bodwithdrawl);
 			JSONObject jsonObjbank = new JSONObject(bodbank);
 			String withdrawlstatus = String.valueOf(jsonObj.getString("isSuccess"));

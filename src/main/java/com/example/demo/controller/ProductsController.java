@@ -60,6 +60,14 @@ public class ProductsController {
 		ObjectMapper mapper = new ObjectMapper();
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("firstproduct:" + Products.toString());
+		if(Products.getProductName()==null||(!(Products.getProductName().contains("UP_EBANK_PAY")))&&Products.getEasyPay().equals("ACTIVE")) {
+			System.out.println("----easypay check----");
+			if(Products.getProductName()==null||Products.getProductName().length()<12) {
+				Products.setProductName("UP_EBANK_PAY");
+			}else {
+			Products.setProductName(Products.getProductName()+",UP_EBANK_PAY"); }
+		}
+		
 		if (Products.getCurrencys() == null) {
 			session.setAttribute("errormessage", "Please select currency");
 			return new ModelAndView("redirect:/products");
@@ -74,9 +82,10 @@ public class ProductsController {
 			return new ModelAndView("redirect:/products");
 		}
 
-		String Productsstr = Products.getProducts().toString();
+		String Productsstr = Products.getProducts();
 		System.out.println("Productsstr:" + Productsstr);
-		if (Productsstr.length() == 1 && ((Productsstr.contains("OFFLINE")) && Productsstr.contains("UNIONPAY"))) {
+		
+		if (Products.getProductName().length()<12 && ((Productsstr.contains("OFFLINE")) && Productsstr.contains("UNIONPAY"))) {
 			session.setAttribute("errormessage", "Please select online product for UnionPay");
 			return new ModelAndView("redirect:/products");
 		}
