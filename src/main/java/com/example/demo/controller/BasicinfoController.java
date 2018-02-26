@@ -100,7 +100,7 @@ public class BasicinfoController {
 			JSONObject jsonObj = new JSONObject(body);
 			if(String.valueOf((jsonObj.get("isSuccess"))).equals("false")) {
 				System.out.println("false");
-				session.setAttribute("errormessage", jsonObj.get("msg"));
+				session.setAttribute("errormessage", jsonObj.get("message"));
 				return new ModelAndView("redirect:/basicinfo");
 			}
 			jsonObj = new JSONObject(jsonObj.get("data").toString());

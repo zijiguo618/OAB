@@ -60,6 +60,9 @@ public class ProductsController {
 		ObjectMapper mapper = new ObjectMapper();
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("firstproduct:" + Products.toString());
+		if(Products.getEasyPay()==null) {
+			Products.setEasyPay("INACTIVE");
+		}
 		if(Products.getProductName()==null||(!(Products.getProductName().contains("UP_EBANK_PAY")))&&Products.getEasyPay().equals("ACTIVE")) {
 			System.out.println("----easypay check----");
 			if(Products.getProductName()==null||Products.getProductName().length()<12) {

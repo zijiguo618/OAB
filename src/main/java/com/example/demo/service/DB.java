@@ -58,7 +58,7 @@ public class DB {
 	
 	public int getitemsid( String col) throws SQLException{
 		Statement st = conn.createStatement();
-		System.out.println("DB--------");
+//		System.out.println("DB--------");
 		st.executeQuery("SELECT applicationid FROM application where email= '"+col+"'"); 
 		ResultSet rs = st.getResultSet();
 		while (rs.next()) {
@@ -70,7 +70,7 @@ public class DB {
 //	
 	public int getitemsidfromuser( String col) throws SQLException{
 		Statement st = conn.createStatement();
-		System.out.println("DB--------");
+//		System.out.println("DB--------");
 		st.executeQuery("SELECT ID FROM User where email= '"+col+"'"); 
 		ResultSet rs = st.getResultSet();
 		while (rs.next()) {
@@ -199,7 +199,7 @@ return null;
 	//insert to table basic
 	public int insert2basic(String idBasicinfo,String name,String abbreviation,String contactEmail,String merCode,String countryName,String stateName,String cityName,String countryCode,String stateCode,String cityCode,String industry,String contacttittle,String comments,String FederalID,String streetName1,String streetName2,String contactPerson,String contactPhone) throws SQLException{
 		String sql = " insert into Basicinfo (ID,name,abbreviation,contactEmail,merCode,countryName,stateName,cityName,countryCode,stateCode,cityCode,industry,contacttittle,comments,FederalID,streetName1,streetName2,contactPerson,contactPhone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-		System.out.println("update basicinfo");
+//		System.out.println("insert basicinfo");
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,idBasicinfo);
 		st.setString(2,name);
@@ -230,7 +230,7 @@ return null;
 	
 	public int update2basic(String idBasicinfo,String name,String abbreviation,String contactEmail,String merCode,String countryName,String stateName,String cityName,String countryCode,String stateCode,String cityCode,String industry,String contacttittle,String comments,String FederalID,String streetName1,String streetName2,String contactPerson,String contactPhone) throws SQLException{
 		String sql = " update  Basicinfo set name=?,abbreviation=?,contactEmail=?,merCode=?,countryName=?,stateName=?,cityName=?,countryCode=?,stateCode=?,cityCode=?,industry=?,contacttittle=?,comments=?,FederalID=?,streetName1=?,streetName2=?,contactPerson=?,contactPhone=? where ID="+idBasicinfo;
-		System.out.println("update basicinfo");
+//		System.out.println("update basicinfo");
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,name);
 		st.setString(2,abbreviation);
@@ -270,7 +270,7 @@ return null;
 //basicinfo.getStreetName1(),basicinfo.getStreetName2(),basicinfo.getContactPerson(),basicinfo.getContactPhone());
 	public int update2application_basic(int id, String Name, String Abbreviation,String ContactEmail,String CountryName,String StateName,String CityName,String Industry,String Contacttittle,String Comments,String FederalID,String StreetName1, String StreetName2, String ContactPerson,String ContactPhone, String merchantcode) throws SQLException{
 		String sql = " update application set name=?, abbreviation=?,contactEmail=?,countryName=?,stateName=?,cityName=?,industry=?,contacttittle=?,comments=?,FederalID=?,streetName1=?,streetName2=?,contactPerson=?,contactPhone=?,merCode=? where applicationid ="+id;
-		System.out.println("update basicinfo");
+//		System.out.println("update basicinfo");
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,Name);
 		st.setString(2,Abbreviation);

@@ -58,9 +58,12 @@ public class SettlementController {
 	@PostMapping("/settlement")
 	public ModelAndView greetingSubmit(@Valid Settlement Settlement, BindingResult result, HttpServletRequest request,
 			RedirectAttributes redirectAttributes) throws ClassNotFoundException, SQLException {
+		System.out.println("Settlement amount:"+Settlement.getMinAmount());
 		DB db = new DB();
 		HttpSession session = request.getSession();
 		session.setAttribute("Settlement", Settlement);
+		System.out.println("Settlement:"+Settlement);
+		
 		String applicationID = String.valueOf(session.getAttribute("applicationID"));
 		if (Settlement.getOtheramount() != "") {
 			System.out.println("otheramount:" + Settlement.getOtheramount());
@@ -80,6 +83,7 @@ public class SettlementController {
 			Settlement.setCityName(basiccity[0]);
 		}
 		if(Settlement.getCycleDesc().equals("1")) {
+			System.out.println("cycle=1");
 			Settlement.setWithdrawalWay("AMOUNT");
 			Settlement.setCycleDesc(null);
 			Settlement.setMinAmount("1");
@@ -91,8 +95,8 @@ public class SettlementController {
 		} else {
 			Settlement.setWithdrawalFee("25");
 		}
-		if (Settlement.getMinAmount() == "" || Settlement.getMinAmount() == null) {
-			System.out.println("minamount is null");
+		if (Settlement.getMinAmount()==""||Settlement.getMinAmount() == null) {
+			System.out.println("minamount is null:"+Settlement.getMinAmount());
 			Settlement.setMinAmount("0");
 		} else {
 			System.out.println("minamount is  not null");
@@ -132,8 +136,6 @@ public class SettlementController {
 		System.out.println("jsonString:" + jsonString);
 		String bodwithdrawl = "";
 		String bodbank = "";
-		System.out.println(db.selectfromtable(String.valueOf(session.getAttribute("applicationID")), "withdrawalWay",
-				"Settlement"));
 		connection co = new connection();
 		String flag = db.selectfromtable(String.valueOf(session.getAttribute("applicationID")), "withdrawalWay",
 				"Settlement");
