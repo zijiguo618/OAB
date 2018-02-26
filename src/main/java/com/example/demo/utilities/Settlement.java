@@ -136,6 +136,7 @@ public class Settlement {
 	public void setOtheramount(String otheramount) {
 		if(otheramount!=null) {
 			this.minAmount=otheramount;
+			this.withdrawl.setMinAmount(otheramount);
 		}
 		this.otheramount = otheramount;
 	}
@@ -187,8 +188,11 @@ public class Settlement {
 		return cycleDesc;
 	}
 	public void setCycleDesc(String cycleDesc) {
-		this.withdrawl.setCycleDesc(cycleDesc);
-		this.cycleDesc = cycleDesc;
+		
+			this.withdrawl.setCycleDesc(cycleDesc);
+			this.cycleDesc = cycleDesc;
+		
+		
 	}
 	public String getWithdrawalFee() {
 		return withdrawalFee;

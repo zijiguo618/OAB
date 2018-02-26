@@ -76,19 +76,7 @@ public class BasicinfoController {
 		basicinfo.setCityCode(basiccity[1]);
 		basicinfo.setCityName(basiccity[0]);
 		}
-	
-		
-//		if (result.hasErrors()) {
-//			System.out.println(result.getAllErrors().toString());
-//		List<ObjectError> errors= result.getAllErrors();
-//		String errormessage="";
-//			for(ObjectError obj: errors) {
-//				errormessage=obj.getDefaultMessage();
-//			}
-//			session.setAttribute("errormessage", errormessage);
-//			return new ModelAndView("redirect:/basicinfo");
-//		}
-	
+
 		session.setAttribute("basicinfo", basicinfo);
 		modelAndView.setViewName("redirect:/products");
 		System.out.println(basicinfo.toString());
@@ -122,7 +110,8 @@ public class BasicinfoController {
 		db.updateuseritem(applicationID, "mercode", merCode);
 		session.setAttribute("merCode", merCode);
 		try {
-		
+			db.insert2basic(applicationID, basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
+
 		}catch(Exception e) {
 			db.update2basic(applicationID, basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
 			

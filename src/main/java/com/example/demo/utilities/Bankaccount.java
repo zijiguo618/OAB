@@ -26,6 +26,7 @@ public class Bankaccount {
 	private String swiftCode;
 	private String routingNumber;
 	private String accountCurrency;
+	private String accountHolder;
 	private String sortcode;
 	private String merCode;
 	public String getCountryName() {
@@ -80,6 +81,7 @@ public class Bankaccount {
 		return fullName;
 	}
 	public void setFullName(String fullName) {
+		this.accountHolder=fullName;
 		this.fullName = fullName;
 	}
 	public String getPhoneNumber() {
@@ -148,6 +150,13 @@ public class Bankaccount {
 	}
 	public void setMerCode(String merCode) {
 		this.merCode = merCode;
+	}
+	
+	public String getAccountHolder() {
+		return accountHolder;
+	}
+	public void setAccountHolder(String accountHolder) {
+		this.accountHolder = accountHolder;
 	}
 	@Override
 	public String toString() {

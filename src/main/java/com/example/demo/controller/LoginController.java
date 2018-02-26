@@ -82,6 +82,7 @@ public class LoginController implements ErrorController{
 		}else if(pass.equals(Login.getPassword())){
 //			if(pass.equals(md5.getMD5(Login.getPassword()))){
 			session.setAttribute("applicationID", applicationid);
+			System.out.println(applicationid);
 			return modelAndView;
 		}else {
 			System.out.println("incorrect");

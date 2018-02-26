@@ -79,6 +79,12 @@ public class SettlementController {
 			Settlement.setCityCode(basiccity[1]);
 			Settlement.setCityName(basiccity[0]);
 		}
+		if(Settlement.getCycleDesc().equals("1")) {
+			Settlement.setWithdrawalWay("AMOUNT");
+			Settlement.setCycleDesc(null);
+			Settlement.setMinAmount("1");
+		}
+		
 		if (Settlement.getCountryName().equals("United States")) {
 			System.out.println("USA");
 			Settlement.setWithdrawalFee("0.3");
