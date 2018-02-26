@@ -3,7 +3,9 @@ package com.example.demo.utilities;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -31,9 +33,12 @@ public class Basicinfo {
 //		"merchantProperty": "CORPORATION","website":"https://nihaopay.com",
 //		"merchantType":"COMPANYACCOUNT","mcc":"0000"}
 	DB db;
+	@NotEmpty(message = "Please enter the Company Legal Name.")
 	private String abbreviation;
+	@NotEmpty(message = "Please enter the Company DBA Name.")
 	private String name;
-	@NotEmpty(message = "Please enter the email of Contoctor.")
+	@NotEmpty(message = "Please enter your Email address.")
+	@Email(message = "Your email address is incorrect.")
 	private String contactEmail; // 联系人电子邮箱
 	private String merCode;
 	private String countryName;
@@ -42,17 +47,21 @@ public class Basicinfo {
 	private String countryCode;
 	private String stateCode;
 	private String cityCode;
+	
 	private String website="https://nihaopay.com";
 	private String branchId ="a2532b43-cd01-46bf-bbdb-57c3bd16dcb2";
 	private String merchantProperty= "CORPORATION";
 	private String merchantType="COMPANYACCOUNT";
 	private String mcc= "0000";
+	@NotEmpty(message = "Please select the Industry.")
 	private String industry;
+	@NotEmpty(message = "Please enter the Contact Tittle.")
 	private String contacttittle;
+	@NotEmpty(message = "Please enter the Description of your business.")
 	private String comments; // 商户备注信息
-	@NotEmpty()
+	@NotEmpty(message = "Please enter the Tax ID")
 	private String FederalID;
-	@NotEmpty(message = "Please enter your mailaddress.")
+	@NotEmpty(message = "Please enter your Company address.")
 	private String streetName1;
 	private String streetName2;
 	@NotEmpty(message = "Please enter Contactor.")
@@ -70,22 +79,21 @@ public class Basicinfo {
 
 	public Basicinfo getbasicinfo(int ID) throws ClassNotFoundException, SQLException {
 		db=new DB();		
-		this.name=db.getitem("name", ID);
-		this.abbreviation=db.getitem("abbreviation", ID);
-		this.contactEmail=db.getitem("contactEmail", ID);
-		this.contacttittle=db.getitem("tittle", ID);
-		this.comments=db.getitem("comments", ID);
-		this.FederalID=db.getitem("FederalID", ID);
-		this.contactPerson=db.getitem("contactPerson", ID);
-		this.contactPhone=db.getitem("contactPhone", ID);
-		this.industry=db.getitem("industry", ID);
-		this.streetName1=db.getitem("streetName1", ID);
-		this.streetName2=db.getitem("streetName2", ID);
-		this.contacttittle=db.getitem("contacttittle", ID);
-		this.countryName=db.getitem("countryName", ID)+","+db.getitem("countryCode", ID);
-		this.stateName=db.getitem("stateName", ID)+","+db.getitem("stateCode", ID);
-
-		this.cityName=db.getitem("cityName", ID)+","+db.getitem("cityCode", ID);
+		this.name=db.getitem("name", ID,"Basicinfo");
+		this.abbreviation=db.getitem("abbreviation", ID,"Basicinfo");
+		this.contactEmail=db.getitem("contactEmail", ID,"Basicinfo");
+		this.contacttittle=db.getitem("contacttittle", ID,"Basicinfo");
+		this.comments=db.getitem("comments", ID,"Basicinfo");
+		this.FederalID=db.getitem("FederalID", ID,"Basicinfo");
+		this.contactPerson=db.getitem("contactPerson", ID,"Basicinfo");
+		this.contactPhone=db.getitem("contactPhone", ID,"Basicinfo");
+		this.industry=db.getitem("industry", ID,"Basicinfo");
+		this.streetName1=db.getitem("streetName1", ID,"Basicinfo");
+		this.streetName2=db.getitem("streetName2", ID,"Basicinfo");
+		
+		this.countryName=db.getitem("countryName", ID,"Basicinfo")+","+db.getitem("countryCode", ID,"Basicinfo");
+		this.stateName=db.getitem("stateName", ID,"Basicinfo")+","+db.getitem("stateCode", ID,"Basicinfo");
+		this.cityName=db.getitem("cityName", ID,"Basicinfo")+","+db.getitem("cityCode", ID,"Basicinfo");
 		
 		db.close();
 		System.out.println(this.toString());

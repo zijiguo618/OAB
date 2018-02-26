@@ -14,15 +14,14 @@ public class Bankaccount {
 	private String cityName;
 	private String cityCode;
 	private String zipCode;
-	private String bankstreetName1;
+	private String streetName1="null";
 	private String fullName;
-	private String phoneNumber;
-	private String bankCode;
+	private String phoneNumber="000000000";
+	private String bankCode="0";
 	private String bankName;
-	private String bankBranch;
+	private String bankBranch="0000";
 //	 -- INDIVIDUALACCOUNT,COMPANYACCOUNT,GROUP;
 	private String accountType="COMPANYACCOUNT";
-	private String accountHolder;
 	private String accountNumber;
 	private String swiftCode;
 	private String routingNumber;
@@ -71,11 +70,11 @@ public class Bankaccount {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	public String getBankstreetName1() {
-		return bankstreetName1;
+	public String getStreetName1() {
+		return streetName1;
 	}
-	public void setBankstreetName1(String bankstreetName1) {
-		this.bankstreetName1 = bankstreetName1;
+	public void setStreetName1(String bankstreetName1) {
+		this.streetName1 = bankstreetName1;
 	}
 	public String getFullName() {
 		return fullName;
@@ -113,12 +112,7 @@ public class Bankaccount {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
-	public String getAccountHolder() {
-		return accountHolder;
-	}
-	public void setAccountHolder(String accountHolder) {
-		this.accountHolder = accountHolder;
-	}
+	
 	public String getAccountNumber() {
 		return accountNumber;
 	}
@@ -149,19 +143,19 @@ public class Bankaccount {
 	public void setSortcode(String sortcode) {
 		this.sortcode = sortcode;
 	}
-	public String getMercode() {
+	public String getMerCode() {
 		return merCode;
 	}
-	public void setMercode(String mercode) {
-		this.merCode = mercode;
+	public void setMerCode(String merCode) {
+		this.merCode = merCode;
 	}
 	@Override
 	public String toString() {
 		return "Bankaccount [countryName=" + countryName + ", countryCode=" + countryCode + ", stateName=" + stateName
 				+ ", stateCode=" + stateCode + ", cityName=" + cityName + ", cityCode=" + cityCode + ", zipCode="
-				+ zipCode + ", bankstreetName1=" + bankstreetName1 + ", fullName=" + fullName + ", phoneNumber=" + phoneNumber
+				+ zipCode +  ", fullName=" + fullName + ", phoneNumber=" + phoneNumber
 				+ ", bankCode=" + bankCode + ", bankName=" + bankName + ", bankBranch=" + bankBranch + ", accountType="
-				+ accountType + ", accountHolder=" + accountHolder + ", accountNumber=" + accountNumber + ", swiftCode="
+				+ accountType +  ", accountNumber=" + accountNumber + ", swiftCode="
 				+ swiftCode + ", routingNumber=" + routingNumber + ", accountCurrency=" + accountCurrency
 				+ ", sortcode=" + sortcode + ", mercode=" + merCode + "]";
 	}

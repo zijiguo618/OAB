@@ -21,6 +21,11 @@ public class Settlement {
 	private String withdrawalFee;
 //	-- MERCHANT, NIHAOPAY, AGENT;
 	private String feePayer ="MERCHANT"; 
+
+	
+	
+	
+
 	private String countryName;
 	private String countryCode;
 	private String stateName;
@@ -28,7 +33,7 @@ public class Settlement {
 	private String cityName;
 	private String cityCode;
 	private String zipCode;
-	private String bankstreetName1;
+	private String streetName1="0000";
 	private String otheramount;
 	private String bankphoneNumber="000000000";
 	private String bankCode="000000000";
@@ -44,46 +49,87 @@ public class Settlement {
 	private String sortcode;
 	private Bankaccount bank = new Bankaccount();
 	
-	public Settlement getsettlement(int ID) {
-		DB db;
-		try {
-			db = new DB();
-			this.merCode=db.getitem("merCode", ID);
-			this.withdrawalWay=db.getitem("withdrawalWay", ID);
-			this.minAmount=db.getitem("minAmount", ID);
-			this.cycleDesc=db.getitem("cycleDesc", ID);
-			this.bankName=db.getitem("bankName", ID);
-			this.countryCode=db.getitem("countryCode", ID);
-			this.countryName=db.getitem("countryName", ID)+","+this.countryCode;
-			
-			this.stateCode=db.getitem("stateCode", ID);
-			this.stateName=db.getitem("stateName", ID)+","+this.stateCode;
-			this.cityName=db.getitem("cityName", ID);
-			this.cityCode=db.getitem("cityCode", ID)+","+this.cityCode;
-			this.bankstreetName1=db.getitem("bankstreetName1", ID);
-			this.otheramount=db.getitem("otheramount", ID);
-			this.accountHolder=db.getitem("accountHolder", ID);
-			this.accountNumber=db.getitem("accountNumber", ID);
-			this.swiftCode=db.getitem("swiftCode", ID);
-			this.routingNumber=db.getitem("routingNumber", ID);
-			this.accountCurrency=db.getitem("accountCurrency", ID);
-			this.sortcode=db.getitem("sortcode", ID);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		return this;
+	private withdrawl withdrawl=new withdrawl();
+	
+
+//
+//
+//	public Settlement getsettlement(int ID) {
+//		DB db;
+//		try {
+//			db = new DB();
+//			this.merCode=db.getitem("merCode", ID,"Settlement");
+//			this.withdrawalWay=db.getitem("withdrawalWay", ID,"Settlement");
+//			this.minAmount=db.getitem("minAmount", ID,"Settlement");
+//			this.cycleDesc=db.getitem("cycleDesc", ID,"Settlement");
+//			this.bankName=db.getitem("bankName", ID,"Settlement");
+//			this.countryCode=db.getitem("countryCode", ID,"Settlement");
+//			this.countryName=db.getitem("countryName", ID,"Settlement")+","+this.countryCode;
+//			this.stateCode=db.getitem("stateCode", ID,"Settlement");
+//			this.stateName=db.getitem("stateName", ID,"Settlement")+","+this.stateCode;
+//			this.cityName=db.getitem("cityName", ID,"Settlement");
+//			this.cityCode=db.getitem("cityCode", ID,"Settlement")+","+this.cityCode;
+//			this.streetName1=db.getitem("bankstreetName1", ID,"Settlement");
+//			this.otheramount=db.getitem("otheramount", ID,"Settlement");
+//			this.accountHolder=db.getitem("accountHolder", ID,"Settlement");
+//			this.accountNumber=db.getitem("accountNumber", ID,"Settlement");
+//			this.swiftCode=db.getitem("swiftCode", ID,"Settlement");
+//			this.routingNumber=db.getitem("routingNumber", ID,"Settlement");
+//			this.accountCurrency=db.getitem("accountCurrency", ID,"Settlement");
+//			this.sortcode=db.getitem("sortcode", ID,"Settlement");
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		
+//		
+//		
+//		return this;
+//	}
+//	
+	
+	
+	public String getBankphoneNumber() {
+		return bankphoneNumber;
 	}
-	
-	
-	
+
+
+
+	public void setBankphoneNumber(String bankphoneNumber) {
+		this.bankphoneNumber = bankphoneNumber;
+		this.bank.setPhoneNumber(bankphoneNumber);
+	}
+
+
+
+	public withdrawl getWithdrawl() {
+		return withdrawl;
+	}
+
+
+
+	public void setWithdrawl(withdrawl withdrawl) {
+		this.withdrawl = withdrawl;
+	}
+
+
+
+	public String getStreetName1() {
+		return streetName1;
+	}
+
+
+
+	public void setStreetName1(String streetName1) {
+		this.streetName1 = streetName1;
+	}
+
+
+
 	public String getOtheramount() {
 		return otheramount;
 	}
@@ -107,11 +153,12 @@ public class Settlement {
 		this.sortcode = sortcode;
 	}
 	public String getMerCode() {
-		
+	
 		return merCode;
 	}
 	public void setMerCode(String merCode) {
-		this.bank.setMercode(merCode);
+		this.bank.setMerCode(merCode);
+		this.withdrawl.setMerCode(merCode);
 		this.merCode = merCode;
 	}
 	public String getWithdrawalWay() {
@@ -119,30 +166,35 @@ public class Settlement {
 	}
 	public void setWithdrawalWay(String withdrawalWay) {
 		this.withdrawalWay = withdrawalWay;
+		this.withdrawl.setWithdrawalWay(withdrawalWay);
 	}
 	public String getMinAmount() {
 		return minAmount;
 	}
 	public void setMinAmount(String minAmount) {
-		System.out.println(minAmount);
+		this.withdrawl.setMinAmount(minAmount);
+	
 		this.minAmount = minAmount;
 	}
 	public String getReserveAmount() {
 		return reserveAmount;
 	}
 	public void setReserveAmount(String reserveAmount) {
+	
 		this.reserveAmount = reserveAmount;
 	}
 	public String getCycleDesc() {
 		return cycleDesc;
 	}
 	public void setCycleDesc(String cycleDesc) {
+		this.withdrawl.setCycleDesc(cycleDesc);
 		this.cycleDesc = cycleDesc;
 	}
 	public String getWithdrawalFee() {
 		return withdrawalFee;
 	}
 	public void setWithdrawalFee(String withdrawalFee) {
+		this.withdrawl.setWithdrawalFee(withdrawalFee);
 		this.withdrawalFee = withdrawalFee;
 	}
 	public String getFeePayer() {
@@ -202,14 +254,7 @@ public class Settlement {
 		this.bank.setZipCode(zipCode);
 		this.zipCode = zipCode;
 	}
-	public String getBankstreetName1() {
-		return bankstreetName1;
-	}
-	public void setBankstreetName1(String bankstreetName1) {
-		this.bank.setBankstreetName1(bankstreetName1);
-		this.bankstreetName1 = bankstreetName1;
-	}
-
+	
 	
 	public String getPhoneNumber() {
 		return bankphoneNumber;
@@ -250,7 +295,7 @@ public class Settlement {
 		return accountHolder;
 	}
 	public void setAccountHolder(String accountHolder) {
-		this.bank.setAccountHolder(accountHolder);
+		this.bank.setFullName(accountHolder);
 		this.accountHolder = accountHolder;
 	}
 	public String getAccountNumber() {
@@ -271,8 +316,13 @@ public class Settlement {
 		return routingNumber;
 	}
 	public void setRoutingNumber(String routingNumber) {
+		if(routingNumber=="") {
+			this.bank.setRoutingNumber(null);
+			this.routingNumber = routingNumber;
+		}else {
 		this.bank.setRoutingNumber(routingNumber);
 		this.routingNumber = routingNumber;
+		}
 	}
 	public String getAccountCurrency() {
 		return accountCurrency;
@@ -290,7 +340,7 @@ public class Settlement {
 				+ ", reserveAmount=" + reserveAmount + ", cycleDesc=" + cycleDesc + ", withdrawalFee=" + withdrawalFee
 				+ ", feePayer=" + feePayer + ", countryName=" + countryName + ", countryCode=" + countryCode
 				+ ", stateName=" + stateName + ", stateCode=" + stateCode + ", cityName=" + cityName + ", cityCode="
-				+ cityCode + ", zipCode=" + zipCode + ", bankstreetName1=" + bankstreetName1 + ", otheramount="
+				+ cityCode + ", zipCode=" + zipCode +  ", otheramount="
 				+ otheramount + ", bankphoneNumber=" + bankphoneNumber + ", bankCode=" + bankCode + ", bankName="
 				+ bankName + ", bankBranch=" + bankBranch + ", accountType=" + accountType + ", accountHolder="
 				+ accountHolder + ", accountNumber=" + accountNumber + ", swiftCode=" + swiftCode + ", routingNumber="

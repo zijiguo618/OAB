@@ -56,28 +56,28 @@
 						<div class="form-group">
 						<label for="agreement" >Terms and Services</label>
 						<object data="NihaoPay_Terms.pdf" type="application/pdf" width="100%" height="1100px"></object>
-						<input type="checkbox" name="readandagree" value="readandagree" />
+						<input type="checkbox" name="readandagree" id="readandagree" value="readandagree" onchange='gatewayinappmonitor()'/>
 						<label for="read" >Has read term carefully and agree to accept terms</label>
 						<br/><br />
 						<label for="Signature" >Signature</label>
-						<input id="signatureinp" type="text" th:field="*{signature}"/>
+						<input id="signatureinp" type="text" th:field="*{signature}" />
 						<label for="today" >Date:</label>
-						<input type="date" id="currentdate" th:field="*{currentdate}" />
+						<input type="date" id="currentdate" th:field="*{currentdate}"  />
 						
 						</div>
 						
 						<div class="form-group">
-							<center><input type="submit" value="Submit" class="btn btn-primary"></center>
+							<center><input type="submit" value="Submit" id="submitbutton" class="btn btn-primary"></center>
 						</div>
 						<script src="js/bootstrap.js"></script>
 	<script>
-			var message = "[[${online}]]";
-			
-			if(message=="0"){
-				document.getElementById("logo").style.display="none";
-				document.getElementById("store").style.display="none";
+	document.getElementById("submitbutton").disabled=true;
+			function gatewayinappmonitor(){
+				var readandagree=document.getElementById("readandagree");
+				var buttonsubmit=document.getElementById("submitbutton");
+				if(readandagree.checked)
+					buttonsubmit.disabled=false;
 			}
-			
 			</script>
 					</form>
 					<!-- END Sign In Form -->

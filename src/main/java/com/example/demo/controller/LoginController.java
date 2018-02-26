@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.service.DB;
 import com.example.demo.service.EmailService;
 import com.example.demo.service.MD5;
+import com.example.demo.service.connection;
 import com.example.demo.utilities.Login;
 import com.example.demo.utilities.Mail;
 
@@ -59,6 +60,7 @@ public class LoginController implements ErrorController{
 	
 		db=new DB();
 		modelAndView.setViewName("redirect:/basicinfo");
+//		modelAndView.setViewName("redirect:/products");
 		HttpSession session = request.getSession();  
 		session.setAttribute("errormessage", "0");
 		session.setAttribute("Login",Login);  
@@ -66,6 +68,8 @@ public class LoginController implements ErrorController{
 		int applicationid= db.getitemsidfromuser(Login.getEmail());
 		String pass=db.getpass(Login.getEmail());
 //		System.out.println("pas:"+pass);
+		connection con =new connection();
+		
 		String stage =db.geteuserstage(applicationid);
 		if(stage==null) {
 			session.setAttribute("errormessage", "3");

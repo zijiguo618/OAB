@@ -52,7 +52,7 @@
 
 					<!-- Start Sign In Form -->
 					<form action="#" class="fh5co-form animate-box" data-animate-effect="fadeIn" th:action="@{/settlement}" th:object="${settlement}" method="post">
-						<h2>Settlement  <a href="http://nihaopay.com"><img class="centerImage" src="logo.jpg" alt="Logo" width="60"height="60" style="float: right;" /></a></h2>
+						<h2>Settlement </h2>
 						<div class="form-group">
 						<label for="withdoaloption" >Withdrawl Option:</label><br/>
 						<select id="withdoaloptions" name="withdoaloptions" class="form-control" 
@@ -170,25 +170,24 @@
 		    			 		document.getElementById("sortcodeinput").style.display="none";
 							 document.getElementById('swiftinput').value='';
 	    			    			 document.getElementById("swiftinput").style.display="none";
-	    			    	 		 document.getElementById("routingnumberinput").style.display="block";
+	    			    	 		 document.getElementById("routinginput").style.display="block";
 						}else{
 							alert("Settlement Fee out of USA is $25");
 							 document.getElementById('sortcodeinput').value='';
 			    			 	document.getElementById("sortcodeinput").style.display="block";
-							 document.getElementById('routinginput').value='';
-			    			 	document.getElementById("routinginput").style.display="block";
-			    	 		 	document.getElementById("routingnumberinput").style.display="none";
+							 document.getElementById('swiftinput').value='';
+			    			 	document.getElementById("swiftinput").style.display="block";
+			    			 	document.getElementById("routinginput").value=null;
+			    	 		 	document.getElementById("routinginput").style.display="none";
 						}
 					});
 				</script>
-				<script>
-			var message = "[[${currencysize}]]";
-			if(message=="1"){
-		 	alert("Please select a Primary account, You're welcome to add more bank accounts in TMS"); 
-		 	}else{
-		 		alert(message);
+					
+							<script>
+			var message = "[[${errormessage}]]";
+			if(message!=null){
+		 	alert(message); 
 		 	}
-			
 			</script>
 					</form>
 					<!-- END Sign In Form -->

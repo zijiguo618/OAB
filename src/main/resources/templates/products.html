@@ -88,9 +88,9 @@
 							<label for="Onlinel" > Online </label>
 							<br/>
 							<div class="stickinline" style="float:left;" >
-								<input id="PCcheck" type="checkbox" name="PC" onchange='gatewayPCmonitor()' style="height:23px;"> PC  </input>
+								<input id="PCcheck" type="checkbox" th:field="*{productName}" value="UP_EBANK_PAY" name="PC" onchange='gatewayPCmonitor()'> PC  </input>
 							</div>
-							<input id="websiteinp" type="txt" th:field="*{website}" placeholder="Website URL" style="float:left; margin-left:10px;" /><br/>
+							<input id="websiteinp" type="text" th:field="*{website}" placeholder="Website URL" style="float:left; margin-left:10px; height:23px;" /><br/>
 							
 							
 							<div class="stickinline" style="float:left;" >
@@ -103,7 +103,7 @@
 							<div  id="IOStext" style="float:left;" >IOS
 							</div>
 							<div class="stickinline" style="float:left;  margin-left:10px;">
-							<input id="Android" type="checkbox" th:field="*{cardOrgs}" value="UP_EBANK_PAY" name="Android" onclick='gatewayinappmonitor()'> </input>
+							<input id="Android" type="checkbox" th:field="*{productName}" value="UP_EBANK_PAY" name="Android" onclick='gatewayinappmonitor()'> </input>
 							</div>
 							<div id="androidtext" style="float:left;">Android
 							</div>
@@ -140,7 +140,7 @@
 
 						<div class="form-group">
 
-							<center><input type="submit" value="Save" class="btn btn-primary"></center>
+							<center><input type="submit" value="Save" class="btn btn-primary" onclick='submitfunction()'></center>
 						</div>
 						<script src="js/bootstrap.js"></script>
 	
@@ -149,6 +149,13 @@
 									'mailaddress_state', 'mailaddress_city');
 						</script>
 						<script>
+						 function submitfunction(){
+							 var unionpayid=document.getElementById("UnionPay");
+							if((unionpayid.checked==true)&&((document.getElementById("QRCode").checked||document.getElementById("Wallet").checked||document.getElementById("POS").checked)==true)){
+								alert("UnionPay does not support Offline Products");
+							}
+						} 
+						
 						
 						function myFunction() {
 							document.getElementById("UnionPay").disabled = true;
@@ -285,9 +292,11 @@ function gatewayPCmonitor(){
 	}
 	if(pcid.checked==true){
 		document.getElementById("websiteinp").readOnly = false;
+		document.getElementById("websiteinp").value="https://";
 		document.getElementById("websiteinp").style.display="block";
 	}else{
 		document.getElementById("websiteinp").readOnly = true;
+		document.getElementById("websiteinp").value="";
 		document.getElementById("websiteinp").style.display="none";
 	}
 }
@@ -318,8 +327,10 @@ function gatewayinappmonitor(){
 	}
 }
 function gatewaymonitor(){
-	if(document.getElementById("Wallet").checked==true){
+	var flag=0;
+	if(document.getElementById("Wallet").checked==0&&flag){
 		alert("Download Android/IOS Wallet in Google/Apple Store");
+		flag=1;
 	}
 }
 function gatewayplatformmonitor(){
@@ -366,7 +377,13 @@ function gatewayplatformmonitor(){
 		
 		
 				</script>
-
+				<script>
+			var message = "[[${errormessage}]]";
+			if(message!=null){
+		 	alert(message); 
+		 	}
+			
+			</script>
 					</form>
 					<!-- END Sign In Form -->
 

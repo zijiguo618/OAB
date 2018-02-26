@@ -40,7 +40,8 @@ public class SubmissionController {
 		DB db= new DB();
 		
 		if(result.hasErrors()) {
-			return "submission";
+			
+			return "redirect:/submission";
 		}
 		db.updateuserstage((int)session.getAttribute("applicationID"), "done");
 //		DB db =new DB();

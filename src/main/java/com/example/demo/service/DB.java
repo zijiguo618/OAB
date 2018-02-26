@@ -34,9 +34,9 @@ public class DB {
 		}
 		return -1;
 	}
-	public String getitem( String col, int ID) throws SQLException{
+	public String getitem( String col, int ID,String table) throws SQLException{
 		Statement st = conn.createStatement();
-		st.executeQuery("SELECT "+col+" FROM application where applicationid= "+ID); 
+		st.executeQuery("SELECT "+col+" FROM "+table+" where ID= "+ID); 
 		ResultSet rs = st.getResultSet();
 		while (rs.next()) {
 		   return  rs.getString(1);
@@ -71,7 +71,7 @@ public class DB {
 	public int getitemsidfromuser( String col) throws SQLException{
 		Statement st = conn.createStatement();
 		System.out.println("DB--------");
-		st.executeQuery("SELECT user_id FROM User where email= '"+col+"'"); 
+		st.executeQuery("SELECT ID FROM User where email= '"+col+"'"); 
 		ResultSet rs = st.getResultSet();
 		while (rs.next()) {
 		   return  rs.getInt(1);
@@ -99,17 +99,40 @@ public class DB {
 	}
 //	update user stage
 public int updateuserstage(int id, String value) throws SQLException{
-		String sql = " update User set stage = '"+value + "' where user_id ="+id;
+		String sql = " update User set stage = '"+value + "' where ID ="+id;
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		int updateEXP_done = st.executeUpdate();
 		st.closeOnCompletion();
 		return updateEXP_done;
 	}
+
+//update user stage
+public int updateuseritem(String applicationID,String col, String value) throws SQLException{
+	String sql = " update User set "+col+" = '"+value + "' where ID ="+applicationID;
+	PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
+	int updateEXP_done = st.executeUpdate();
+	st.closeOnCompletion();
+	return updateEXP_done;
+}
+
+
+//get user stage
+public String selectfromtable(String id,String col, String table) throws SQLException{
+	Statement st = conn.createStatement();
+	st.executeQuery("SELECT "+col+" FROM "+table+" where ID= "+id); 
+	ResultSet rs = st.getResultSet();
+	while (rs.next()) {
+		  return  rs.getString(1);
+	}
+	return null;
+}
+
+
 	
 	//get user stage
 public String geteuserstage(int id) throws SQLException{
 	Statement st = conn.createStatement();
-	st.executeQuery("SELECT stage FROM User where user_id= "+id); 
+	st.executeQuery("SELECT stage FROM User where ID= "+id); 
 	ResultSet rs = st.getResultSet();
 	while (rs.next()) {
 		  return  rs.getString(1);
@@ -117,6 +140,18 @@ public String geteuserstage(int id) throws SQLException{
 	return null;
 }
 	
+//get user stage
+public String geteusermercode(String id) throws SQLException{
+Statement st = conn.createStatement();
+st.executeQuery("SELECT mercode FROM User where ID= "+id); 
+ResultSet rs = st.getResultSet();
+while (rs.next()) {
+	  return  rs.getString(1);
+}
+return null;
+}
+
+
 	public int insert2application(String target, String str) {
 
 		String sql = "insert into application ("+ target+") value ('"+str+"');";
@@ -163,7 +198,7 @@ public String geteuserstage(int id) throws SQLException{
 	
 	//insert to table basic
 	public int insert2basic(String idBasicinfo,String name,String abbreviation,String contactEmail,String merCode,String countryName,String stateName,String cityName,String countryCode,String stateCode,String cityCode,String industry,String contacttittle,String comments,String FederalID,String streetName1,String streetName2,String contactPerson,String contactPhone) throws SQLException{
-		String sql = " insert into Basicinfo (idBasicinfo,name,abbreviation,contactEmail,merCode,countryName,stateName,cityName,countryCode,stateCode,cityCode,industry,contacttittle,comments,FederalID,streetName1,streetName2,contactPerson,contactPhone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+		String sql = " insert into Basicinfo (ID,name,abbreviation,contactEmail,merCode,countryName,stateName,cityName,countryCode,stateCode,cityCode,industry,contacttittle,comments,FederalID,streetName1,streetName2,contactPerson,contactPhone) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		System.out.println("update basicinfo");
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,idBasicinfo);
@@ -194,7 +229,7 @@ public String geteuserstage(int id) throws SQLException{
 	}
 	
 	public int update2basic(String idBasicinfo,String name,String abbreviation,String contactEmail,String merCode,String countryName,String stateName,String cityName,String countryCode,String stateCode,String cityCode,String industry,String contacttittle,String comments,String FederalID,String streetName1,String streetName2,String contactPerson,String contactPhone) throws SQLException{
-		String sql = " update  Basicinfo set name=?,abbreviation=?,contactEmail=?,merCode=?,countryName=?,stateName=?,cityName=?,countryCode=?,stateCode=?,cityCode=?,industry=?,contacttittle=?,comments=?,FederalID=?,streetName1=?,streetName2=?,contactPerson=?,contactPhone=? where idBasicinfo="+idBasicinfo;
+		String sql = " update  Basicinfo set name=?,abbreviation=?,contactEmail=?,merCode=?,countryName=?,stateName=?,cityName=?,countryCode=?,stateCode=?,cityCode=?,industry=?,contacttittle=?,comments=?,FederalID=?,streetName1=?,streetName2=?,contactPerson=?,contactPhone=? where ID="+idBasicinfo;
 		System.out.println("update basicinfo");
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,name);
@@ -306,7 +341,7 @@ public String geteuserstage(int id) throws SQLException{
 	public int insert2settlement(String idSettlement,String withdrawalWay,String minAmount,String cycleDesc,String withdrawalFee,String countryName,String countryCode,String stateName,String stateCode,String cityName,String cityCode,String zipCode,String bankstreetName1,String otheramount,String bankName,String accountHolder,String accountNumber,String swiftCode,String routingNumber,String accountCurrency,String sortcode) throws SQLException{
 //		INSERT INTO `onlineapplicationbeta`.`Settlement` (`idSettlement`, `withdrawalWay`, `minAmount`, `cycleDesc`, `withdrawalFee`, `countryName`, `countryCode`, `stateName`, `stateCode`, `cityName`, `cityCode`, `zipCode`, `bankstreetName1`, `otheramount`, `bankName`, `accountHolder`, `accountNumber`, `swiftCode`, `routingNumber`, `accountCurrency`) VALUES ('0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
-		String sql = " INSERT INTO Settlement  (idSettlement, withdrawalWay, minAmount, cycleDesc, withdrawalFee, countryName, countryCode, stateName, stateCode, cityName, cityCode, zipCode, bankstreetName1, otheramount, bankName, accountHolder, accountNumber, swiftCode, routingNumber, accountCurrency,sortcode) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?);";
+		String sql = " INSERT INTO Settlement  (ID, withdrawalWay, minAmount, cycleDesc, withdrawalFee, countryName, countryCode, stateName, stateCode, cityName, cityCode, zipCode, bankstreetName1, otheramount, bankName, accountHolder, accountNumber, swiftCode, routingNumber, accountCurrency,sortcode) VALUES (?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?, ?, ?, ?, ?,?);";
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,idSettlement);
 		st.setString(2,withdrawalWay);
@@ -340,7 +375,7 @@ public String geteuserstage(int id) throws SQLException{
 	public int update2settlement(String idSettlement,String withdrawalWay,String minAmount,String cycleDesc,String withdrawalFee,String countryName,String countryCode,String stateName,String stateCode,String cityName,String cityCode,String zipCode,String bankstreetName1,String otheramount,String bankName,String accountHolder,String accountNumber,String swiftCode,String routingNumber,String accountCurrency,String sortcode) throws SQLException{
 //		INSERT INTO `onlineapplicationbeta`.`Settlement` (`idSettlement`, `withdrawalWay`, `minAmount`, `cycleDesc`, `withdrawalFee`, `countryName`, `countryCode`, `stateName`, `stateCode`, `cityName`, `cityCode`, `zipCode`, `bankstreetName1`, `otheramount`, `bankName`, `accountHolder`, `accountNumber`, `swiftCode`, `routingNumber`, `accountCurrency`) VALUES ('0', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
-		String sql = " Update Settlement set withdrawalWay=?, minAmount=?, cycleDesc=?, withdrawalFee=?, countryName=?, countryCode=?, stateName=?, stateCode=?, cityName=?, cityCode=?, zipCode=?, bankstreetName1=?, otheramount=?, bankName=?, accountHolder=?, accountNumber=?, swiftCode=?, routingNumber=?, accountCurrency=?,sortcode=? where idSettlement="+idSettlement;
+		String sql = " Update Settlement set withdrawalWay=?, minAmount=?, cycleDesc=?, withdrawalFee=?, countryName=?, countryCode=?, stateName=?, stateCode=?, cityName=?, cityCode=?, zipCode=?, bankstreetName1=?, otheramount=?, bankName=?, accountHolder=?, accountNumber=?, swiftCode=?, routingNumber=?, accountCurrency=?,sortcode=? where ID="+idSettlement;
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,withdrawalWay);
 		st.setString(2,minAmount);
@@ -439,7 +474,7 @@ public String geteuserstage(int id) throws SQLException{
 	public int insert2product(String id, String productName, String cardOrgs,String currencys,String easyPay,String products) throws SQLException{
 		String sql = "";
 		
-		sql = " insert into Products (idProducts,productName, cardOrgs,currencys,easyPay,products) VALUES (?,?,?,?,?,?);";
+		sql = " insert into Products (ID,productName, cardOrgs,currencys,easyPay,products) VALUES (?,?,?,?,?,?);";
 
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,id);		
@@ -460,7 +495,7 @@ public String geteuserstage(int id) throws SQLException{
 	public int update2product(String id, String productName, String cardOrgs,String currencys,String easyPay,String products) throws SQLException{
 		String sql = "";
 		
-		sql = " update Products set productName=?, cardOrgs=?,currencys=?,easyPay=?,products=? where idProducts ="+id;
+		sql = " update Products set productName=?, cardOrgs=?,currencys=?,easyPay=?,products=? where ID ="+id;
 
 		PreparedStatement st = (PreparedStatement) conn.prepareStatement(sql);
 		st.setString(1,productName);		

@@ -137,7 +137,7 @@ public class UploadController {
     	
 		this.applicationid=(int)session.getAttribute("applicationID");
     		Products obj=(Products)request.getSession().getAttribute("Products");
-    		if(obj.getProductName().contains("UP_EBANK_PAY")) {
+    		if(obj.getProductName().contains("OFFLINE_QRCODE")||obj.getProductName().contains("OFFLINE_POS")) {
     			modelAndView.addObject("online", "1");
     	
     		}else {

@@ -55,21 +55,21 @@
 						<h2>Documents</h2>
 						<div class="form-group">
 						<label for="businesslicense" >Business License</label>
-						<input type="file" name="businessfile"  autocomplete="off" style="font-size: 9px;"/>
+						<input type="file" name="businessfile"  autocomplete="off" style="font-size: 14px;"/>
 						<br/>
 						<label for="issuedidpic" >Owner/CEO/CFO government issued ID</label>
-						<input type="file" name="issuedid"   autocomplete="off"/>
+						<input type="file" name="issuedid"   autocomplete="off" style="font-size: 14px;"/>
 						<br/>
 						<label for="voidedcheckpic" >voided check</label>
-						<input type="file" name="voidedcheck" autocomplete="off"/>
+						<input type="file" name="voidedcheck" autocomplete="off" style="font-size: 14px;"/>
 						<br/>
 						<label for="bankstatementpic" >Business Transaction History / Bank Statement</label>
-						<input type="file" name="bankstatement"  autocomplete="off"/>
+						<input type="file" name="bankstatement"  autocomplete="off" style="font-size: 14px;"/>
 						<br/>
 						<label id="storepictureid" for="files" > Store Picture</label>
-						<input id="instore" type="file" name="files" >In-Store Picture</input>
-						<input id="logo" type="file" name="files" >Logo</input>
-						<input id="store" type="file" name="files" >Store Picture</input>
+						<input id="instore" type="file" name="files" style="font-size: 14px;">In-Store Picture</input>
+						<input id="logo" type="file" name="files"  style="font-size: 14px;">Logo</input>
+						<input id="store" type="file" name="files"  style="font-size: 14px;">Store Picture</input>
 						</div>
 						
 						<div class="form-group">
@@ -77,13 +77,17 @@
 						</div>
 						<script src="bootstrap.js"></script>
 	<script>
+	document.getElementById("storepictureid").style.display="none";
+	document.getElementById("instore").style.display="none";
+	document.getElementById("logo").style.display="none";
+	document.getElementById("store").style.display="none";
 			var message = "[[${online}]]";
-		 	alert(message); 
+		 /* 	alert(message);  */
 			if(message=="1"){
-				document.getElementById("storepictureid").style.display="none";
-				document.getElementById("instore").style.display="none";
-				document.getElementById("logo").style.display="none";
-				document.getElementById("store").style.display="none";
+				document.getElementById("storepictureid").style.display="block";
+				document.getElementById("instore").style.display="block";
+				document.getElementById("logo").style.display="block";
+				document.getElementById("store").style.display="block";
 			}
 			
 			</script>

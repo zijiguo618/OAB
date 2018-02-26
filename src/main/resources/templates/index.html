@@ -79,7 +79,7 @@
 						</div>
 						<div class="form-group">
 							<label for="country" > Contact </label>
-							<input type="text" class="form-control" th:field="*{contactEmail}" placeholder="Primary Contact Email"  />
+							<input type="text" class="form-control" th:field="*{contactEmail}" placeholder="Primary Contact Email (example@ex.com)"  />
 							<input id="contactPhonenumber" type="text" th:field="*{contactPhone}" class="form-control" placeholder="Primary Contact Number"/>
 							<input	type="text" th:field="*{contactPerson}" class="form-control" placeholder="C-Level Contact Name" />
 							<input type="text" th:field="*{contacttittle}" class="form-control" placeholder="Title"/>
@@ -107,7 +107,13 @@
 					});
 				</script>
 						
-						
+							<script>
+			var message = "[[${errormessage}]]";
+			if(message!="0"){
+		 	alert(message); 
+		 	}
+			
+			</script>
 						
 					</form>
 					<!-- END Sign In Form -->
