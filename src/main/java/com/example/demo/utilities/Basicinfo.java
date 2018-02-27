@@ -91,9 +91,9 @@ public class Basicinfo {
 		this.streetName1=db.getitem("streetName1", ID,"Basicinfo");
 		this.streetName2=db.getitem("streetName2", ID,"Basicinfo");
 		
-		this.countryName=db.getitem("countryName", ID,"Basicinfo")+","+db.getitem("countryCode", ID,"Basicinfo");
-		this.stateName=db.getitem("stateName", ID,"Basicinfo")+","+db.getitem("stateCode", ID,"Basicinfo");
-		this.cityName=db.getitem("cityName", ID,"Basicinfo")+","+db.getitem("cityCode", ID,"Basicinfo");
+		this.countryName=db.getitem("countryName", ID,"Basicinfo");
+		this.stateName=db.getitem("stateName", ID,"Basicinfo");
+		this.cityName=db.getitem("cityName", ID,"Basicinfo");
 		
 		db.close();
 		System.out.println(this.toString());

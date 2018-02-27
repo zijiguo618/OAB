@@ -224,6 +224,14 @@
 
 		function securepayunionpaylisetner(){
 			
+			if(document.getElementById("WeChatPay").checked&&(document.getElementById("GBP").checked)){
+				alert("We currently do not support CAD settlement for WechatPay");
+			}
+			if(document.getElementById("WeChatPay").checked&&document.getElementById("CAD").checked){
+				alert("We currently do not support GBP settlement for WechatPay");
+			}
+
+
 			if((document.getElementById("UnionPay").checked ||document.getElementById("AliPay").checked||document.getElementById("WeChatPay").checked)==true){
 				
 				document.getElementById("IOS").disabled = false;
@@ -285,11 +293,11 @@
 				}
 function gatewayPCmonitor(){
 	var pcid=document.getElementById("PCcheck");
-	if((document.getElementById("WeChatPay").checked&&document.getElementById("CAD").checked&&document.getElementById("PCcheck").checked)==true){
-		alert("We currently do not support CAD settlement for WechatPay in PC ");
-	}else if((document.getElementById("WeChatPay").checked&&document.getElementById("GBP").checked&&document.getElementById("PCcheck").checked)==true){
-		alert("We currently do not support GBP settlement for WechatPay in PC");
-	}
+	// if((document.getElementById("WeChatPay").checked&&document.getElementById("CAD").checked&&document.getElementById("PCcheck").checked)==true){
+	// 	alert("We currently do not support CAD settlement for WechatPay in PC ");
+	// }else if((document.getElementById("WeChatPay").checked&&document.getElementById("GBP").checked&&document.getElementById("PCcheck").checked)==true){
+	// 	alert("We currently do not support GBP settlement for WechatPay in PC");
+	// }
 	if(pcid.checked==true){
 		document.getElementById("websiteinp").readOnly = false;
 		document.getElementById("websiteinp").value="https://";

@@ -17756,6 +17756,61 @@ var countryList = [ {
 			"Code" : "YOR"
 		} ]
 	}, {
+		"Name" : "Northern Ireland",
+		"Code" : "NIR",
+		"City" : [ {
+			"Name" : "Belfast",
+			"Code" : "BFS"
+		}, {
+			"Name" : "Derry",
+			"Code" : "DRY"
+		}, {
+			"Name" : "Lisburn",
+			"Code" : "LSB"
+		}, {
+			"Name" : "Newry",
+			"Code" : "NYM"
+		} ]
+	}, {
+		"Name" : "Scotland",
+		"Code" : "SCT",
+		"City" : [ {
+			"Name" : "Aberdeen",
+			"Code" : "ABD"
+		}, {
+			"Name" : "Dundee",
+			"Code" : "DND"
+		}, {
+			"Name" : "Edinburgh",
+			"Code" : "EDH"
+		}, {
+			"Name" : "Glasgow",
+			"Code" : "GLG"
+		}, {
+			"Name" : "Inverness",
+			"Code" : "INV"
+		}, {
+			"Name" : "Stirling",
+			"Code" : "STG"
+		} ]
+	}, {
+		"Name" : "Wales",
+		"Code" : "WLS",
+		"City" : [ {
+			"Name" : "Bangor",
+			"Code" : "BAN"
+		}, {
+			"Name" : "Cardiff",
+			"Code" : "CDF"
+		}, {
+			"Name" : "Newport",
+			"Code" : "NWP"
+		}, {
+			"Name" : "Swansea",
+			"Code" : "SWA"
+		} ]
+	} ]
+},{
 	"Name" : "Afghanistan",
 	"Code" : "093",
 	"State" : [ {
@@ -26948,62 +27003,7 @@ var countryList = [ {
 		"Name" : "Dubai",
 		"Code" : "DU"
 	} ]
-}, {
-		"Name" : "Northern Ireland",
-		"Code" : "NIR",
-		"City" : [ {
-			"Name" : "Belfast",
-			"Code" : "BFS"
-		}, {
-			"Name" : "Derry",
-			"Code" : "DRY"
-		}, {
-			"Name" : "Lisburn",
-			"Code" : "LSB"
-		}, {
-			"Name" : "Newry",
-			"Code" : "NYM"
-		} ]
-	}, {
-		"Name" : "Scotland",
-		"Code" : "SCT",
-		"City" : [ {
-			"Name" : "Aberdeen",
-			"Code" : "ABD"
-		}, {
-			"Name" : "Dundee",
-			"Code" : "DND"
-		}, {
-			"Name" : "Edinburgh",
-			"Code" : "EDH"
-		}, {
-			"Name" : "Glasgow",
-			"Code" : "GLG"
-		}, {
-			"Name" : "Inverness",
-			"Code" : "INV"
-		}, {
-			"Name" : "Stirling",
-			"Code" : "STG"
-		} ]
-	}, {
-		"Name" : "Wales",
-		"Code" : "WLS",
-		"City" : [ {
-			"Name" : "Bangor",
-			"Code" : "BAN"
-		}, {
-			"Name" : "Cardiff",
-			"Code" : "CDF"
-		}, {
-			"Name" : "Newport",
-			"Code" : "NWP"
-		}, {
-			"Name" : "Swansea",
-			"Code" : "SWA"
-		} ]
-	} ]
-}, {
+},  {
 	"Name" : "Uruguay",
 	"Code" : "598",
 	"State" : [ {
