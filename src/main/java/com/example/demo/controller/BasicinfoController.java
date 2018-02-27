@@ -43,11 +43,13 @@ public class BasicinfoController {
 	@GetMapping("/basicinfo")
 	public ModelAndView showRegistration(HttpServletRequest request) throws SQLException, ClassNotFoundException {
 		System.out.println("confirm access");
-		Basicinfo basicinfo = new Basicinfo();
+	
 		HttpSession session = request.getSession();
 		ModelAndView modelAndView = new ModelAndView();
 		int applicationid = (int) session.getAttribute("applicationID");
-		modelAndView.addObject("basicinfo", basicinfo.getbasicinfo(applicationid));
+		Basicinfo basicinfo = new Basicinfo().getbasicinfo(applicationid);
+	
+		modelAndView.addObject("basicinfo",basicinfo);
 		modelAndView.addObject("errormessage",session.getAttribute("errormessage"));
 		System.out.println("errormessage:"+session.getAttribute("errormessage"));
 		modelAndView.addObject("industry", getlist());
@@ -65,13 +67,17 @@ public class BasicinfoController {
 		System.out.println("confirm button");
 
 		String[] basiccounty=basicinfo.getCountryName().split(",");
+		if(basiccounty[1].equals("000")) {
+			basicinfo.setCountryCode(null);
+			basicinfo.setCountryName(null);
+		}else {
 		basicinfo.setCountryCode(basiccounty[1]);
-		basicinfo.setCountryName(basiccounty[0]);
-		if(basicinfo.getStateName()!=null) {
+		basicinfo.setCountryName(basiccounty[0]);}
+		if(basicinfo.getStateName()!=null&&!basicinfo.getStateName().equals("State,000")) {
 		String[] basicstate=basicinfo.getStateName().split(",");
 		basicinfo.setStateCode(basicstate[1]);
 		basicinfo.setStateName(basicstate[0]);}
-		if(basicinfo.getCityName()!=null) {
+		if(basicinfo.getCityName()!=null&&!basicinfo.getCityName().equals("City,000")) {
 		String[] basiccity=basicinfo.getCityName().split(",");
 		basicinfo.setCityCode(basiccity[1]);
 		basicinfo.setCityName(basiccity[0]);
