@@ -54,7 +54,19 @@ var addressInit = function(_mailaddress_country, _mailaddress_state,
 	changecountry();
 	mailaddresscountry.onchange = changecountry;
 }
+
 var countryList = [ {
+	"Name" : "Country",
+	"Code" : "000",
+	"State":[ {
+		"Name":"State",
+		"Code":"000",
+		"City":[{
+			"Name":"City",
+			"Code":"000"
+		} ]
+	} ]
+},{
 	"Name" : "United States",
 	"Code" : "001",
 	"State" : [ {
@@ -17590,6 +17602,160 @@ var countryList = [ {
 		"Code" : "YZF"
 	} ]
 }, {
+	"Name" : "United Kingdom",
+	"Code" : "044",
+	"State" : [ {
+		"Name" : "England",
+		"Code" : "ENG",
+		"City" : [ {
+			"Name" : "Bath",
+			"Code" : "BAS"
+		}, {
+			"Name" : "Birmingham",
+			"Code" : "BIR"
+		}, {
+			"Name" : "Bradford",
+			"Code" : "BRD"
+		}, {
+			"Name" : "Brighton & Hove",
+			"Code" : "BNH"
+		}, {
+			"Name" : "Bristol",
+			"Code" : "BST"
+		}, {
+			"Name" : "Cambridge",
+			"Code" : "CAM"
+		}, {
+			"Name" : "Canterbury",
+			"Code" : "CNG"
+		}, {
+			"Name" : "Carlisle",
+			"Code" : "CAX"
+		}, {
+			"Name" : "Chester",
+			"Code" : "CEG"
+		}, {
+			"Name" : "Chichester",
+			"Code" : "CST"
+		}, {
+			"Name" : "Coventry",
+			"Code" : "COV"
+		}, {
+			"Name" : "Derby",
+			"Code" : "DER"
+		}, {
+			"Name" : "Durham",
+			"Code" : "DUR"
+		}, {
+			"Name" : "Ely",
+			"Code" : "ELY"
+		}, {
+			"Name" : "Exeter",
+			"Code" : "EXE"
+		}, {
+			"Name" : "Gloucester",
+			"Code" : "GLO"
+		}, {
+			"Name" : "Hereford",
+			"Code" : "HAF"
+		}, {
+			"Name" : "Kingston upon Hull",
+			"Code" : "KUH"
+		}, {
+			"Name" : "Lancaster",
+			"Code" : "LAN"
+		}, {
+			"Name" : "Leeds",
+			"Code" : "LDS"
+		}, {
+			"Name" : "Leicester",
+			"Code" : "LCE"
+		}, {
+			"Name" : "Lichfield",
+			"Code" : "LHF"
+		}, {
+			"Name" : "Lincoln",
+			"Code" : "LCN"
+		}, {
+			"Name" : "Liverpool",
+			"Code" : "LIV"
+		}, {
+			"Name" : "London",
+			"Code" : "LND"
+		}, {
+			"Name" : "Manchester",
+			"Code" : "MAN"
+		}, {
+			"Name" : "Newcastle",
+			"Code" : "NCL"
+		}, {
+			"Name" : "Norwich",
+			"Code" : "NRW"
+		}, {
+			"Name" : "Nottingham",
+			"Code" : "NGM"
+		}, {
+			"Name" : "Oxford",
+			"Code" : "OXF"
+		}, {
+			"Name" : "Peterborough",
+			"Code" : "PTE"
+		}, {
+			"Name" : "Plymouth",
+			"Code" : "PLY"
+		}, {
+			"Name" : "Portsmouth",
+			"Code" : "POR"
+		}, {
+			"Name" : "Preston",
+			"Code" : "PRE"
+		}, {
+			"Name" : "Ripon",
+			"Code" : "RIP"
+		}, {
+			"Name" : "Saint Albans",
+			"Code" : "TBL"
+		}, {
+			"Name" : "Salford",
+			"Code" : "SLF"
+		}, {
+			"Name" : "Salisbury",
+			"Code" : "SLS"
+		}, {
+			"Name" : "Sheffield",
+			"Code" : "SHE"
+		}, {
+			"Name" : "Southampton",
+			"Code" : "STH"
+		}, {
+			"Name" : "Stoke-on-Trent",
+			"Code" : "SOT"
+		}, {
+			"Name" : "Sunderland",
+			"Code" : "SUN"
+		}, {
+			"Name" : "Truro",
+			"Code" : "TRU"
+		}, {
+			"Name" : "Wakefield",
+			"Code" : "WKF"
+		}, {
+			"Name" : "Wells",
+			"Code" : "WLS"
+		}, {
+			"Name" : "Winchester",
+			"Code" : "WNE"
+		}, {
+			"Name" : "Wolverhampton",
+			"Code" : "WOV"
+		}, {
+			"Name" : "Worcester",
+			"Code" : "WOR"
+		}, {
+			"Name" : "York",
+			"Code" : "YOR"
+		} ]
+	}, {
 	"Name" : "Afghanistan",
 	"Code" : "093",
 	"State" : [ {
@@ -26783,160 +26949,6 @@ var countryList = [ {
 		"Code" : "DU"
 	} ]
 }, {
-	"Name" : "United Kingdom",
-	"Code" : "044",
-	"State" : [ {
-		"Name" : "England",
-		"Code" : "ENG",
-		"City" : [ {
-			"Name" : "Bath",
-			"Code" : "BAS"
-		}, {
-			"Name" : "Birmingham",
-			"Code" : "BIR"
-		}, {
-			"Name" : "Bradford",
-			"Code" : "BRD"
-		}, {
-			"Name" : "Brighton & Hove",
-			"Code" : "BNH"
-		}, {
-			"Name" : "Bristol",
-			"Code" : "BST"
-		}, {
-			"Name" : "Cambridge",
-			"Code" : "CAM"
-		}, {
-			"Name" : "Canterbury",
-			"Code" : "CNG"
-		}, {
-			"Name" : "Carlisle",
-			"Code" : "CAX"
-		}, {
-			"Name" : "Chester",
-			"Code" : "CEG"
-		}, {
-			"Name" : "Chichester",
-			"Code" : "CST"
-		}, {
-			"Name" : "Coventry",
-			"Code" : "COV"
-		}, {
-			"Name" : "Derby",
-			"Code" : "DER"
-		}, {
-			"Name" : "Durham",
-			"Code" : "DUR"
-		}, {
-			"Name" : "Ely",
-			"Code" : "ELY"
-		}, {
-			"Name" : "Exeter",
-			"Code" : "EXE"
-		}, {
-			"Name" : "Gloucester",
-			"Code" : "GLO"
-		}, {
-			"Name" : "Hereford",
-			"Code" : "HAF"
-		}, {
-			"Name" : "Kingston upon Hull",
-			"Code" : "KUH"
-		}, {
-			"Name" : "Lancaster",
-			"Code" : "LAN"
-		}, {
-			"Name" : "Leeds",
-			"Code" : "LDS"
-		}, {
-			"Name" : "Leicester",
-			"Code" : "LCE"
-		}, {
-			"Name" : "Lichfield",
-			"Code" : "LHF"
-		}, {
-			"Name" : "Lincoln",
-			"Code" : "LCN"
-		}, {
-			"Name" : "Liverpool",
-			"Code" : "LIV"
-		}, {
-			"Name" : "London",
-			"Code" : "LND"
-		}, {
-			"Name" : "Manchester",
-			"Code" : "MAN"
-		}, {
-			"Name" : "Newcastle",
-			"Code" : "NCL"
-		}, {
-			"Name" : "Norwich",
-			"Code" : "NRW"
-		}, {
-			"Name" : "Nottingham",
-			"Code" : "NGM"
-		}, {
-			"Name" : "Oxford",
-			"Code" : "OXF"
-		}, {
-			"Name" : "Peterborough",
-			"Code" : "PTE"
-		}, {
-			"Name" : "Plymouth",
-			"Code" : "PLY"
-		}, {
-			"Name" : "Portsmouth",
-			"Code" : "POR"
-		}, {
-			"Name" : "Preston",
-			"Code" : "PRE"
-		}, {
-			"Name" : "Ripon",
-			"Code" : "RIP"
-		}, {
-			"Name" : "Saint Albans",
-			"Code" : "TBL"
-		}, {
-			"Name" : "Salford",
-			"Code" : "SLF"
-		}, {
-			"Name" : "Salisbury",
-			"Code" : "SLS"
-		}, {
-			"Name" : "Sheffield",
-			"Code" : "SHE"
-		}, {
-			"Name" : "Southampton",
-			"Code" : "STH"
-		}, {
-			"Name" : "Stoke-on-Trent",
-			"Code" : "SOT"
-		}, {
-			"Name" : "Sunderland",
-			"Code" : "SUN"
-		}, {
-			"Name" : "Truro",
-			"Code" : "TRU"
-		}, {
-			"Name" : "Wakefield",
-			"Code" : "WKF"
-		}, {
-			"Name" : "Wells",
-			"Code" : "WLS"
-		}, {
-			"Name" : "Winchester",
-			"Code" : "WNE"
-		}, {
-			"Name" : "Wolverhampton",
-			"Code" : "WOV"
-		}, {
-			"Name" : "Worcester",
-			"Code" : "WOR"
-		}, {
-			"Name" : "York",
-			"Code" : "YOR"
-		} ]
-	}, {
 		"Name" : "Northern Ireland",
 		"Code" : "NIR",
 		"City" : [ {

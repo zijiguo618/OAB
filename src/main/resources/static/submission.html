@@ -24,6 +24,13 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style> 
+
+
+input[type=submit]:disabled {
+    background: #B0120A;
+}
+	</style> 
 
 	</head>
 	<body>
@@ -56,7 +63,7 @@
 						<label for="agreement" >Terms and Services</label>
 						<object data="NihaoPay_Terms.pdf" type="application/pdf" width="100%" height="1100px"></object>
 						<input type="checkbox" name="readandagree" id="readandagree" value="readandagree" onchange='gatewayinappmonitor()'/>
-						<label for="read" >I have read and agree to the Terms of Service</label>
+						<label for="read" >Has read term carefully and agree to accept terms</label>
 						<br/><br />
 						<label for="Signature" >Printed Signature</label>
 						<input id="signatureinp" type="text" th:field="*{signature}" />

@@ -122,7 +122,7 @@ public class UploadController {
         HttpSession session = request.getSession();  
 		session.setAttribute("document",doc);  
 
-		db.update2application_fileload((int)session.getAttribute("applicationID"), doc.getBusinesslicense(), doc.getIssuedid(), doc.getVoidedcheck(), doc.getBankstatement(), doc.getStore());
+//		db.update2application_fileload((int)session.getAttribute("applicationID"), doc.getBusinesslicense(), doc.getIssuedid(), doc.getVoidedcheck(), doc.getBankstatement(), doc.getStore());
 //		db.updatestage((int)session.getAttribute("applicationID"), 6, "stage");
 		return "redirect:/submission";
 

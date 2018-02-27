@@ -60,9 +60,9 @@ public class RegistrationController {
 //		userRepository.save(registration);
 		MD5 md5 = new MD5();
 		
-	int status=	db.insert2registration(registration.getEmail(),registration.getPassword(),registration.getFullname());
+//	int status=	db.insert2registration(registration.getEmail(),registration.getPassword(),registration.getFullname());
 	
-	status=db.insert2user(registration.getEmail(),md5.getMD5(registration.getPassword()),registration.getFullname());
+	int status=db.insert2user(registration.getEmail(),md5.getMD5(registration.getPassword()),registration.getFullname());
 	if(status==-1) {
 		ModelAndView modelv =new ModelAndView("redirect:/registration");
 		session.setAttribute("message", "1");  

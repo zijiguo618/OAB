@@ -32,14 +32,11 @@
 	<body onpageshow="myFunction()" >
 
 		<div class="container">
-
 <div class="col-xs-3 banner-body-left" style="margin-top:200px;">
-	<a href="http://nihaopay.com"><img class="centerImage" src="logo3.png" alt="Logo"  width="100%" height="100%" style="float:left; margin-top:-150px;" /></a><br/>
+<a href="http://nihaopay.com"><img class="centerImage" src="logo3.png" alt="Logo"  width="100%" height="100%" style="float:left; margin-top:-150px;" /></a><br/>
 			<div class="row">
-
-				<div class=" col-md-offset-5">
-					 
-					<ul class="menu">
+				<div class=" col-md-offset-6">
+									<ul class="menu">
 					
 						<li  ><a href="/basicinfo" class="hvr-underline-from-left"><i class="home1"></i>Business</a></li>
 									<li class="active"><a href="/products" class="hvr-underline-from-left"><i class="prod1"></i>Gateways</a></li>
@@ -91,12 +88,12 @@
 							<label for="Onlinel" > Online </label>
 							<br/>
 							<div class="stickinline" style="float:left;" >
-								<input id="PCcheck" type="checkbox" name="PC" onchange='gatewayPCmonitor()'> PC  </input>
+								<input id="PCcheck" type="checkbox" th:field="*{productName}" value="UP_EBANK_PAY" name="PC" onchange='gatewayPCmonitor()'> PC  </input>
 							</div>
-							<input id="websiteinp" type="txt" th:field="*{website}" placeholder="Website URL" style="float:left; margin-left:10px;" /><br/>
+							<input id="websiteinp" type="text" th:field="*{website}" placeholder="Website URL" style="float:left; margin-left:10px; height:23px;" /><br/>
 							
 							
-							<div class="stickinline" style="float:left;" >
+							<div class="stickinline" style="float:left;   margin-top:3px;" >
 							<input id="inappcheck" type="checkbox" name="inapp" onchange='gatewayinappmonitor()'> In-APP  </input>
 							</div>
 							<div class="form-group" style="position: relative; ">
@@ -106,7 +103,7 @@
 							<div  id="IOStext" style="float:left;" >IOS
 							</div>
 							<div class="stickinline" style="float:left;  margin-left:10px;">
-							<input id="Android" type="checkbox" th:field="*{cardOrgs}" value="UP_EBANK_PAY" name="Android" onclick='gatewayinappmonitor()'> </input>
+							<input id="Android" type="checkbox" th:field="*{productName}" value="UP_EBANK_PAY" name="Android" onclick='gatewayinappmonitor()'> </input>
 							</div>
 							<div id="androidtext" style="float:left;">Android
 							</div>
@@ -129,13 +126,13 @@
 							</div>
 						<div class="form-group">
 							<label for="Offlinel" > Offline</label>	<br/>
-							<input id="QRCode" type="checkbox" th:field="*{productName}" value="OFFLINE_QRCODE" name="QRCode" onclick='gatewaymonitor()'>Static QR Code</input>
+							<input id="QRCode" type="checkbox" th:field="*{productName}" value="OFFLINE_QRCODE" name="QRCode">Static QR Code</input>
 							<input id="Wallet" type="checkbox" th:field="*{productName}" value="OFFLINE_QRCODE" name="Wallet" onclick='gatewaymonitor()'>IOS/Android Wallet</input> 
-							<input id="POS" type="checkbox" th:field="*{productName}" value="OFFLINE_POS" name="POS" onclick='gatewaymonitor()'/>POS</input>
+							<input id="POS" type="checkbox" th:field="*{productName}" value="OFFLINE_POS" name="POS"/>POS</input>
 						</div>	
 						<div class="form-group">
 							<label for="easypayl" > EasyPay</label>	<br/>
-							<input id="EasyPay" type="checkbox"th:field="*{easyPay}" value="ACTIVE" name="easyPay">EasyPay </input><a href="https://vimeo.com/175835758" style="font-size:16px;">Demo</a>
+							<input id="EasyPay" type="checkbox"th:field="*{easyPay}" value="ACTIVE" name="easyPay">EasyPay (Do not require integration)</input><a href="https://vimeo.com/175835758" target="_blank" style="font-size:16px;">Demo</a>
 							
 							
 							
@@ -143,7 +140,7 @@
 
 						<div class="form-group">
 
-							<center><input type="submit" value="Save" class="btn btn-primary"></center>
+							<center><input type="submit" value="Save" class="btn btn-primary" onclick='submitfunction()'></center>
 						</div>
 						<script src="js/bootstrap.js"></script>
 	
@@ -152,6 +149,13 @@
 									'mailaddress_state', 'mailaddress_city');
 						</script>
 						<script>
+						 function submitfunction(){
+							 var unionpayid=document.getElementById("UnionPay");
+							if((unionpayid.checked==true)&&((document.getElementById("QRCode").checked||document.getElementById("Wallet").checked||document.getElementById("POS").checked)==true)){
+								alert("UnionPay QRcode soltion coming soon");
+							}
+						} 
+						
 						
 						function myFunction() {
 							document.getElementById("UnionPay").disabled = true;
@@ -201,6 +205,8 @@
 							document.getElementById("wechattext1").style.display="none";
 							document.getElementById("wechattext2").style.display="none";
 							document.getElementById("wechattext3").style.display="none";
+							document.getElementById("wechatcheck").disabled = true;
+							document.getElementById("inappcheck").disabled = true;
 							// document.getElementById("Wetchat_mini").style.display="none";
 							// document.getElementById("Wetchat_subscription").style.display="none";
 							// document.getElementById("Wetchat_Store").style.display="none";
@@ -231,12 +237,15 @@
 				document.getElementById("PCcheck").disabled = false;
 				document.getElementById("websiteinp").readOnly = false;
 				document.getElementById("EasyPay").disabled = false;
-				
+				document.getElementById("inappcheck").disabled = false;
+				document.getElementById("wechatcheck").disabled = false;
 				if((document.getElementById("AliPay").checked||document.getElementById("UnionPay").checked)==false){
 					document.getElementById("IOS").disabled = true;
 					document.getElementById("Android").disabled = true;
 				}
 			}else{
+				document.getElementById("inappcheck").disabled = true;
+				document.getElementById("wechatcheck").disabled = true;
 				document.getElementById("EasyPay").disabled = true;
 				document.getElementById("IOS").disabled = true;
 				document.getElementById("Android").disabled = true;
@@ -258,7 +267,7 @@
 					document.getElementById("AliPay").disabled = false;
 					document.getElementById("WeChatPay").disabled = false;
 				    }else{
-				    	document.getElementById("EasyPay").disabled = true;
+				    		document.getElementById("EasyPay").disabled = true;
 				    	  	document.getElementById("UnionPay").disabled = true;
 						document.getElementById("AliPay").disabled = true;
 						document.getElementById("WeChatPay").disabled = true;
@@ -270,20 +279,24 @@
 						document.getElementById("QRCode").disabled = true;
 						document.getElementById("Wallet").disabled = true;
 						document.getElementById("POS").disabled = true;
+						document.getElementById("wechatcheck").disabled = true;
+						document.getElementById("inappcheck").disabled = true;
 				    }
 				}
 function gatewayPCmonitor(){
 	var pcid=document.getElementById("PCcheck");
 	if((document.getElementById("WeChatPay").checked&&document.getElementById("CAD").checked&&document.getElementById("PCcheck").checked)==true){
-		alert("Wetchat does not support CAD in PC");
+		alert("We currently do not support CAD settlement for WechatPay in PC ");
 	}else if((document.getElementById("WeChatPay").checked&&document.getElementById("GBP").checked&&document.getElementById("PCcheck").checked)==true){
-		alert("Wetchat does not support GBP in PC");
+		alert("We currently do not support GBP settlement for WechatPay in PC");
 	}
 	if(pcid.checked==true){
 		document.getElementById("websiteinp").readOnly = false;
+		document.getElementById("websiteinp").value="https://";
 		document.getElementById("websiteinp").style.display="block";
 	}else{
 		document.getElementById("websiteinp").readOnly = true;
+		document.getElementById("websiteinp").value="";
 		document.getElementById("websiteinp").style.display="none";
 	}
 }
@@ -292,11 +305,9 @@ function gatewayinappmonitor(){
 	var inappcheckid=document.getElementById("inappcheck");
 	if(inappcheckid.checked==true){
 		document.getElementById("IOS").disabled = false;
-		document.getElementById("IOS").checked=false;
 		document.getElementById("IOS").style.display="block";
 		document.getElementById("IOStext").style.display="block";
 		document.getElementById("Android").disabled = false;
-		document.getElementById("Android").checked=false;
 		document.getElementById("Android").style.display="block";
 		document.getElementById("androidtext").style.display="block";
 		
@@ -312,12 +323,14 @@ function gatewayinappmonitor(){
 		document.getElementById("androidtext").style.display="none";
 	}
 	if((document.getElementById("WeChatPay").checked&&(document.getElementById("IOS").checked||document.getElementById("Android").checked))==true){
-		alert("Wetchat does not support in-APP");
+		alert("Only AliPay and UnionPay are available for In-App purchase");
 	}
 }
 function gatewaymonitor(){
+	
 	if(document.getElementById("Wallet").checked==true){
 		alert("Download Android/IOS Wallet in Google/Apple Store");
+		
 	}
 }
 function gatewayplatformmonitor(){
@@ -325,13 +338,13 @@ function gatewayplatformmonitor(){
 	if(wechatcheckid.checked==true){
 		
 		document.getElementById("Wetchat_mini").disabled = false;
-		document.getElementById("Wetchat_mini").checked=false;
+		
 		document.getElementById("Wetchat_mini").style.display="block";
 		document.getElementById("Wetchat_subscription").disabled = false;
-		document.getElementById("Wetchat_subscription").checked=false;
+		
 		document.getElementById("Wetchat_subscription").style.display="block";
 		document.getElementById("Wetchat_Store").disabled = false;
-		document.getElementById("Wetchat_Store").checked=false;
+		
 		document.getElementById("Wetchat_Store").style.display="block";
 		document.getElementById("wechattext1").style.display="block";
 		document.getElementById("wechattext2").style.display="block";
@@ -354,17 +367,28 @@ function gatewayplatformmonitor(){
 	
 	
 	if((document.getElementById("WeChatPay").checked&&(document.getElementById("Wetchat_Store").checked||document.getElementById("Wetchat_subscription").checked||document.getElementById("Wetchat_mini").checked)&&(document.getElementById("GBP").checked||document.getElementById("HKD").checked||document.getElementById("JPY").checked||document.getElementById("CAD").checked))==true){
-		alert("Wetchat only support USD and EUR in Wetchat Platform");
+		if(document.getElementById("UnionPay").checked){
+			alert("We only support USD and EUR settlement on Wechat platform");
+		}else{
+			alert("We only support USD and EUR settlement on Wechat platform, You may add USD and EUR as settlement currency to proceed");
+		}
+		
 	}
 	if((document.getElementById("AliPay").checked&&(document.getElementById("Wetchat_Store").checked||document.getElementById("Wetchat_subscription").checked||document.getElementById("Wetchat_mini").checked))==true){
-		alert("Alipay does not support Wetchat Platform");
+		alert("You can only use WechatPay and UnionPay on Wechat Platform");
 	}
 				}		
 		
 		
 		
 				</script>
-
+				<script>
+			var message = "[[${errormessage}]]";
+			if(message!=null){
+		 	alert(message); 
+		 	}
+			
+			</script>
 					</form>
 					<!-- END Sign In Form -->
 

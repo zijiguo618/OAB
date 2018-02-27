@@ -116,7 +116,7 @@ public class BasicinfoController {
 			db.update2basic(applicationID, basicinfo.getName(), basicinfo.getAbbreviation(),  basicinfo.getContactEmail(), merCode, basicinfo.getCountryName(), basicinfo.getStateName(), basicinfo.getCityName(), basicinfo.getCountryCode(), basicinfo.getStateCode(), basicinfo.getCityCode(),  basicinfo.getIndustry(), basicinfo.getContacttittle(),  basicinfo.getComments(), basicinfo.getFederalID(), basicinfo.getStreetName1(), basicinfo.getStreetName2(), basicinfo.getContactPerson(),  basicinfo.getContactPhone());
 			
 		}
-		db.updatestage((int)session.getAttribute("applicationID"), 1, "stage");
+//		db.updatestage((int)session.getAttribute("applicationID"), 1, "stage");
 
 		session.setAttribute("errormessage", "Please fill out your GateWay Setting");
 //		session.setAttribute("errormessage",null);

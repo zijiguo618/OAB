@@ -106,8 +106,8 @@ public class ProductsController {
 		// System.out.println((int)session.getAttribute("applicationID"));
 		System.out.println(Products.toString());
 
-		db.update2application_product((int) session.getAttribute("applicationID"), Products.getProductName(),
-				Products.getCardOrgs(), Products.getCurrencys(), Products.getEasyPay());
+//		db.update2application_product((int) session.getAttribute("applicationID"), Products.getProductName(),
+//				Products.getCardOrgs(), Products.getCurrencys(), Products.getEasyPay());
 		//
 		// List<String> xiangmu= new ArrayList<String>();
 		// xiangmu=Arrays.asList(Products.getProductName().split(","));

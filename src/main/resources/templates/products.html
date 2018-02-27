@@ -93,7 +93,7 @@
 							<input id="websiteinp" type="text" th:field="*{website}" placeholder="Website URL" style="float:left; margin-left:10px; height:23px;" /><br/>
 							
 							
-							<div class="stickinline" style="float:left;" >
+							<div class="stickinline" style="float:left;   margin-top:3px;" >
 							<input id="inappcheck" type="checkbox" name="inapp" onchange='gatewayinappmonitor()'> In-APP  </input>
 							</div>
 							<div class="form-group" style="position: relative; ">
@@ -126,13 +126,13 @@
 							</div>
 						<div class="form-group">
 							<label for="Offlinel" > Offline</label>	<br/>
-							<input id="QRCode" type="checkbox" th:field="*{productName}" value="OFFLINE_QRCODE" name="QRCode" onclick='gatewaymonitor()'>Static QR Code</input>
+							<input id="QRCode" type="checkbox" th:field="*{productName}" value="OFFLINE_QRCODE" name="QRCode">Static QR Code</input>
 							<input id="Wallet" type="checkbox" th:field="*{productName}" value="OFFLINE_QRCODE" name="Wallet" onclick='gatewaymonitor()'>IOS/Android Wallet</input> 
-							<input id="POS" type="checkbox" th:field="*{productName}" value="OFFLINE_POS" name="POS" onclick='gatewaymonitor()'/>POS</input>
+							<input id="POS" type="checkbox" th:field="*{productName}" value="OFFLINE_POS" name="POS"/>POS</input>
 						</div>	
 						<div class="form-group">
 							<label for="easypayl" > EasyPay</label>	<br/>
-							<input id="EasyPay" type="checkbox"th:field="*{easyPay}" value="ACTIVE" name="easyPay">EasyPay </input><a href="https://vimeo.com/175835758" style="font-size:16px;">Demo</a>
+							<input id="EasyPay" type="checkbox"th:field="*{easyPay}" value="ACTIVE" name="easyPay">EasyPay (Do not require integration)</input><a href="https://vimeo.com/175835758" target="_blank" style="font-size:16px;">Demo</a>
 							
 							
 							
@@ -152,7 +152,7 @@
 						 function submitfunction(){
 							 var unionpayid=document.getElementById("UnionPay");
 							if((unionpayid.checked==true)&&((document.getElementById("QRCode").checked||document.getElementById("Wallet").checked||document.getElementById("POS").checked)==true)){
-								alert("UnionPay does not support Offline Products");
+								alert("UnionPay QRcode soltion coming soon");
 							}
 						} 
 						
@@ -286,9 +286,9 @@
 function gatewayPCmonitor(){
 	var pcid=document.getElementById("PCcheck");
 	if((document.getElementById("WeChatPay").checked&&document.getElementById("CAD").checked&&document.getElementById("PCcheck").checked)==true){
-		alert("Wetchat does not support CAD in PC");
+		alert("We currently do not support CAD settlement for WechatPay in PC ");
 	}else if((document.getElementById("WeChatPay").checked&&document.getElementById("GBP").checked&&document.getElementById("PCcheck").checked)==true){
-		alert("Wetchat does not support GBP in PC");
+		alert("We currently do not support GBP settlement for WechatPay in PC");
 	}
 	if(pcid.checked==true){
 		document.getElementById("websiteinp").readOnly = false;
@@ -323,7 +323,7 @@ function gatewayinappmonitor(){
 		document.getElementById("androidtext").style.display="none";
 	}
 	if((document.getElementById("WeChatPay").checked&&(document.getElementById("IOS").checked||document.getElementById("Android").checked))==true){
-		alert("Wetchat does not support in-APP");
+		alert("Only AliPay and UnionPay are available for In-App purchase");
 	}
 }
 function gatewaymonitor(){
@@ -367,10 +367,15 @@ function gatewayplatformmonitor(){
 	
 	
 	if((document.getElementById("WeChatPay").checked&&(document.getElementById("Wetchat_Store").checked||document.getElementById("Wetchat_subscription").checked||document.getElementById("Wetchat_mini").checked)&&(document.getElementById("GBP").checked||document.getElementById("HKD").checked||document.getElementById("JPY").checked||document.getElementById("CAD").checked))==true){
-		alert("Wetchat only support USD and EUR in Wetchat Platform");
+		if(document.getElementById("UnionPay").checked){
+			alert("We only support USD and EUR settlement on Wechat platform");
+		}else{
+			alert("We only support USD and EUR settlement on Wechat platform, You may add USD and EUR as settlement currency to proceed");
+		}
+		
 	}
 	if((document.getElementById("AliPay").checked&&(document.getElementById("Wetchat_Store").checked||document.getElementById("Wetchat_subscription").checked||document.getElementById("Wetchat_mini").checked))==true){
-		alert("Alipay does not support Wetchat Platform");
+		alert("You can only use WechatPay and UnionPay on Wechat Platform");
 	}
 				}		
 		

@@ -38,7 +38,7 @@ public class LoginController implements ErrorController{
 		HttpSession session = request.getSession();  
 		String errormessage =(String) session.getAttribute("errormessage");
 		Login login = new Login();
-//		System.out.println("login");
+		System.out.println("login");
 		ModelAndView modelAndView = new ModelAndView();
 		if(errormessage==null) {
 			modelAndView.addObject("errormessage", "0");
@@ -54,10 +54,10 @@ public class LoginController implements ErrorController{
 	}
 
 	@PostMapping("/login")
-	public ModelAndView greetingSubmit(Login Login,BindingResult result,HttpServletRequest request) throws SQLException, ClassNotFoundException {
+	public ModelAndView greetingSubmit(@Valid Login Login,BindingResult result,HttpServletRequest request) throws SQLException, ClassNotFoundException {
 //		System.out.println("login post");
 		ModelAndView modelAndView = new ModelAndView();
-	
+		System.out.println("post");
 		db=new DB();
 		modelAndView.setViewName("redirect:/basicinfo");
 //		modelAndView.setViewName("redirect:/products");
@@ -69,7 +69,7 @@ public class LoginController implements ErrorController{
 		String pass=db.getpass(Login.getEmail());
 //		System.out.println("pas:"+pass);
 		connection con =new connection();
-		
+		System.out.println(md5.getMD5(Login.getPassword()));
 		String stage =db.geteuserstage(applicationid);
 		if(stage==null) {
 			session.setAttribute("errormessage", "3");
@@ -79,7 +79,7 @@ public class LoginController implements ErrorController{
 			session.setAttribute("errormessage", "1");
 			
 			modelAndView.setViewName("redirect:/login");
-		}else if(pass.equals(Login.getPassword())){
+		}else if(pass.equals(md5.getMD5(Login.getPassword()))){
 //			if(pass.equals(md5.getMD5(Login.getPassword()))){
 			session.setAttribute("applicationID", applicationid);
 			System.out.println(applicationid);
