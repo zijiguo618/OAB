@@ -59,8 +59,8 @@ public class LoginController implements ErrorController{
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("post");
 		db=new DB();
-		modelAndView.setViewName("redirect:/basicinfo");
-//		modelAndView.setViewName("redirect:/products");
+//		modelAndView.setViewName("redirect:/basicinfo");
+		modelAndView.setViewName("redirect:/products");
 		HttpSession session = request.getSession();  
 		session.setAttribute("errormessage", "0");
 		session.setAttribute("Login",Login);  

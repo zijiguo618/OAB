@@ -2,6 +2,7 @@ package com.example.demo.utilities;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.validator.constraints.Length;
 import org.json.JSONObject;
@@ -12,6 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 
@@ -54,6 +57,8 @@ public class Products {
 	public String getProductName() {
 		return productName;
 	}
+	
+
 
 	public void setProductName(String productName) {
 		List<String> xiangmu = new ArrayList<String>();
@@ -65,13 +70,18 @@ public class Products {
 				xiangmu.add("UP_EBANK_PAY");
 			}
 		}
+		Set<String> hs = new HashSet<>();
+		hs.addAll(xiangmu);
+		System.out.println(hs.toString());
+//		xiangmu.clear();
+//		xiangmu.addAll(hs);
 		System.out.println(easyPay);
 //		if(easyPay.contains("AC")) {
 //			xiangmu.add("UP_EBANK_PAY");
 //		}
 		System.out.println(xiangmu.toString());
 		ArrayList<String> up = new ArrayList<String>();
-		for (String obj : xiangmu) {
+		for (String obj : hs) {
 			ObjectMapper mapper = new ObjectMapper();
 			try {
 				if (obj.contains("OFFLINE") && this.cardOrgs.equals("UNIONPAY")) {
@@ -87,7 +97,7 @@ public class Products {
 			setProducts(up.toString());
 		}
 
-		this.productName = productName;
+		this.productName = hs.toString();
 
 	}
 
